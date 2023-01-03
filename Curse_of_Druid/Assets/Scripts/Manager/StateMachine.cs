@@ -18,6 +18,8 @@ public class StateMachine
             return;
         }
 
+        Debug.Log(state);
+
         CurruentState.OperateExit();
 
         CurruentState = state;
