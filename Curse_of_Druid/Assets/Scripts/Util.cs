@@ -1,5 +1,9 @@
 using UnityEngine;
 
+public enum TILE_ID {
+    Debug
+}
+
 [System.Serializable]
 public class Coordinate
 {

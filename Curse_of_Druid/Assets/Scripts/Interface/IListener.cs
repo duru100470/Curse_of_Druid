@@ -2,6 +2,8 @@ using UnityEngine;
 
 public enum EVENT_TYPE
 {
+    TileChange,
+    GameOver
 }
 
 public interface IListener
