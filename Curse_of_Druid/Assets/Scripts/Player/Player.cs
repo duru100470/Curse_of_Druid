@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable
+public class Player : Entity, IDamageable
 {
     [Header("Health Properties")]
     [SerializeField]
@@ -10,6 +10,8 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField]
     private int maxHealth;
     private Item curItem;
+    [SerializeField]
+    private Coordinate coor;
 
     public int Health => health;
     public Item CurItem => curItem;

@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public abstract class Item
 {
-    private string name;
-    private ITEM_ID itemID;
-    private Sprite itemSprite;
+    public ItemInfo ItemInfo { get; set; }
+    public Sprite itemSprite { get; set; }
     private int durability;
 
-    public string Name => name;
-    public ITEM_ID ItemID => itemID;
-    public int Durability => durability;
-    public Sprite ItemSprite => itemSprite;
+    public int Durability
+    {
+        get { return durability; }
+        set { Mathf.Clamp(value, 0, ItemInfo.maxDurability); }
+    }
 
-    public abstract bool OnUse();
+    /// <summary>
+    /// 아이템 사용 메소드 (성공여부 반환)
+    /// </summary>
+    public abstract bool OnUse(Entity user);
+
+    public abstract Item DeepCopy();
 }

@@ -11,7 +11,8 @@ public class ItemController : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = curItem.ItemSprite;
+        spriteRenderer.sprite = curItem.ItemInfo.itemSprite[0];
+        curItem.itemSprite = curItem.ItemInfo.itemSprite[0];
     }
 
     public Item CurItem
@@ -20,7 +21,7 @@ public class ItemController : MonoBehaviour
         set
         {
             curItem = value;
-            spriteRenderer.sprite = curItem.ItemSprite;
+            spriteRenderer.sprite = value.itemSprite;
         }
     }
 }
