@@ -48,9 +48,9 @@ public class TileManager : SingletonBehavior<TileManager>
         return true;
     }
 
-    public void DestroyTile(Coordinate coor)
+    public bool DestroyTile(Coordinate coor)
     {
-        if (TileArray[coor.X, coor.Y] == null) return;
+        if (TileArray[coor.X, coor.Y] == null) return false;
 
         Destroy(TileArray[coor.X, coor.Y].gameObject);
         TileArray[coor.X, coor.Y] = null;
@@ -60,6 +60,8 @@ public class TileManager : SingletonBehavior<TileManager>
 
         // Update adjacent rule tiles
         UpdateAdjacentRuleTile(coor);
+
+        return true;
     }
 
     public void UpdateAdjacentRuleTile(Coordinate coor)

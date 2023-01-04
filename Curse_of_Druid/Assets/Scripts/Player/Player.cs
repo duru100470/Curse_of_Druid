@@ -9,18 +9,25 @@ public class Player : MonoBehaviour, IDamageable
     private int health;
     [SerializeField]
     private int maxHealth;
+    private Item curItem;
+
+    public int Health => health;
+    public Item CurItem => curItem;
 
     private PlayerController playerController;
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
+        health = maxHealth;
     }
 
     public void GetDamage(int amount, DAMAGE_TYPE dmgType)
     {
         health = Mathf.Max(0, health - amount);
+        EventManager.Inst.PostNotification(EVENT_TYPE.PlayerHPChange, this, health);
         if (health == 0)
         {
+            EventManager.Inst.PostNotification(EVENT_TYPE.GameOver, this, dmgType);
             Dead();
             return;
         }

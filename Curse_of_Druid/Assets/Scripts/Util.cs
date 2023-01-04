@@ -1,6 +1,12 @@
 using UnityEngine;
 
-public enum TILE_ID {
+public enum TILE_ID
+{
+    Debug
+}
+
+public enum ITEM_ID
+{
     Debug
 }
 
