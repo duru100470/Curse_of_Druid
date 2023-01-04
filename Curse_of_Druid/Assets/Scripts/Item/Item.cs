@@ -19,6 +19,4 @@ public abstract class Item
     /// 아이템 사용 메소드 (성공여부 반환)
     /// </summary>
     public abstract bool OnUse(Entity user);
-
-    public abstract Item DeepCopy();
 }

@@ -11,10 +11,12 @@ public enum ITEM_ID
 }
 
 [System.Serializable]
-public class Coordinate
+public struct Coordinate
 {
-    private readonly int x;
-    private readonly int y;
+    [SerializeField]
+    private int x;
+    [SerializeField]
+    private int y;
     public int X => x;
     public int Y => y;
 
@@ -24,10 +26,7 @@ public class Coordinate
         this.y = y;
     }
 
-    public override int GetHashCode()
-    {
-        return x ^ y;
-    }
+    public override int GetHashCode() => x ^ y;
 
     public override bool Equals(object obj)
     {
@@ -45,30 +44,15 @@ public class Coordinate
         return y == point.y;
     }
 
-    public static bool operator ==(Coordinate c1, Coordinate c2)
-    {
-        return Object.Equals(c1, c2);
-    }
+    public static bool operator ==(Coordinate c1, Coordinate c2) => Object.Equals(c1, c2);
 
-    public static bool operator !=(Coordinate c1, Coordinate c2)
-    {
-        return !Object.Equals(c1, c2);
-    }
+    public static bool operator !=(Coordinate c1, Coordinate c2) => !Object.Equals(c1, c2);
 
-    public static Coordinate operator +(Coordinate c1, Coordinate c2)
-    {
-        return new Coordinate(c1.X + c2.X, c1.Y + c2.Y);
-    }
+    public static Coordinate operator +(Coordinate c1, Coordinate c2) => new Coordinate(c1.X + c2.X, c1.Y + c2.Y);
 
-    public static Coordinate operator -(Coordinate c1, Coordinate c2)
-    {
-        return new Coordinate(c1.X - c2.X, c1.Y - c2.Y);
-    }
+    public static Coordinate operator -(Coordinate c1, Coordinate c2) => new Coordinate(c1.X - c2.X, c1.Y - c2.Y);
 
-    public static int Distance(Coordinate c1, Coordinate c2)
-    {
-        return Mathf.Abs(c1.X - c2.X) + Mathf.Abs(c1.Y - c2.Y);
-    }
+    public static int Distance(Coordinate c1, Coordinate c2) => Mathf.Abs(c1.X - c2.X) + Mathf.Abs(c1.Y - c2.Y);
 
     public static Coordinate WorldPointToCoordinate(Vector3 point)
     {

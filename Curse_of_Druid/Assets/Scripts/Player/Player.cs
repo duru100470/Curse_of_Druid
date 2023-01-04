@@ -23,6 +23,11 @@ public class Player : Entity, IDamageable
         health = maxHealth;
     }
 
+    private void Update()
+    {
+        coor = Coordinate.WorldPointToCoordinate(transform.position);
+    }
+
     public void GetDamage(int amount, DAMAGE_TYPE dmgType)
     {
         health = Mathf.Max(0, health - amount);
