@@ -2,6 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : SingletonBehavior<GameManager>
+public abstract class Entity : MonoBehaviour
 {
 }

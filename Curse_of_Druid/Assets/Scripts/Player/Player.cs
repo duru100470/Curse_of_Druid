@@ -2,25 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable
+public class Player : Entity, IDamageable
 {
     [Header("Health Properties")]
     [SerializeField]
     private int health;
     [SerializeField]
     private int maxHealth;
+    private Item curItem;
+    [SerializeField]
+    private Coordinate coor;
+
+    public int Health => health;
+    public Item CurItem => curItem;
 
     private PlayerController playerController;
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
+        health = maxHealth;
+    }
+
+    private void Update()
+    {
+        coor = Coordinate.WorldPointToCoordinate(transform.position);
     }
 
     public void GetDamage(int amount, DAMAGE_TYPE dmgType)
     {
         health = Mathf.Max(0, health - amount);
+        EventManager.Inst.PostNotification(EVENT_TYPE.PlayerHPChange, this, health);
         if (health == 0)
         {
+            EventManager.Inst.PostNotification(EVENT_TYPE.GameOver, this, dmgType);
             Dead();
             return;
         }
