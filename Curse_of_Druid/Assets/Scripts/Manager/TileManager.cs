@@ -25,6 +25,9 @@ public class TileManager : SingletonBehavior<TileManager>
         tileParent = new GameObject("TileParant");
     }
 
+    /// <summary>
+    /// 특정 Coordinate에 TILE_ID 타일을 설치 (성공여부 반환)
+    /// </summary>
     public bool PlaceTile(Coordinate coor, TILE_ID tileType, bool isGenerating = false)
     {
         if (TileArray[coor.X, coor.Y] != null) return false;
@@ -48,6 +51,9 @@ public class TileManager : SingletonBehavior<TileManager>
         return true;
     }
 
+    /// <summary>
+    /// 특정 Coordinate에 타일을 제거 (성공여부 반환)
+    /// </summary>
     public bool DestroyTile(Coordinate coor)
     {
         if (TileArray[coor.X, coor.Y] == null) return false;
