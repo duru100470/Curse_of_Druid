@@ -3,7 +3,8 @@ using UnityEngine;
 public enum TILE_ID
 {
     Debug,
-    Basic
+    Basic,
+    Passing
 }
 
 public enum ITEM_ID
