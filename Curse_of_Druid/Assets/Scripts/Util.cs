@@ -4,7 +4,8 @@ public enum TILE_ID
 {
     Debug,
     Basic,
-    Passing
+    Passing,
+    Cracked
 }
 
 public enum ITEM_ID

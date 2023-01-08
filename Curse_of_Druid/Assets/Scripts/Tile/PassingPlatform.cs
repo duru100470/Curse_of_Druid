@@ -25,8 +25,6 @@ public class PassingPlatform : RuleTile
         {
             platformObject.rotationalOffset = 0f;
         }
-
-        Debug.Log(playerCheck);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
