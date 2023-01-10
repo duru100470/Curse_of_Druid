@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1805387417153474135}
   - component: {fileID: 332989911470151318}
   - component: {fileID: -8965900696496366356}
-  - component: {fileID: 6728310700819516265}
+  - component: {fileID: -8496428524597447367}
   m_Layer: 6
-  m_Name: CrackedPlatform
+  m_Name: ThornTrap
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.8105297, b: 1, a: 1}
+  m_Color: {r: 0.16040353, g: 0.1981132, b: 0.15232289, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6728310700819516265
+--- !u!114 &-8496428524597447367
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,7 +121,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2507256815584847663}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7756f9a22f55794439178bc430fc4d0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a96ed4233246e54b8193c0186c5688a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileId: 3
+  tileId: 0
+  ruleTileSprites: []

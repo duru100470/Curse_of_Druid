@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class PassingPlatform : RuleTile
 {
-    bool playerCheck;
+    bool isPlayerThere;
     PlatformEffector2D platformObject;
 
     void Start()
     {
-        playerCheck = true;
+        isPlayerThere = true;
         platformObject = GetComponent<PlatformEffector2D>();
     }
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.Space) && Input.GetButton("Vertical") && playerCheck)
+        if(Input.GetKey(KeyCode.Space) && Input.GetButton("Vertical") && isPlayerThere)
         {
-            Debug.Log("down jump");
             platformObject.rotationalOffset = 180f;
         }
 
@@ -29,11 +28,11 @@ public class PassingPlatform : RuleTile
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        playerCheck = true;
+        isPlayerThere = true;
     }
 
     /*private void OnCollisionExit2D(Collision2D collision)
     {
-        playerCheck = false;
+        isPlayerThere = false;
     }*/
 }

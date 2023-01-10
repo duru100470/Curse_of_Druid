@@ -5,7 +5,9 @@ public enum TILE_ID
     Debug,
     Basic,
     Passing,
-    Cracked
+    Cracked,
+    Destroyed,
+    Brick
 }
 
 public enum ITEM_ID

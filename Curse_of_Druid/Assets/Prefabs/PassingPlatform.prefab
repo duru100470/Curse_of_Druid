@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -2862983543927016564}
   m_Layer: 6
   m_Name: PassingPlatform
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileId: 2
-  ruleTileSprites: []
 --- !u!251 &-2862983543927016564
 PlatformEffector2D:
   m_ObjectHideFlags: 0
