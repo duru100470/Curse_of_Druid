@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThornTrap : RuleTile//, IFlammable
+public class ThornTrap : Obstacle
 {
     bool isPlayerFromUp;
 
@@ -27,14 +27,4 @@ public class ThornTrap : RuleTile//, IFlammable
             Debug.Log("dead");
         }
     }
-
-    /*void Burn(int burnTime)
-    {
-        
-    }
-
-    void SpreadFlame()
-    {
-        
-    }*/
 }
