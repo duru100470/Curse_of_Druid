@@ -13,8 +13,8 @@ public class Obstacle : RuleTile, IFlammable
     [SerializeField]
     protected DAMAGE_TYPE damageType;
 
-    bool isBurning;
-    int currentBurnTime;
+    private bool isBurning;
+    private int currentBurnTime;
 
     void Update()
     {
