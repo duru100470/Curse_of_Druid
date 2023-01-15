@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrackedPlatform : RuleTile
+public class CrackedPlatform : RuleTile, IStep
 {
-    void OnCollisionEnter2D(Collision2D collision)
+    private bool isSuccess;
+
+    public void OnStep(Entity entity)
     {
-        if(collision.gameObject.tag == "Player")
+        if(entity is Player)
         {
             Invoke("DestroyPlatform", 1.5f);
         }
@@ -14,6 +16,6 @@ public class CrackedPlatform : RuleTile
 
     void DestroyPlatform()
     {
-        this.gameObject.SetActive(false);
+        isSuccess = TileManager.Inst.DestroyTile(this.Pos);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PassingPlatform : RuleTile
 {
-    bool isPlayerThere;
+    private bool isPlayerThere;
     PlatformEffector2D platformObject;
 
     void Start()

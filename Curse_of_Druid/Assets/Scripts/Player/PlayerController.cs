@@ -125,4 +125,33 @@ public class PlayerController : MonoBehaviour
         IsCoyoteTimeEnable = false;
         yield return null;
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        IStep step = other.collider.GetComponent<IStep>();
+        List<IStep> steps = new List<IStep>();
+
+        if(step != null)
+        {
+            steps.Add(step);
+        }
+        
+        Step(steps);
+    }
+
+    private void Step(List<IStep> steps)
+    {
+        foreach (IStep i in steps)
+        {
+            i.OnStep(player);
+        }
+    }
+
+    public float MaxSpeedSetter
+    {
+        set
+        {
+            maxSpeed = value;
+        }
+    }
 }

@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThornTrap : RuleTile//, IFlammable
+public class ThornTrap : Obstacle
 {
-    bool isPlayerFromUp;
+    private bool isPlayerFromUp;
 
     void Update()
     {
         RaycastHit2D hitData = Physics2D.Raycast(transform.position + new Vector3(0, 1, 0), transform.up);
         if(hitData)
         {
-            Debug.Log(hitData.collider.tag);
+            //Debug.Log(hitData.collider.tag);
             if(hitData.collider.tag == "Player")
             {
                 isPlayerFromUp = true;
@@ -27,14 +27,4 @@ public class ThornTrap : RuleTile//, IFlammable
             Debug.Log("dead");
         }
     }
-
-    /*void Burn(int burnTime)
-    {
-        
-    }
-
-    void SpreadFlame()
-    {
-        
-    }*/
 }
