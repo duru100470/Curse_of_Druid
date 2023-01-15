@@ -8,7 +8,7 @@ public class Grass : Obstacle
     private float timeInterval;
     [SerializeField]
     private int maxGrowNumber;
-    
+
     private float timer;
     private int growNumber;
     private bool isPlayerThere;
@@ -25,7 +25,7 @@ public class Grass : Obstacle
     {
         timer += Time.deltaTime;
 
-        if(timer > timeInterval && growNumber < maxGrowNumber)
+        if (timer > timeInterval && growNumber < maxGrowNumber)
         {
             timer = 0f;
             growNumber++;
@@ -35,7 +35,7 @@ public class Grass : Obstacle
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if(other.tag == "Player" && growNumber <= maxGrowNumber)
+        if (other.tag == "Player" && growNumber <= maxGrowNumber)
         {
             other.GetComponent<PlayerController>().MaxSpeedSetter = speed - growNumber;
         }
@@ -43,7 +43,7 @@ public class Grass : Obstacle
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.tag == "Player" && growNumber <= maxGrowNumber)
+        if (other.tag == "Player" && growNumber <= maxGrowNumber)
         {
             other.GetComponent<PlayerController>().MaxSpeedSetter = speed;
         }

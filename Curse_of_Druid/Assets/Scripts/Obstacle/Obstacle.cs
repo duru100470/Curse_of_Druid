@@ -20,7 +20,7 @@ public class Obstacle : RuleTile, IFlammable
     {
         Burn(burnTime);
 
-        if(isBurning)
+        if (isBurning)
         {
             Invoke("SpreadFlame", spreadTime);
         }
@@ -28,11 +28,11 @@ public class Obstacle : RuleTile, IFlammable
 
     public void Burn(int burnTime)
     {
-        if(isBurning)
+        if (isBurning)
         {
             currentBurnTime -= Mathf.RoundToInt(Time.deltaTime);
 
-            if(currentBurnTime <= 0)
+            if (currentBurnTime <= 0)
             {
                 this.gameObject.SetActive(false);
             }
@@ -42,10 +42,10 @@ public class Obstacle : RuleTile, IFlammable
     public void SpreadFlame()
     {
         Collider2D[] hitData = Physics2D.OverlapBoxAll(transform.position, spreadSize, 0);
-        
+
         foreach (Collider2D item in hitData)
         {
-            if(item.tag == "Obstacle")  //Obstacle tag 생성 필요. flammable tag를 생성하면 flammable.
+            if (item.tag == "Obstacle")  //Obstacle tag 생성 필요. flammable tag를 생성하면 flammable.
             {
                 item.GetComponent<Obstacle>().Burn(burnTime);
             }
@@ -54,7 +54,7 @@ public class Obstacle : RuleTile, IFlammable
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player" && isBurning)
+        if (collision.gameObject.tag == "Player" && isBurning)
         {
             GameObject.Find("Player").GetComponent<Player>().GetDamage(1, damageType);
         }

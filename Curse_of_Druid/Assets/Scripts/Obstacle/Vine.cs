@@ -36,16 +36,16 @@ public class Vine : Obstacle
         }*/
         //TileArray 사용 없는 코드
         RaycastHit2D hitData = Physics2D.Raycast(transform.position + new Vector3(0, -1, 0), -transform.up, 0.1f);
-        if(hitData)
+        if (hitData)
         {
-            if(hitData.collider.tag == "Tile")
+            if (hitData.collider.tag == "Tile")
             {
                 isTileThere = true;
             }
         }
         Debug.Log(isTileThere);
 
-        if(isTileThere)
+        if (isTileThere)
         {
             yield break;
         }
@@ -54,7 +54,7 @@ public class Vine : Obstacle
             GameObject instance = Instantiate(_Vine, this.transform.position + new Vector3(0, -1, 0), this.transform.rotation);
             instance.transform.parent = this.transform;
             int index = instance.name.IndexOf("(Clone)");
-            if(index > 0)
+            if (index > 0)
             {
                 instance.name = instance.name.Substring(0, index);
             }
