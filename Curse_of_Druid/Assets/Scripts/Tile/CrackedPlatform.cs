@@ -8,7 +8,7 @@ public class CrackedPlatform : RuleTile, IStep
 
     public void OnStep(Entity entity)
     {
-        if(entity is Player)
+        if (entity is Player)
         {
             Invoke("DestroyPlatform", 1.5f);
         }

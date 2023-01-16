@@ -42,7 +42,7 @@ public class TileManager : SingletonBehavior<TileManager>
         tmp.Pos = coor;
 
         // Notify Tile has changed        
-        EventManager.Inst.PostNotification(EVENT_TYPE.TileChange, null, coor);
+        EventManager.Inst.PostNotification(EVENT_TYPE.TileDestroyed, null, coor);
 
         // Update rule tiles
         if (isGenerating) return true;
@@ -62,7 +62,7 @@ public class TileManager : SingletonBehavior<TileManager>
         TileArray[coor.X, coor.Y] = null;
 
         // Notify Tile has changed
-        EventManager.Inst.PostNotification(EVENT_TYPE.TileChange, null, coor);
+        EventManager.Inst.PostNotification(EVENT_TYPE.TileDestroyed, null, coor);
 
         // Update adjacent rule tiles
         UpdateAdjacentRuleTile(coor);

@@ -2,8 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : RuleTile, IFlammable
+public class Obstacle : MonoBehaviour, IListener
 {
+    protected List<Tile> childrenTileList;
+    public List<Tile> ChildrenTileList => childrenTileList;
+    protected List<Coordinate> supportingTileCoorList;
+
+    protected virtual void Awake()
+    {
+        EventManager.Inst.AddListener(EVENT_TYPE.TileDestroyed, this);
+    }
+
+    public void OnEvent(EVENT_TYPE eventType, Component sender, object param)
+    {
+        switch (eventType)
+        {
+            case EVENT_TYPE.TileDestroyed: // param : 바뀐 타일의 Coordinate
+                // 파괴된 타일 중 지지대가 있으면 파괴됨
+                if (supportingTileCoorList.Exists(e => e == (Coordinate)param))
+                    Destroy();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public virtual void Destroy()
+    {
+        // 파괴될 때 해야할 일들
+    }
+
+    /*
     [SerializeField]
     private int burnTime;
     [SerializeField]
@@ -20,7 +49,7 @@ public class Obstacle : RuleTile, IFlammable
     {
         Burn(burnTime);
 
-        if(isBurning)
+        if (isBurning)
         {
             Invoke("SpreadFlame", spreadTime);
         }
@@ -28,11 +57,11 @@ public class Obstacle : RuleTile, IFlammable
 
     public void Burn(int burnTime)
     {
-        if(isBurning)
+        if (isBurning)
         {
             currentBurnTime -= Mathf.RoundToInt(Time.deltaTime);
 
-            if(currentBurnTime <= 0)
+            if (currentBurnTime <= 0)
             {
                 this.gameObject.SetActive(false);
             }
@@ -42,10 +71,10 @@ public class Obstacle : RuleTile, IFlammable
     public void SpreadFlame()
     {
         Collider2D[] hitData = Physics2D.OverlapBoxAll(transform.position, spreadSize, 0);
-        
+
         foreach (Collider2D item in hitData)
         {
-            if(item.tag == "Obstacle")  //Obstacle tag 생성 필요. flammable tag를 생성하면 flammable.
+            if (item.tag == "Obstacle")  //Obstacle tag 생성 필요. flammable tag를 생성하면 flammable.
             {
                 item.GetComponent<Obstacle>().Burn(burnTime);
             }
@@ -54,9 +83,10 @@ public class Obstacle : RuleTile, IFlammable
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player" && isBurning)
+        if (collision.gameObject.tag == "Player" && isBurning)
         {
             GameObject.Find("Player").GetComponent<Player>().GetDamage(1, damageType);
         }
     }
+    */
 }

@@ -8,7 +8,7 @@ public class ItemController : Entity
     private Item curItem;
     private SpriteRenderer spriteRenderer;
 
-    private void Awake()
+    protected override void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = curItem.ItemInfo.itemSprite[0];

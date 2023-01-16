@@ -6,7 +6,7 @@ public class DebugEnemy : Enemy, IDamageable
 {
     public StateMachine stateMachine;
 
-    private void Awake()
+    protected override void Awake()
     {
         stateMachine = new StateMachine(new DebugEnemyIdle(this));    
     }
