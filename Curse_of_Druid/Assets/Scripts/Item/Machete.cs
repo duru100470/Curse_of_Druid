@@ -10,8 +10,8 @@ public class Machete : Item
             Player player = user as Player;
             int x = player.Coor.X;
             int y = player.Coor.Y;
-            Coordinate target = new Coordinate(x+1, y);
-            if (TileManager.Inst.TileArray[x + 1, y] is DestroyedPlatform)
+            Coordinate target = new Coordinate(x + 1, y);
+            if (TileManager.Inst.TileDict[target] is DestroyedPlatform)
             {
                 bool isDestroyed = TileManager.Inst.DestroyTile(target);
                 Debug.Log("Item is used");

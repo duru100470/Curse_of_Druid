@@ -30,6 +30,17 @@ public class Obstacle : MonoBehaviour, IListener
     public virtual void Destroy()
     {
         // 파괴될 때 해야할 일들
+        for (int i = childrenTileList.Count - 1; i >= 0; i--)
+        {
+            childrenTileList[i].DestroyCallback = null;
+            childrenTileList[i].Destroy();
+        }
+    }
+
+    public virtual void DestroyTile(Coordinate coor)
+    {
+        // childrenTileList에 타일이 하나도 없으면 파괴됨
+        if (childrenTileList.Count == 0) Destroy();
     }
 
     /*
