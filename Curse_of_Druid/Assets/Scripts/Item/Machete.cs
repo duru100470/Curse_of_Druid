@@ -24,12 +24,14 @@ public class Machete : Item
                 Debug.Log("Item is used");
                 return true;
             }
+            /*
             else if (target is VineTile)
             {
                 target.Destroy();
                 Debug.Log("Item is used");
                 return true;
             }
+            */
             else return false;
         }
         else return false;

@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class PlayerDead : IState
 {
-    private PlayerController playerController;
+    private PlayerController pc;
 
     public PlayerDead(PlayerController playerController)
     {
-        this.playerController = playerController;
+        this.pc = playerController;
     }
 
     public void OperateEnter()
     {
-        playerController.anim.SetBool("isDead", true);
-        playerController.anim.speed = 1f;
+        pc.anim.SetBool("isDead", true);
+        pc.anim.speed = 1f;
     }
     public void OperateExit()
     {
-        playerController.anim.SetBool("isDead", false);
-        playerController.anim.speed = 0.3f;
+        pc.anim.SetBool("isDead", false);
+        pc.anim.speed = 0.3f;
     }
     public void OperateUpdate()
     {
     }
     public void OperateFixedUpdate()
     {
-        playerController.rigid2d.velocity = new Vector2(playerController.rigid2d.velocity.x * 0.9f, playerController.rigid2d.velocity.y);
+        pc.rigid2d.velocity = new Vector2(pc.rigid2d.velocity.x * 0.9f, pc.rigid2d.velocity.y);
     }
 }

@@ -16,10 +16,15 @@ public class PlayerController : MonoBehaviour
     private float jumpMaxTime;
     [SerializeField]
     private float coyoteTime;
+    [SerializeField]
+    private float wallJumpTime;
+    [SerializeField]
+    private float wallJumpForce;
     public float JumpTime { get; set; } = 0f;
     public int JumpCount { get; set; }
     public bool IsJumping { get; set; }
     public bool IsCoyoteTimeEnable { get; set; }
+    public bool IsWallJumpEnable { get; set; } = true;
     public bool IsHeadingRight { get; private set; } = true;
 
     public SpriteRenderer spriteRenderer { get; set; }
@@ -33,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public float JumpPower => jumpPower;
     public int JumpMaxCount => jumpMaxCount;
     public float JumpMaxTime => jumpMaxTime;
+    public float WallJumpForce => wallJumpForce;
 
     // Initialize states
     private void Awake()
@@ -95,10 +101,28 @@ public class PlayerController : MonoBehaviour
             rigid2d.velocity = new Vector2(MaxSpeed * (-1), rigid2d.velocity.y);
     }
 
+    public int IsThereWall()
+    {
+        RaycastHit2D raycastHit2DLeft = Physics2D.Raycast(transform.position, Vector3.left, 0.35f, LayerMask.GetMask("Ground"));
+        RaycastHit2D raycastHit2DRight = Physics2D.Raycast(transform.position, Vector3.right, 0.35f, LayerMask.GetMask("Ground"));
+
+        if (raycastHit2DLeft.collider != null)
+        {
+            return -1;
+        }
+        else if (raycastHit2DRight.collider != null)
+        {
+            return 1;
+        }
+
+        return 0;
+    }
+
+
     public bool IsThereLand()
     {
-        Vector2 Pos1 = new Vector2(rigid2d.position.x + 0.25f, rigid2d.position.y);
-        Vector2 Pos2 = new Vector2(rigid2d.position.x - 0.25f, rigid2d.position.y);
+        Vector2 Pos1 = new Vector2(rigid2d.position.x + 0.23f, rigid2d.position.y);
+        Vector2 Pos2 = new Vector2(rigid2d.position.x - 0.23f, rigid2d.position.y);
 
         RaycastHit2D raycastHit2DDown1 = Physics2D.Raycast(Pos1, Vector3.down, 0.6f, LayerMask.GetMask("Ground"));
         RaycastHit2D raycastHit2DDown2 = Physics2D.Raycast(Pos2, Vector3.down, 0.6f, LayerMask.GetMask("Ground"));
@@ -110,7 +134,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (IsCoyoteTimeEnable)
+            if (IsCoyoteTimeEnable && IsWallJumpEnable)
             {
                 StartCoroutine(DelayCoyoteTime(coyoteTime));
                 return true;
@@ -124,6 +148,12 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(time);
         IsCoyoteTimeEnable = false;
         yield return null;
+    }
+
+    public IEnumerator DelayWallJump()
+    {
+        yield return new WaitForSeconds(wallJumpTime);
+        IsWallJumpEnable = true;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
