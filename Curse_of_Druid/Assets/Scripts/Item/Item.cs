@@ -14,7 +14,7 @@ public abstract class Item
         get { return durability; }
         set { Mathf.Clamp(value, 0, ItemInfo.maxDurability); }
     }
-
+    
     /// <summary>
     /// 아이템 사용 메소드 (성공여부 반환)
     /// </summary>
