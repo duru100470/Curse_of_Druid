@@ -24,7 +24,7 @@ public class Grass : Obstacle
     {
         yield return new WaitForSeconds(timeInterval);
 
-        if (!TileManager.Inst.TileArray[growingPoint.X, growingPoint.Y] ||
+        if (!TileManager.Inst.TileDict.ContainsKey(growingPoint) ||
             growNumber < maxGrowNumber)
         {
             GameObject obj = Instantiate(grassPrefab,

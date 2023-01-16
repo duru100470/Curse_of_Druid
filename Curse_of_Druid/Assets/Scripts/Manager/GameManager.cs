@@ -18,14 +18,12 @@ public class GameManager : SingletonBehavior<GameManager>
 
     private void LoadMapAsync()
     {
-        TileManager.Inst.TileArray = GenerateTileArrayAsync();
-
+        GenerateTileArrayAsync();
         InitializePlayer();
     }
 
-    private Tile[,] GenerateTileArrayAsync()
+    private void GenerateTileArrayAsync()
     {
-        Tile[,] tileArray = new Tile[worldXSize, worldYSize];
         GameObject[] tileObjs = GameObject.FindGameObjectsWithTag("Tile");
 
         foreach(var tileObj in tileObjs)
@@ -33,12 +31,11 @@ public class GameManager : SingletonBehavior<GameManager>
             Tile tile = tileObj.GetComponent<Tile>();
             tile.SetPos();
             (tile as RuleTile)?.UpdateRuleTile();
-            tileArray[tile.Pos.X, tile.Pos.Y] = tile;
+            TileManager.Inst.TileDict[tile.Pos] = tile;
             Debug.Log($"X: {tile.Pos.X}, Y: {tile.Pos.Y}, TileID: {tile.TileId}");
         }
 
         Debug.Log("TileArray generating has been finished!");
-        return tileArray;
     }
 
     private void InitializePlayer()
