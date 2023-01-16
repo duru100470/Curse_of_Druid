@@ -2,7 +2,12 @@ using UnityEngine;
 
 public enum TILE_ID
 {
-    Debug
+    Debug,
+    Basic,
+    Passing,
+    Cracked,
+    Destroyed,
+    Brick
 }
 
 public enum ITEM_ID

@@ -4,25 +4,16 @@ using UnityEngine;
 
 public class Player : Entity, IDamageable
 {
-    [Header("Health Properties")]
-    [SerializeField]
-    private int health;
-    [SerializeField]
-    private int maxHealth;
     private Item curItem;
-    [SerializeField]
-    private Coordinate coor;
-
-    public int Health => health;
     public Item CurItem => curItem;
-
     private PlayerController playerController;
 
+
     public Coordinate Coor { get; set; }
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         playerController = GetComponent<PlayerController>();
-        health = maxHealth;
     }
 
     private void Update()
