@@ -17,6 +17,8 @@ public class Player : Entity, IDamageable
     public Item CurItem => curItem;
 
     private PlayerController playerController;
+
+    public Coordinate Coor { get; set; }
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
