@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class TileManager : SingletonBehavior<TileManager>
 {
-    public Tile[,] TileArray { get; set; }
-    public int worldXSize { get; set; }
-    public int worldYSize { get; set; }
+    public Dictionary<Coordinate, Tile> TileDict { get; set; }
 
     [SerializeField]
     private List<GameObject> tilePrefabList;
@@ -23,6 +21,7 @@ public class TileManager : SingletonBehavior<TileManager>
     private void Awake()
     {
         tileParent = new GameObject("TileParant");
+        TileDict = new Dictionary<Coordinate, Tile>();
     }
 
     /// <summary>
@@ -30,7 +29,7 @@ public class TileManager : SingletonBehavior<TileManager>
     /// </summary>
     public bool PlaceTile(Coordinate coor, TILE_ID tileType, bool isGenerating = false)
     {
-        if (TileArray[coor.X, coor.Y] != null) return false;
+        if (TileDict.ContainsKey(coor)) return false;
 
         GameObject newTile = Instantiate(tilePrefabList[(int)tileType]);
         newTile.transform.parent = tileParent.transform;
@@ -38,7 +37,7 @@ public class TileManager : SingletonBehavior<TileManager>
 
         // Initialize Tile Class
         var tmp = newTile.GetComponent<Tile>();
-        TileArray[coor.X, coor.Y] = tmp;
+        TileDict[coor] = tmp;
         tmp.Pos = coor;
 
         // Notify Tile has changed        
@@ -56,10 +55,10 @@ public class TileManager : SingletonBehavior<TileManager>
     /// </summary>
     public bool DestroyTile(Coordinate coor)
     {
-        if (TileArray[coor.X, coor.Y] == null) return false;
+        if (!TileDict.ContainsKey(coor)) return false;
 
-        Destroy(TileArray[coor.X, coor.Y].gameObject);
-        TileArray[coor.X, coor.Y] = null;
+        Destroy(TileDict[coor].gameObject);
+        TileDict.Remove(coor);
 
         // Notify Tile has changed
         EventManager.Inst.PostNotification(EVENT_TYPE.TileDestroyed, null, coor);
@@ -72,21 +71,22 @@ public class TileManager : SingletonBehavior<TileManager>
 
     public void UpdateAdjacentRuleTile(Coordinate coor)
     {
-        if (coor.X != 0 && coor.Y != 0)
-            (TileArray[coor.X - 1, coor.Y - 1] as RuleTile)?.UpdateRuleTile();
-        if (coor.Y != 0)
-            (TileArray[coor.X, coor.Y - 1] as RuleTile)?.UpdateRuleTile();
-        if (coor.X != worldXSize - 1 && coor.Y != 0)
-            (TileArray[coor.X + 1, coor.Y - 1] as RuleTile)?.UpdateRuleTile();
-        if (coor.X != 0)
-            (TileArray[coor.X - 1, coor.Y] as RuleTile)?.UpdateRuleTile();
-        if (coor.X != worldXSize - 1)
-            (TileArray[coor.X + 1, coor.Y] as RuleTile)?.UpdateRuleTile();
-        if (coor.X != 0 && coor.Y != worldYSize - 1)
-            (TileArray[coor.X - 1, coor.Y + 1] as RuleTile)?.UpdateRuleTile();
-        if (coor.Y != worldYSize - 1)
-            (TileArray[coor.X, coor.Y + 1] as RuleTile)?.UpdateRuleTile();
-        if (coor.X != worldXSize - 1 && coor.Y != worldYSize - 1)
-            (TileArray[coor.X + 1, coor.Y + 1] as RuleTile)?.UpdateRuleTile();
+        Tile tile;
+        if (TileDict.TryGetValue(coor + new Coordinate(-1, -1), out tile))
+            (tile as RuleTile)?.UpdateRuleTile();
+        if (TileDict.TryGetValue(coor + new Coordinate(0, -1), out tile))
+            (tile as RuleTile)?.UpdateRuleTile();
+        if (TileDict.TryGetValue(coor + new Coordinate(1, -1), out tile))
+            (tile as RuleTile)?.UpdateRuleTile();
+        if (TileDict.TryGetValue(coor + new Coordinate(-1, 0), out tile))
+            (tile as RuleTile)?.UpdateRuleTile();
+        if (TileDict.TryGetValue(coor + new Coordinate(1, 0), out tile))
+            (tile as RuleTile)?.UpdateRuleTile();
+        if (TileDict.TryGetValue(coor + new Coordinate(-1, 1), out tile))
+            (tile as RuleTile)?.UpdateRuleTile();
+        if (TileDict.TryGetValue(coor + new Coordinate(0, 1), out tile))
+            (tile as RuleTile)?.UpdateRuleTile();
+        if (TileDict.TryGetValue(coor + new Coordinate(1, 1), out tile))
+            (tile as RuleTile)?.UpdateRuleTile();
     }
 }

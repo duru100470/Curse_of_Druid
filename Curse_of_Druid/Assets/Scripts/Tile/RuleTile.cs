@@ -532,9 +532,8 @@ public class RuleTile : Tile
     }
     private bool IsThereLeftTile()
     {
-        if (Pos.X == 0) return false;
-        Tile target = TileManager.Inst.TileArray[Pos.X - 1, Pos.Y];
-        if (target == null)
+        Tile target;
+        if (TileManager.Inst.TileDict.TryGetValue(Pos + new Coordinate(-1, 0), out target))
             return false;
         if (target.TileId == this.TileId)
             return true;
@@ -544,9 +543,8 @@ public class RuleTile : Tile
 
     private bool IsThereRightTile()
     {
-        if (Pos.X == TileManager.Inst.worldXSize - 1) return false;
-        Tile target = TileManager.Inst.TileArray[Pos.X + 1, Pos.Y];
-        if (target == null)
+        Tile target;
+        if (TileManager.Inst.TileDict.TryGetValue(Pos + new Coordinate(1, 0), out target))
             return false;
         if (target.TileId == this.TileId)
             return true;
@@ -556,9 +554,8 @@ public class RuleTile : Tile
 
     private bool IsThereUpTile()
     {
-        if (Pos.Y == TileManager.Inst.worldYSize - 1) return false;
-        Tile target = TileManager.Inst.TileArray[Pos.X, Pos.Y + 1];
-        if (target == null)
+        Tile target;
+        if (TileManager.Inst.TileDict.TryGetValue(Pos + new Coordinate(0, 1), out target))
             return false;
         if (target.TileId== this.TileId)
             return true;
@@ -568,9 +565,8 @@ public class RuleTile : Tile
 
     private bool IsThereDownTile()
     {
-        if (Pos.Y == 0) return false;
-        Tile target = TileManager.Inst.TileArray[Pos.X, Pos.Y - 1];
-        if (target == null)
+        Tile target;
+        if (TileManager.Inst.TileDict.TryGetValue(Pos + new Coordinate(0, -1), out target))
             return false;
         if (target.TileId== this.TileId)
             return true;
@@ -580,10 +576,8 @@ public class RuleTile : Tile
 
     private bool IsThereLeftUpTile()
     {
-        if (Pos.X == 0) return false;
-        if (Pos.Y == TileManager.Inst.worldYSize - 1) return false;
-        Tile target = TileManager.Inst.TileArray[Pos.X - 1, Pos.Y + 1];
-        if (target == null)
+        Tile target;
+        if (TileManager.Inst.TileDict.TryGetValue(Pos + new Coordinate(-1, 1), out target))
             return false;
         if (target.TileId== this.TileId)
             return true;
@@ -593,10 +587,8 @@ public class RuleTile : Tile
 
     private bool IsThereRightUpTile()
     {
-        if (Pos.X == TileManager.Inst.worldXSize - 1) return false;
-        if (Pos.Y == TileManager.Inst.worldYSize - 1) return false;
-        Tile target = TileManager.Inst.TileArray[Pos.X + 1, Pos.Y + 1];
-        if (target == null)
+        Tile target;
+        if (TileManager.Inst.TileDict.TryGetValue(Pos + new Coordinate(1, 1), out target))
             return false;
         if (target.TileId== this.TileId)
             return true;
@@ -606,10 +598,8 @@ public class RuleTile : Tile
 
     private bool IsThereLeftDownTile()
     {
-        if (Pos.X == 0) return false;
-        if (Pos.Y == 0) return false;
-        Tile target = TileManager.Inst.TileArray[Pos.X - 1, Pos.Y - 1];
-        if (target == null)
+        Tile target;
+        if (TileManager.Inst.TileDict.TryGetValue(Pos + new Coordinate(-1, -1), out target))
             return false;
         if (target.TileId== this.TileId)
             return true;
@@ -619,10 +609,8 @@ public class RuleTile : Tile
 
     private bool IsThereRightDownTile()
     {
-        if (Pos.X == TileManager.Inst.worldXSize - 1) return false;
-        if (Pos.Y == 0) return false;
-        Tile target = TileManager.Inst.TileArray[Pos.X + 1, Pos.Y - 1];
-        if (target == null)
+        Tile target;
+        if (TileManager.Inst.TileDict.TryGetValue(Pos + new Coordinate(1, -1), out target))
             return false;
         if (target.TileId== this.TileId)
             return true;

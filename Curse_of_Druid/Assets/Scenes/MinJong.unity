@@ -963,10 +963,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 5
   maxFallingSpeed: 20
-  jumpPower: 15
+  jumpPower: 12
   jumpMaxCount: 2
-  jumpMaxTime: 0.2
-  coyoteTime: 0
+  jumpMaxTime: 0.3
+  coyoteTime: 0.1
 --- !u!95 &1252786311
 Animator:
   serializedVersion: 5
