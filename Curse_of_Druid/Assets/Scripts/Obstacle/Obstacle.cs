@@ -2,8 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : RuleTile, IFlammable
+public class Obstacle : MonoBehaviour, IListener
 {
+    protected List<Tile> childrenTileList;
+    public List<Tile> ChildrenTileList => childrenTileList;
+    protected List<Coordinate> supportingTileCoorList;
+
+    protected virtual void Awake()
+    {
+        EventManager.Inst.AddListener(EVENT_TYPE.TileDestroyed, this);
+    }
+
+    public void OnEvent(EVENT_TYPE eventType, Component sender, object param)
+    {
+        switch (eventType)
+        {
+            case EVENT_TYPE.TileDestroyed: // param : 바뀐 타일의 Coordinate
+                // 파괴된 타일 중 지지대가 있으면 파괴됨
+                if (supportingTileCoorList.Exists(e => e == (Coordinate)param))
+                    Destroy();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public virtual void Destroy()
+    {
+        // 파괴될 때 해야할 일들
+    }
+
+    /*
     [SerializeField]
     private int burnTime;
     [SerializeField]
@@ -59,4 +88,5 @@ public class Obstacle : RuleTile, IFlammable
             GameObject.Find("Player").GetComponent<Player>().GetDamage(1, damageType);
         }
     }
+    */
 }

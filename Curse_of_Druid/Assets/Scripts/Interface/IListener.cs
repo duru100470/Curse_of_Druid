@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum EVENT_TYPE
 {
-    TileChange,
+    TileDestroyed,
     PlayerHPChange,
     GameOver
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ThornTrap : Obstacle
 {
+    /*
     private bool isPlayerFromUp;
 
     void Update()
@@ -27,4 +28,5 @@ public class ThornTrap : Obstacle
             Debug.Log("dead");
         }
     }
+    */
 }

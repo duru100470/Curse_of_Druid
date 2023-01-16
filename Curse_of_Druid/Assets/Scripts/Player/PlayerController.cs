@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public Animator anim { get; set; }
     public Player player { get; set; }
 
-    public float MaxSpeed => maxSpeed;
+    public float MaxSpeed { get { return maxSpeed; } set { maxSpeed = value; } }
     public float MaxFallingSpeed => maxFallingSpeed;
     public float JumpPower => jumpPower;
     public int JumpMaxCount => jumpMaxCount;
@@ -128,30 +128,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        // fix me
+        // 위에서 밟을 때만 step이 일어나야함 
         IStep step = other.collider.GetComponent<IStep>();
-        List<IStep> steps = new List<IStep>();
 
-        if(step != null)
-        {
-            steps.Add(step);
-        }
-        
-        Step(steps);
-    }
-
-    private void Step(List<IStep> steps)
-    {
-        foreach (IStep i in steps)
-        {
-            i.OnStep(player);
-        }
-    }
-
-    public float MaxSpeedSetter
-    {
-        set
-        {
-            maxSpeed = value;
-        }
+        step?.OnStep(player);
     }
 }
