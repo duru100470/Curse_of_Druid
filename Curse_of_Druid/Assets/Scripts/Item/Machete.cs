@@ -10,16 +10,24 @@ public class Machete : Item
             Player player = user as Player;
             int x = player.Coor.X;
             int y = player.Coor.Y;
-            Coordinate target = new Coordinate(x+1, y);
-            if (TileManager.Inst.TileArray[x + 1, y] is DestroyedPlatform)
+            Coordinate coor_target = new Coordinate(x, y);
+            Tile target;
+            TileManager.Inst.TileDict.TryGetValue(coor_target, out target);
+            Durability--;
+            if (Durability == 0)
             {
-                bool isDestroyed = TileManager.Inst.DestroyTile(target);
+                // Destroy(gameObject);
+            }
+            if (target is GrassTile)
+            {
+                target.Destroy();
                 Debug.Log("Item is used");
-                Durability--;
-                if (Durability == 0)
-                {
-                    // Destroy(gameObject);
-                }
+                return true;
+            }
+            else if (target is VineTile)
+            {
+                target.Destroy();
+                Debug.Log("Item is used");
                 return true;
             }
             else return false;
