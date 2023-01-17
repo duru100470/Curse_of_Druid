@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class ThornTrap : Obstacle
 {
+    public void OnStep(Entity entity)
+    {
+        if (entity is Player)
+        {
+            entity.GetComponent<Player>().Dead();
+        }
+    }
+
     /*
     private bool isPlayerFromUp;
 
