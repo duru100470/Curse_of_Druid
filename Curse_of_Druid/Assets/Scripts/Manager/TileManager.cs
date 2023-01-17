@@ -75,6 +75,7 @@ public class TileManager : SingletonBehavior<TileManager>
     public void AddTile(Coordinate coor, Tile tile)
     {
         TileDict[coor] = tile;
+        UpdateAdjacentRuleTile(coor);
     }
 
     public void RemoveTile(Coordinate coor)
@@ -82,6 +83,7 @@ public class TileManager : SingletonBehavior<TileManager>
         try
         {
             TileDict.Remove(coor);
+            UpdateAdjacentRuleTile(coor);
         }
         catch (Exception e)
         {

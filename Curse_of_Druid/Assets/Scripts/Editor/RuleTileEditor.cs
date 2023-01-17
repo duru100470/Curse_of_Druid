@@ -7,64 +7,67 @@ using UnityEngine;
 [CustomEditor(typeof(RuleTile), true)]
 public class RuleTileEditor : Editor
 {
-    SerializedProperty tileRuleList;
-    private RuleTile tile;
-
-    private void OnEnable()
-    {
-        tile = (RuleTile)target;
-        tileRuleList = serializedObject.FindProperty("tileRuleList");
-    }
+    private RuleTile tile => target as RuleTile;
 
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-        serializedObject.Update();
 
         GUILine(2);
 
-        bool?[] test1 = new bool?[9] { true, true, true, null, null, null, false, false, false };
-        TileRule test2 = new TileRule(null, test1);
-        DrawRule(test2);
+        foreach (var rule in tile.TileRuleList)
+        {
+            GUILine();
+            DrawRule(rule);
+        }
 
         if (GUILayout.Button("Debug"))
         {
-            bool?[] array = new bool?[9] { true, true, true, null, null, null, false, false, false };
+            TileRule.TILERULE_STATE[] array = new TileRule.TILERULE_STATE[9] { 
+                TileRule.TILERULE_STATE.This, TileRule.TILERULE_STATE.None, TileRule.TILERULE_STATE.This,
+                TileRule.TILERULE_STATE.NotThis, TileRule.TILERULE_STATE.None, TileRule.TILERULE_STATE.NotThis,
+                TileRule.TILERULE_STATE.None, TileRule.TILERULE_STATE.This, TileRule.TILERULE_STATE.None};
             TileRule tileRule = new TileRule(null, array);
             tile.TileRuleList.Add(tileRule);
         }
-
-        serializedObject.ApplyModifiedProperties();
     }
 
     private void DrawRule(TileRule tileRule)
     {
-        for (int y = -1; y < 2; y++)
+        GUILayout.BeginHorizontal();
+        tileRule.sprite = (Sprite)EditorGUILayout.ObjectField("Sprite", tileRule.sprite, typeof(Sprite), true);
+        GUILayout.BeginVertical();
+        if (tileRule.tileRuleInfo.Length == 9)
         {
-            GUILayout.BeginHorizontal();
-            for (int x = -1; x < 2; x++)
+            for (int y = -1; y < 2; y++)
             {
-                if (x == 0 && y == 0)
+                GUILayout.BeginHorizontal();
+                for (int x = -1; x < 2; x++)
                 {
-                    GUILayout.Box(autoTransforms[3]);
-                    continue;
-                }
-
-                switch (tileRule.tileRuleInfo[GetArrowIndex(new Coordinate(x, y))])
-                {
-                    case null:
+                    if (x == 0 && y == 0)
+                    {
                         GUILayout.Box(autoTransforms[3]);
-                        break;
-                    case true:
-                        GUILayout.Box(arrows[GetArrowIndex(new Coordinate(x, y))]);
-                        break;
-                    case false:
-                        GUILayout.Box(arrows[9]);
-                        break;
+                        continue;
+                    }
+
+                    switch (tileRule.tileRuleInfo[GetArrowIndex(new Coordinate(x, y))])
+                    {
+                        case TileRule.TILERULE_STATE.None:
+                            GUILayout.Box(autoTransforms[3]);
+                            break;
+                        case TileRule.TILERULE_STATE.This:
+                            GUILayout.Box(arrows[GetArrowIndex(new Coordinate(x, y))]);
+                            break;
+                        case TileRule.TILERULE_STATE.NotThis:
+                            GUILayout.Box(arrows[9]);
+                            break;
+                    }
                 }
+                GUILayout.EndHorizontal();
             }
-            GUILayout.EndHorizontal();
         }
+        GUILayout.EndVertical();
+        GUILayout.EndHorizontal();
     }
 
     void GUILine(int lineHeight = 1)
