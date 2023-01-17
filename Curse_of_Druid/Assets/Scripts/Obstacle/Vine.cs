@@ -23,8 +23,6 @@ public class Vine : Obstacle
         {
             yield return new WaitForSeconds(timeInterval);
 
-            Debug.Log($"{growingPoint.X}:{growingPoint.Y}");
-
             if (!TileManager.Inst.TileDict.ContainsKey(growingPoint))
             {
                 GameObject obj = Instantiate(vinePrefab,
