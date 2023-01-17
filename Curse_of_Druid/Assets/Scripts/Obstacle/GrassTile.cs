@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class GrassTile : RuleTile, IFlammable
 {
+    [SerializeField]
+    private float timeInterval;
+    [SerializeField]
+    private int maxGrowNumber;
+    private int growNumber = 0;
+    private float speed;
+    
     public Obstacle Obstacle { get; set; }
     private bool isBurning = false;
     public bool IsBurning => isBurning;
@@ -12,6 +19,23 @@ public class GrassTile : RuleTile, IFlammable
     private float burnTime;
     [SerializeField]
     private float spreadTime;
+
+    private void Start()
+    {
+        StartCoroutine(Grow());
+        speed = GameObject.Find("Player").GetComponent<PlayerController>().MaxSpeed;
+    }
+
+    private IEnumerator Grow()
+    {
+        yield return new WaitForSeconds(timeInterval);
+
+        if (growNumber < maxGrowNumber)
+        {
+            growNumber++;
+            StartCoroutine(Grow());
+        }
+    }
 
     public void Burn(int burnTime)
     {
@@ -41,6 +65,22 @@ public class GrassTile : RuleTile, IFlammable
         {
             if (entity is IDamageable)
                 (entity as IDamageable).GetDamage(1, DAMAGE_TYPE.Flame);
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == "Player" && growNumber <= maxGrowNumber)
+        {
+            other.GetComponent<PlayerController>().MaxSpeed = speed - growNumber;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player" && growNumber <= maxGrowNumber)
+        {
+            other.GetComponent<PlayerController>().MaxSpeed = speed;
         }
     }
 }
