@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThornTrap : Obstacle
+public class ThornTrap : Obstacle, IStep
 {
     public void OnStep(Entity entity)
     {
