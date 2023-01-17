@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1994705651471762014}
   - component: {fileID: 1994705651471762015}
-  - component: {fileID: 1994705651471762009}
   - component: {fileID: -491336278111331916}
   - component: {fileID: -8870072199173291659}
+  - component: {fileID: 1994705651471762009}
   m_Layer: 6
   m_Name: VineTile
   m_TagString: Untagged
@@ -87,21 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1994705651471762009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994705651471762012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf67e92ceab03c04e90ac46948c07efa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileId: 0
-  burnTime: 0
-  spreadTime: 0
 --- !u!61 &-491336278111331916
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,3 +134,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1994705651471762009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994705651471762012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf67e92ceab03c04e90ac46948c07efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileId: 6
+  tileRuleList:
+  - sprite: {fileID: -450725711, guid: 035aec938d1c5db4b9963f6b59f6153d, type: 3}
+    tileRuleInfo: 000000000000000000000000000000000000000000000000000000000000000000000000
+  - sprite: {fileID: -450725711, guid: 035aec938d1c5db4b9963f6b59f6153d, type: 3}
+    tileRuleInfo: 000000000100000000000000000000000000000000000000000000000100000000000000
+  - sprite: {fileID: -264354007, guid: 035aec938d1c5db4b9963f6b59f6153d, type: 3}
+    tileRuleInfo: 000000000100000000000000000000000000000000000000000000000200000000000000
+  burnTime: 0
+  spreadTime: 0

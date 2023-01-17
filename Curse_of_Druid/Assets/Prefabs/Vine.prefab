@@ -124,11 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b2c318fac2931498b8c65024051eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileId: 0
-  ruleTileSprites: []
-  burnTime: 0
-  spreadTime: 0
-  spreadSize: {x: 0, y: 0}
-  damageType: 0
   timeInterval: 2
-  _Vine: {fileID: 2507256815584847663}
+  vinePrefab: {fileID: 1994705651471762012, guid: 1edb3881f645a424da643ea2d28509b0, type: 3}

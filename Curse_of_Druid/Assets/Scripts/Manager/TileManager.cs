@@ -75,6 +75,7 @@ public class TileManager : SingletonBehavior<TileManager>
     public void AddTile(Coordinate coor, Tile tile)
     {
         TileDict[coor] = tile;
+        (tile as RuleTile)?.UpdateRuleTile();
         UpdateAdjacentRuleTile(coor);
     }
 

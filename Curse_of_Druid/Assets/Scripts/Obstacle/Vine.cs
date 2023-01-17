@@ -31,6 +31,7 @@ public class Vine : Obstacle
                 obj.transform.parent = this.transform;
 
                 var vineTile = obj.GetComponent<VineTile>();
+                vineTile.SetPos();
                 vineTile.Obstacle = this;
                 vineTile.DestroyCallback = DestroyTile;
 

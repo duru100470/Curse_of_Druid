@@ -7,7 +7,8 @@ public enum TILE_ID
     Passing,
     Cracked,
     Destroyed,
-    Brick
+    Brick,
+    Vine
 }
 
 public enum ITEM_ID
