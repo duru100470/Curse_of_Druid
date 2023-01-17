@@ -1494,7 +1494,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 520048480, guid: 374ae481391e9cb4d970e7a171fdb981, type: 3}
+  m_Sprite: {fileID: -1185591270, guid: c825381780408d54c9c9c45f88bde3cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3088,6 +3088,7 @@ GameObject:
   - component: {fileID: 2029767912}
   - component: {fileID: 2029767911}
   - component: {fileID: 2029767914}
+  - component: {fileID: 2029767915}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3113,7 +3114,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.81019163, g: 0.9716981, b: 0.6737718, a: 0}
+  m_BackGroundColor: {r: 0.1682093, g: 0.17063966, b: 0.18867922, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3180,6 +3181,26 @@ MonoBehaviour:
   minPos: {x: 0, y: 0}
   maxPos: {x: 0, y: 0}
   bound: 0
+--- !u!114 &2029767915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029767910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 32
+  m_RefResolutionX: 480
+  m_RefResolutionY: 270
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1001 &2045674842
 PrefabInstance:
   m_ObjectHideFlags: 0
