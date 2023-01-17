@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Grass : Obstacle
 {
-    
     [SerializeField]
     private float timeInterval;
     [SerializeField]

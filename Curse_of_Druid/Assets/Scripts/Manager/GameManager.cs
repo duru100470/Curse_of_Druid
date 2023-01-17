@@ -31,7 +31,7 @@ public class GameManager : SingletonBehavior<GameManager>
             Tile tile = tileObj.GetComponent<Tile>();
             tile.SetPos();
             (tile as RuleTile)?.UpdateRuleTile();
-            TileManager.Inst.TileDict[tile.Pos] = tile;
+            TileManager.Inst.AddTile(tile.Pos, tile);
             Debug.Log($"X: {tile.Pos.X}, Y: {tile.Pos.Y}, TileID: {tile.TileId}");
         }
 

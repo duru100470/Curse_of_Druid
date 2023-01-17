@@ -25,6 +25,8 @@ public struct Coordinate
     public int X => x;
     public int Y => y;
 
+    public static Coordinate zero = new Coordinate(0, 0);
+
     public Coordinate(int x, int y)
     {
         this.x = x;

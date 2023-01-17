@@ -50,7 +50,7 @@ public class PlayerClimb : IState
     }
     public void OperateFixedUpdate()
     {
-        pc.rigid2d.velocity = new Vector2(0f, Mathf.Min(pc.rigid2d.velocity.y * 0.94f, 0.5f));
+        pc.rigid2d.velocity = new Vector2(0f, Mathf.Min(pc.rigid2d.velocity.y * 0.94f, 0.1f));
 
         // fixme
 
