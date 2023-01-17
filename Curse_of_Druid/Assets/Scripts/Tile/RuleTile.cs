@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,16 +6,45 @@ using UnityEngine;
 public class RuleTile : Tile
 {
     [Header("RuleTile")]
-    [SerializeField]
-    protected Sprite[] ruleTileSprites;
     protected SpriteRenderer spriteRenderer;
+    [SerializeField]
+    protected List<TileRule> tileRuleList;
+    private List<Func<bool>> funcList;
+
+    public List<TileRule> TileRuleList => tileRuleList;
+
 
     protected virtual void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Add func list
+        funcList.Add(IsThereLeftUpTile);
+        funcList.Add(IsThereUpTile);
+        funcList.Add(IsThereRightUpTile);
+        funcList.Add(IsThereLeftTile);
+        funcList.Add(IsThereRightTile);
+        funcList.Add(IsThereLeftDownTile);
+        funcList.Add(IsThereDownTile);
+        funcList.Add(IsThereRightDownTile);
     }
     
     public virtual void UpdateRuleTile()
     {
+        foreach (var rule in tileRuleList)
+        {
+            var ret = true;
+
+            for (int i = 0; i < 8; i++)
+            {
+                ret &= funcList[i]();
+            }
+
+            if (ret)
+                spriteRenderer.sprite = rule.sprite;
+        }
+
+
+        /*
         // Left Up
         if (
             !IsThereLeftTile() &&
@@ -529,7 +559,10 @@ public class RuleTile : Tile
             !IsThereLeftDownTile() 
         )
             spriteRenderer.sprite = ruleTileSprites[46];
+
+        */
     }
+
     private bool IsThereLeftTile()
     {
         Tile target;
@@ -616,5 +649,18 @@ public class RuleTile : Tile
             return true;
         else
             return false;
+    }
+}
+
+[Serializable]
+public struct TileRule
+{
+    public Sprite sprite;
+    public bool?[] tileRuleInfo;
+
+    public TileRule(Sprite sprite, bool?[] tileRuleInfo)
+    {
+        this.sprite = sprite;
+        this.tileRuleInfo = tileRuleInfo;
     }
 }
