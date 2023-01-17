@@ -1,64 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Vine : Obstacle
 {
     [SerializeField]
     private float timeInterval;
+    [SerializeField]
+    private GameObject vinePrefab;
+    private Coordinate growingPoint;
 
-    public GameObject _Vine;
-    private bool isTileThere;
-
-    void Start()
+    private void Start()
     {
-        StartCoroutine("Grow", timeInterval);
+        StartCoroutine(Grow());
+        growingPoint = new Coordinate(0, -1) + Coordinate.WorldPointToCoordinate(transform.position);
     }
 
-    IEnumerator Grow()
+    private IEnumerator Grow()
     {
-        yield return new WaitForSeconds(timeInterval);
+        while (true)
+        {
+            yield return new WaitForSeconds(timeInterval);
 
-        /*if(TileManager.Inst.TileArray[(int)this.transform.position.x, (int)this.transform.position.y - 1])
-        {
-            yield break;
-        }
-        else
-        {
-            GameObject instance = Instantiate(_Vine, this.transform.position + new Vector3(0, -1, 0), this.transform.rotation);
-            instance.transform.parent = this.transform;
-            int index = instance.name.IndexOf("(Clone)");
-            if(index > 0)
-            {
-                instance.name = instance.name.Substring(0, index);
-            }
-            StartCoroutine("Grow", timeInterval);   //덩굴을 제거하는 상황이 없다고 가정하면 필요 없는 코드.
-        }*/
-        //TileArray 사용 없는 코드
-        RaycastHit2D hitData = Physics2D.Raycast(transform.position + new Vector3(0, -1, 0), -transform.up, 0.1f);
-        if (hitData)
-        {
-            if (hitData.collider.tag == "Tile")
-            {
-                isTileThere = true;
-            }
-        }
-        Debug.Log(isTileThere);
+            Debug.Log($"{growingPoint.X}:{growingPoint.Y}");
 
-        if (isTileThere)
-        {
-            yield break;
-        }
-        else
-        {
-            GameObject instance = Instantiate(_Vine, this.transform.position + new Vector3(0, -1, 0), this.transform.rotation);
-            instance.transform.parent = this.transform;
-            int index = instance.name.IndexOf("(Clone)");
-            if (index > 0)
+            if (!TileManager.Inst.TileDict.ContainsKey(growingPoint))
             {
-                instance.name = instance.name.Substring(0, index);
+                GameObject obj = Instantiate(vinePrefab,
+                    Coordinate.CoordinatetoWorldPoint(growingPoint),
+                    Quaternion.identity);
+                obj.transform.parent = this.transform;
+
+                var vineTile = obj.GetComponent<VineTile>();
+                vineTile.Obstacle = this;
+                vineTile.DestroyCallback = DestroyTile;
+
+                // fixme
+                // TileManager에 타일 생성 알려야함
+                TileManager.Inst.AddTile(growingPoint, vineTile);
+
+                growingPoint += new Coordinate(0, -1);
             }
-            StartCoroutine("Grow", timeInterval);   //덩굴을 제거하는 상황이 없다고 가정하면 필요 없는 코드.
         }
+    }
+
+    // childrenTile의 destroy에 실행됨
+    public override void DestroyTile(Coordinate coor)
+    {
+        // 부서진 풀 타일보다 위에 있는 타일들 찾기
+        var aboveGrasses = childrenTileList.Where(e => e.Pos.Y > coor.Y).ToList();
+
+        // 생장점 다시 내리기
+        growingPoint = coor;
+
+        // 위 타일 제거
+        for (int i = aboveGrasses.Count - 1; i >= 0; i--)
+        {
+            // Callback 제거해서 이 함수가 불리지 않도록
+            aboveGrasses[i].DestroyCallback = null;
+            aboveGrasses[i].Destroy();
+        }
+
+        base.DestroyTile(coor);
     }
 }
