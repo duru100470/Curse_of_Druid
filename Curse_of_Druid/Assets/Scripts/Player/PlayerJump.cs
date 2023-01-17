@@ -4,81 +4,96 @@ using UnityEngine;
 
 public class PlayerJump : IState
 {
-    private PlayerController playerController;
+    private PlayerController pc;
     private float maxFallingSpeed = 0;
 
     public PlayerJump(PlayerController playerController)
     {
-        this.playerController = playerController;
+        this.pc = playerController;
     }
 
     public void OperateEnter()
     {
-        playerController.anim.SetBool("isJumping", true);
-        playerController.anim.speed = 0.7f;
+        pc.anim.SetBool("isJumping", true);
+        pc.anim.speed = 0.7f;
 
-        if (playerController.IsThereLand() == false || playerController.JumpCount == 0)
+        if (pc.IsThereLand() == false || pc.JumpCount == 0)
         {
             return;
         }
 
-        playerController.rigid2d.velocity = new Vector2(playerController.rigid2d.velocity.x, 0);
-        playerController.IsCoyoteTimeEnable = false;
-        playerController.StartCoroutine(ControlJump());
+        pc.rigid2d.velocity = new Vector2(pc.rigid2d.velocity.x, 0);
+        pc.IsCoyoteTimeEnable = false;
+        pc.StartCoroutine(ControlJump());
 
-        playerController.IsJumping = true;
-        playerController.JumpCount--;
+        pc.IsJumping = true;
+        pc.JumpCount--;
     }
     public void OperateExit()
     {
-        playerController.IsJumping = false;
-        playerController.JumpCount = playerController.JumpMaxCount;
-        playerController.IsCoyoteTimeEnable = true;
+        pc.IsJumping = false;
+        pc.JumpCount = pc.JumpMaxCount;
+        pc.IsCoyoteTimeEnable = true;
 
-        playerController.anim.SetBool("isJumping", false);
-        playerController.anim.speed = 0.3f;
+        pc.anim.SetBool("isJumping", false);
+        pc.anim.speed = 0.3f;
     }
     public void OperateUpdate()
     {
         if (Input.GetAxisRaw("Horizontal") == 0)
-            playerController.rigid2d.velocity = new Vector2(0, playerController.rigid2d.velocity.y);
+            pc.rigid2d.velocity = new Vector2(0, pc.rigid2d.velocity.y);
 
-        playerController.anim.SetFloat("ySpeed", playerController.rigid2d.velocity.y);
+        pc.anim.SetFloat("ySpeed", pc.rigid2d.velocity.y);
     }
     public void OperateFixedUpdate()
     {
         float h = Input.GetAxisRaw("Horizontal");
 
-        playerController.HorizontalMove(h);
-        if (maxFallingSpeed > playerController.rigid2d.velocity.y)
-            maxFallingSpeed = playerController.rigid2d.velocity.y;
+        pc.HorizontalMove(h);
+        if (maxFallingSpeed > pc.rigid2d.velocity.y)
+            maxFallingSpeed = pc.rigid2d.velocity.y;
 
         // Transition
-        if (playerController.rigid2d.velocity.y <= 0)
+        var wallDir = pc.IsThereWall();
+        if (wallDir != 0 && pc.IsWallJumpEnable)
         {
-            if (playerController.IsThereLand())
+            if (wallDir == -1 && Input.GetAxisRaw("Horizontal") == -1)
+            {
+                pc.stateMachine.SetState(new PlayerClimb(pc));
+                return;
+            }
+            else if (wallDir == 1 && Input.GetAxisRaw("Horizontal") == 1)
+            {
+                pc.stateMachine.SetState(new PlayerClimb(pc));
+                return;
+            }
+        }
+        
+        if (pc.rigid2d.velocity.y <= 0)
+        {
+            if (pc.IsThereLand())
             {
                 // Check Falling Damage
                 if (maxFallingSpeed == -20)
-                    playerController.player.GetDamage(99, DAMAGE_TYPE.Falling);
+                    pc.player.GetDamage(99, DAMAGE_TYPE.Falling);
                 else if (maxFallingSpeed < -17)
-                    playerController.player.GetDamage(20, DAMAGE_TYPE.Falling);
+                    pc.player.GetDamage(20, DAMAGE_TYPE.Falling);
                 else if (maxFallingSpeed < -15)
-                    playerController.player.GetDamage(10, DAMAGE_TYPE.Falling);
+                    pc.player.GetDamage(10, DAMAGE_TYPE.Falling);
                 // Change State
                 else if (h == 0)
-                    playerController.stateMachine.SetState(new PlayerIdle(playerController));
+                    pc.stateMachine.SetState(new PlayerIdle(pc));
                 else
-                    playerController.stateMachine.SetState(new PlayerRun(playerController));
+                    pc.stateMachine.SetState(new PlayerRun(pc));
             }
         }
     }
 
     private IEnumerator ControlJump()
     {
-        for (playerController.JumpTime = 0; playerController.JumpTime <= playerController.JumpMaxTime; playerController.JumpTime += 0.05f)
+        for (pc.JumpTime = 0; pc.JumpTime <= pc.JumpMaxTime; pc.JumpTime += 0.05f)
         {
-            playerController.rigid2d.AddForce(Vector2.up * playerController.JumpPower * (playerController.JumpMaxTime - playerController.JumpTime), ForceMode2D.Impulse);
+            pc.rigid2d.AddForce(Vector2.up * pc.JumpPower * (pc.JumpMaxTime - pc.JumpTime), ForceMode2D.Impulse);
 
             if (Input.GetKey(KeyCode.Space))
                 yield return new WaitForSeconds(0.05f);
