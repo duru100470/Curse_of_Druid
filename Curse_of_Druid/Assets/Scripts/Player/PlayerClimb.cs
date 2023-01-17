@@ -33,6 +33,7 @@ public class PlayerClimb : IState
         if (Input.GetKeyDown(KeyCode.Space))
         {
             pc.rigid2d.AddForce(new Vector2(wallDir * -15f, pc.WallJumpForce), ForceMode2D.Impulse);
+            pc.StopCoroutine(pc.DelayWallJumpInput());
             pc.stateMachine.SetState(new PlayerJump(pc));
             return;
         }
@@ -40,7 +41,10 @@ public class PlayerClimb : IState
         if (wallDir == 0 ||
             Input.GetAxisRaw("Horizontal") == 0)
         {
-            pc.stateMachine.SetState(new PlayerJump(pc));
+            if (!pc.IsWallJumpInputEnable) return;
+
+            pc.IsWallJumpInputEnable = false;
+            pc.StartCoroutine(pc.DelayWallJumpInput());
             return;
         }
     }
@@ -50,21 +54,26 @@ public class PlayerClimb : IState
 
         // fixme
 
-        // if (maxFallingSpeed > pc.rigid2d.velocity.y)
-        //     maxFallingSpeed = pc.rigid2d.velocity.y;
+        if (maxFallingSpeed > pc.rigid2d.velocity.y)
+            maxFallingSpeed = pc.rigid2d.velocity.y;
 
-        // if (pc.rigid2d.velocity.y <= 0)
-        // {
-        //     if (pc.IsThereLand())
-        //     {
-        //         // Check Falling Damage
-        //         if (maxFallingSpeed == -20)
-        //             pc.player.GetDamage(99, DAMAGE_TYPE.Falling);
-        //         else if (maxFallingSpeed < -17)
-        //             pc.player.GetDamage(20, DAMAGE_TYPE.Falling);
-        //         else if (maxFallingSpeed < -15)
-        //             pc.player.GetDamage(10, DAMAGE_TYPE.Falling);
-        //     }
-        // }
+        if (pc.rigid2d.velocity.y <= 0)
+        {
+            if (pc.IsThereLand())
+            {
+                // Check Falling Damage
+                if (maxFallingSpeed == -20)
+                    pc.player.GetDamage(99, DAMAGE_TYPE.Falling);
+                else if (maxFallingSpeed < -17)
+                    pc.player.GetDamage(20, DAMAGE_TYPE.Falling);
+                else if (maxFallingSpeed < -15)
+                    pc.player.GetDamage(10, DAMAGE_TYPE.Falling);
+                else
+                {
+                    pc.StopCoroutine(pc.DelayWallJumpInput());
+                    pc.stateMachine.SetState(new PlayerIdle(pc));
+                }
+            }
+        }
     }
 }

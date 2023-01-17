@@ -20,11 +20,14 @@ public class PlayerController : MonoBehaviour
     private float wallJumpTime;
     [SerializeField]
     private float wallJumpForce;
+    [SerializeField]
+    private float wallJumpInputBuffer;
     public float JumpTime { get; set; } = 0f;
     public int JumpCount { get; set; }
     public bool IsJumping { get; set; }
     public bool IsCoyoteTimeEnable { get; set; }
     public bool IsWallJumpEnable { get; set; } = true;
+    public bool IsWallJumpInputEnable { get; set; } = true;
     public bool IsHeadingRight { get; private set; } = true;
 
     public SpriteRenderer spriteRenderer { get; set; }
@@ -154,6 +157,13 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(wallJumpTime);
         IsWallJumpEnable = true;
+    }
+
+    public IEnumerator DelayWallJumpInput()
+    {
+        yield return new WaitForSeconds(wallJumpInputBuffer);
+        stateMachine.SetState(new PlayerJump(this));
+        IsWallJumpInputEnable = true;
     }
 
     private void OnCollisionEnter2D(Collision2D other)

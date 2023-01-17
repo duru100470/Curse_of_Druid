@@ -17,7 +17,6 @@ public class PlayerJump : IState
         pc.anim.SetBool("isJumping", true);
         pc.anim.speed = 0.7f;
 
-        Debug.Log(pc.IsThereLand());
         if (pc.IsThereLand() == false || pc.JumpCount == 0)
         {
             return;

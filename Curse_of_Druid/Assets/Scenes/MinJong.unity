@@ -1594,6 +1594,7 @@ MonoBehaviour:
   coyoteTime: 0.1
   wallJumpTime: 0.25
   wallJumpForce: 10
+  wallJumpInputBuffer: 0.1
 --- !u!95 &1252786311
 Animator:
   serializedVersion: 5
