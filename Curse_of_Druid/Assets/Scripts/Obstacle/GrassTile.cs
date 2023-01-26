@@ -11,6 +11,8 @@ public class GrassTile : RuleTile, IFlammable
     private int maxGrowNumber;
     private int growNumber = 0;
     private float speed;
+    private GameObject player;
+    private PlayerController playerController;
     
     public Obstacle Obstacle { get; set; }
     private bool isBurning = false;
@@ -23,6 +25,9 @@ public class GrassTile : RuleTile, IFlammable
     private void Start()
     {
         StartCoroutine(Grow());
+        player = GameObject.Find("Player");
+        speed = player.GetComponent<PlayerController>().MaxSpeed;
+        playerController = player.GetComponent<PlayerController>();
     }
 
     private IEnumerator Grow()
@@ -67,19 +72,11 @@ public class GrassTile : RuleTile, IFlammable
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Player" && growNumber <= maxGrowNumber)
-        {
-            speed = other.GetComponent<PlayerController>().MaxSpeed;
-        }
-    }
-
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Player" && growNumber <= maxGrowNumber)
         {
-            other.GetComponent<PlayerController>().MaxSpeed = speed - growNumber;
+            playerController.MaxSpeed = speed - growNumber;
         }
     }
 
@@ -87,7 +84,7 @@ public class GrassTile : RuleTile, IFlammable
     {
         if (other.tag == "Player" && growNumber <= maxGrowNumber)
         {
-            other.GetComponent<PlayerController>().MaxSpeed = speed;
+            playerController.MaxSpeed = speed;
         }
     }
 }
