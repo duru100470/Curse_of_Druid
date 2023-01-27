@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.63674796, g: 0.7735849, b: 0.60938054, a: 0.29411766}
+  m_Sprite: {fileID: -1876385073, guid: 1c56162d7283eb246baac8cc2aac5f05, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -125,9 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileId: 0
-  ruleTileSprites: []
+  tileRuleList: []
   timeInterval: 5
   maxGrowNumber: 2
-  grassPrefab: {fileID: 2507256815584847663}
   burnTime: 0
   spreadTime: 0
