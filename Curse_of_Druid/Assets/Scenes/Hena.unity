@@ -1556,6 +1556,10 @@ PrefabInstance:
       value: ThornTrap
       objectReference: {fileID: 0}
     - target: {fileID: 2507256815584847663, guid: d7883bb369992064ab8819ecae48608b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507256815584847663, guid: d7883bb369992064ab8819ecae48608b, type: 3}
       propertyPath: m_TagString
       value: Tile
       objectReference: {fileID: 0}
