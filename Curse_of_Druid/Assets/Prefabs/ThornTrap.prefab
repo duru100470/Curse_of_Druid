@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -8965900696496366356}
   - component: {fileID: -8496428524597447367}
   - component: {fileID: 3919742531517851630}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ThornTrap
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -138,6 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileId: 0
-  ruleTileSprites: []
+  tileRuleList: []
   burnTime: 0
   spreadTime: 0
