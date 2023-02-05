@@ -40,9 +40,17 @@ public class PlayerJump : IState
     }
     public void OperateUpdate()
     {
-        if (Input.GetAxisRaw("Horizontal") == 0)
+        if (Input.GetAxisRaw("Horizontal") == 0) {
             playerController.rigid2d.velocity = new Vector2(0, playerController.rigid2d.velocity.y);
-
+        }
+        else if (Input.GetAxisRaw("Horizontal") == 1 && playerController.IsThereWall(1)) {
+            playerController.stateMachine.SetState(new PlayerClimbing(playerController));
+            playerController.IsClimbingRight = true;
+        }
+        else if (Input.GetAxisRaw("Horizontal") == -1 && playerController.IsThereWall(-1)) {
+            playerController.stateMachine.SetState(new PlayerClimbing(playerController));
+            playerController.IsClimbingLeft = true;
+        }
         playerController.anim.SetFloat("ySpeed", playerController.rigid2d.velocity.y);
     }
     public void OperateFixedUpdate()
