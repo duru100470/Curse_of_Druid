@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1c56162d7283eb246baac8cc2aac5f05
+guid: c825381780408d54c9c9c45f88bde3cc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -68,7 +68,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Weed_0
+      name: idle_base_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8aa34aa0745332447bc356c566ad4b16
-      internalID: 2102083906
+      spriteID: 6bdc10c83e8500b459025e7062542902
+      internalID: -1185591270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weed_1
+      name: idle_base_1
       rect:
         serializedVersion: 2
         x: 32
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08d18594547b57841b9be0f4849e398b
-      internalID: -2001009864
+      spriteID: 91c49a1acd124074690d8e92f5ec4cc7
+      internalID: 524703720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weed_2
+      name: idle_base_2
       rect:
         serializedVersion: 2
         x: 64
@@ -161,8 +161,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b29c8408b94479a4da66dc9aa38b05d6
-      internalID: -1876385073
+      spriteID: cf62f2c8bee45684397dcf25c37d4d4c
+      internalID: -1209574412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_base_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f43d49ffe5e8b94890f0f4ba2b0f325
+      internalID: -275075402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_base_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c536a517e1aa2a947b4efe6ee95dcad4
+      internalID: 1564555655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_base_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39fc4626fe34f21409b8212ea3d77899
+      internalID: -1728261966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_base_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c5e0bddd695e11498a45f35c6519c0a
+      internalID: 1068970745
       vertices: []
       indices: 
       edges: []
@@ -178,9 +262,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Weed_1: -2001009864
-      Weed_0: 2102083906
-      Weed_2: -1876385073
+      idle_base_3: -275075402
+      idle_base_6: 1068970745
+      idle_base_0: -1185591270
+      idle_base_2: -1209574412
+      idle_base_4: 1564555655
+      idle_base_5: -1728261966
+      idle_base_1: 524703720
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

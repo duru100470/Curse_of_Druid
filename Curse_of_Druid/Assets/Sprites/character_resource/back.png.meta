@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1c56162d7283eb246baac8cc2aac5f05
+guid: 6153344467eff6f4eb23d7074b8fd6eb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -68,7 +68,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Weed_0
+      name: back_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8aa34aa0745332447bc356c566ad4b16
-      internalID: 2102083906
+      spriteID: 520fa23425b5f3743ad78b15db8278ef
+      internalID: -1030339687
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weed_1
+      name: back_1
       rect:
         serializedVersion: 2
         x: 32
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08d18594547b57841b9be0f4849e398b
-      internalID: -2001009864
+      spriteID: 5e2e837dd9bf3914ab570f928d94f39e
+      internalID: -79417754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weed_2
+      name: back_2
       rect:
         serializedVersion: 2
         x: 64
@@ -161,8 +161,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b29c8408b94479a4da66dc9aa38b05d6
-      internalID: -1876385073
+      spriteID: 1dd07b73ae4cf06479bb552907277670
+      internalID: -1612994916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: back_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05d1a01fad8435443925794cf10c4a82
+      internalID: 2079785986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: back_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd3a67d45b3ba4644b24e9f10e80ed78
+      internalID: 84169010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: back_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae9803fd735960f408081b5538dfe71b
+      internalID: -893215330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: back_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 417b391759624954d987503cac33b383
+      internalID: -1591417718
       vertices: []
       indices: 
       edges: []
@@ -178,9 +262,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Weed_1: -2001009864
-      Weed_0: 2102083906
-      Weed_2: -1876385073
+      back_4: 84169010
+      back_5: -893215330
+      back_0: -1030339687
+      back_2: -1612994916
+      back_1: -79417754
+      back_6: -1591417718
+      back_3: 2079785986
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

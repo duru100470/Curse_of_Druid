@@ -44,7 +44,7 @@ public class Grass : Obstacle
     }
 
     // childrenTile의 destroy에 실행됨
-    public void DestroyTile(Coordinate coor)
+    public override void DestroyTile(Coordinate coor)
     {
         // 부서진 풀 타일보다 위에 있는 타일들 찾기
         var aboveGrasses = childrenTileList.Where(e => e.Pos.Y > coor.Y).ToList();
@@ -60,6 +60,8 @@ public class Grass : Obstacle
             aboveGrasses[i].DestroyCallback = null;
             aboveGrasses[i].Destroy();
         }
+
+        base.DestroyTile(coor);
     }
 
     /*

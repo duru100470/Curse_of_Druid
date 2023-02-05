@@ -4,35 +4,35 @@ using UnityEngine;
 
 public class PlayerRun : IState
 {
-    private PlayerController playerController;
+    private PlayerController pc;
 
     public PlayerRun(PlayerController playerController)
     {
-        this.playerController = playerController;
+        this.pc = playerController;
     }
 
     public void OperateEnter()
     {
-        playerController.anim.SetBool("isRunning", true);
-        playerController.anim.speed = 0.8f;
+        pc.anim.SetBool("isRunning", true);
+        pc.anim.speed = 0.8f;
     }
 
     public void OperateExit()
     {
-        playerController.anim.SetBool("isRunning", false);
-        playerController.anim.speed = 0.3f;
+        pc.anim.SetBool("isRunning", false);
+        pc.anim.speed = 0.3f;
     }
 
     public void OperateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            playerController.stateMachine.SetState(new PlayerJump(playerController));
+            pc.stateMachine.SetState(new PlayerJump(pc));
         }
         
-        if (playerController.IsThereLand() == false)
+        if (pc.IsThereLand() == false)
         {
-            playerController.stateMachine.SetState(new PlayerJump(playerController));
+            pc.stateMachine.SetState(new PlayerJump(pc));
         }
     }
 
@@ -40,12 +40,12 @@ public class PlayerRun : IState
     {
         float h = Input.GetAxisRaw("Horizontal");
 
-        playerController.HorizontalMove(h);
+        pc.HorizontalMove(h);
 
         // Transition
         if (h == 0)
         {
-            playerController.stateMachine.SetState(new PlayerIdle(playerController));
+            pc.stateMachine.SetState(new PlayerIdle(pc));
         }
     }
 }

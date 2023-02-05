@@ -6,7 +6,7 @@ public class RuleTile : Tile
 {
     [Header("RuleTile")]
     [SerializeField]
-    private Sprite[] ruleTileSprites;
+    protected Sprite[] ruleTileSprites;
     protected SpriteRenderer spriteRenderer;
 
     protected virtual void Awake() {
