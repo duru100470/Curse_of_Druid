@@ -17,6 +17,28 @@ public class Player : Entity, IDamageable
     private void Update()
     {
         coor = Coordinate.WorldPointToCoordinate(transform.position);
+
+        SelectSlot();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            curItem?.OnUse(this);
+        }
+    }
+
+    private void SelectSlot()
+    {
+        // Select Inventory slots
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            UIManager.Inst.Inventory.SelectedSlot = 0;
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            UIManager.Inst.Inventory.SelectedSlot = 1;
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            UIManager.Inst.Inventory.SelectedSlot = 2;
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+            UIManager.Inst.Inventory.SelectedSlot = 3;
+
+        curItem = UIManager.Inst.Inventory.GetItemInfo(UIManager.Inst.Inventory.SelectedSlot);
     }
 
     public void GetDamage(int amount, DAMAGE_TYPE dmgType)

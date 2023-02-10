@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         slots = go_SlotsParent.GetComponentsInChildren<Slot>();
         SelectedSlot = 0;
@@ -32,6 +32,7 @@ public class Inventory : MonoBehaviour
     {
         bool isSuccessful = false;
         
+        slots[0].AddItem(ref _item);
         foreach (var slot in slots)
         {
             if (_item.Durability <= 0) break;
@@ -40,11 +41,13 @@ public class Inventory : MonoBehaviour
             {
                 slot.AddItem(ref _item);
                 isSuccessful = true;
+                break;
             }
             if (slot.item.ItemInfo.itemID == _item.ItemInfo.itemID)
             {
                 slot.item.Durability = slot.item.ItemInfo.maxDurability;
                 isSuccessful = true;
+                break;
             }
         }
 
