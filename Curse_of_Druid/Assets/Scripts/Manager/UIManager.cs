@@ -6,6 +6,11 @@ using TMPro;
 
 public class UIManager : SingletonBehavior<UIManager>, IListener
 {
+    [SerializeField]
+    private Inventory inventory;
+
+    public Inventory Inventory => inventory;
+
     private void Start()
     {
     }

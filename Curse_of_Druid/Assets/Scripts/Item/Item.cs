@@ -6,15 +6,15 @@ using UnityEngine;
 public abstract class Item
 {
     public ItemInfo ItemInfo { get; set; }
-    public Sprite itemSprite { get; set; }
+    public virtual Sprite ItemSprite { get; set; }
     private int durability;
 
     public int Durability
     {
         get { return durability; }
-        set { Mathf.Clamp(value, 0, ItemInfo.maxDurability); }
+        set { durability = Mathf.Clamp(value, 0, ItemInfo.maxDurability); }
     }
-    
+
     /// <summary>
     /// 아이템 사용 메소드 (파괴여부 반환)
     /// </summary>

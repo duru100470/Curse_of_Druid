@@ -12,7 +12,7 @@ public class ItemController : Entity
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = curItem.ItemInfo.itemSprite[0];
-        curItem.itemSprite = curItem.ItemInfo.itemSprite[0];
+        curItem.ItemSprite = curItem.ItemInfo.itemSprite[0];
     }
 
     public Item CurItem
@@ -21,7 +21,7 @@ public class ItemController : Entity
         set
         {
             curItem = value;
-            spriteRenderer.sprite = value.itemSprite;
+            spriteRenderer.sprite = value.ItemSprite;
         }
     }
 }
