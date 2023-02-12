@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThornTrap : Obstacle
+public class ThornTrap : Obstacle, IStep
 {
-    public void OnStep(Entity entity)
+    private bool lastBool;
+
+    public void OnStep(Entity entity, bool _bool)
     {
-        if (entity is Player)
+        if (entity is Player && lastBool)
         {
             entity.GetComponent<Player>().Dead();
         }
+
+        lastBool = _bool;
     }
 
     /*

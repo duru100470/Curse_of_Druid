@@ -151,15 +151,15 @@ public class PlayerController : MonoBehaviour
         Vector2 Pos1 = new Vector2(rigid2d.position.x + 0.23f, rigid2d.position.y);
         Vector2 Pos2 = new Vector2(rigid2d.position.x - 0.23f, rigid2d.position.y);
 
-        RaycastHit2D raycastHit2DDown1 = Physics2D.Raycast(Pos1, Vector3.down, 0.6f, LayerMask.GetMask("Default"));
-        RaycastHit2D raycastHit2DDown2 = Physics2D.Raycast(Pos2, Vector3.down, 0.6f, LayerMask.GetMask("Default"));
+        RaycastHit2D raycastHit2DDown1 = Physics2D.Raycast(Pos1, Vector3.down, 0.6f, LayerMask.GetMask("ThornTrap"));
+        RaycastHit2D raycastHit2DDown2 = Physics2D.Raycast(Pos2, Vector3.down, 0.6f, LayerMask.GetMask("ThornTrap"));
 
         if (raycastHit2DDown1.collider == null && raycastHit2DDown2.collider == null)
             return;
 
-        (raycastHit2DDown1.collider.GetComponent<IStep>())?.OnStep(player);
+        (raycastHit2DDown1.collider.GetComponent<IStep>())?.OnStep(player, true);
         if (raycastHit2DDown1.collider == raycastHit2DDown2.collider) return;
-        (raycastHit2DDown2.collider.GetComponent<IStep>())?.OnStep(player);
+        (raycastHit2DDown2.collider.GetComponent<IStep>())?.OnStep(player, true);
     }
 
     private IEnumerator DelayCoyoteTime(float time)
@@ -188,6 +188,6 @@ public class PlayerController : MonoBehaviour
         // 위에서 밟을 때만 step이 일어나야함 
         IStep step = other.collider.GetComponent<IStep>();
 
-        step?.OnStep(player);
+        step?.OnStep(player, false);
     }
 }
