@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ThornTrap : Obstacle, IStep
 {
-    private bool lastBool;
-
     private void Start()
     {
         supportingTileCoorList.Add(new Coordinate(0, -1));
@@ -13,11 +11,9 @@ public class ThornTrap : Obstacle, IStep
 
     public void OnStep(Entity entity, bool _bool)
     {
-        if (entity is IDamageable && lastBool)
+        if (entity is IDamageable)
         {
             (entity as IDamageable).Dead();
         }
-
-        lastBool = _bool;
     }
 }

@@ -57,6 +57,7 @@ public class Player : Entity, IDamageable
     public void Dead()
     {
         playerController.stateMachine.SetState(new PlayerDead(playerController));
+        playerController.stateMachine.isStateLocked = true;
     }
 
     private IEnumerator Stun(float duration)

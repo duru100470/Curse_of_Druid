@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StateMachine
 {
+    public bool isStateLocked = false;
     public IState CurruentState { get; private set; }
 
     public StateMachine(IState defaultState)
@@ -13,6 +14,8 @@ public class StateMachine
 
     public void SetState(IState state)
     {
+        if (isStateLocked) return;
+
         if (CurruentState == state)
         {
             return;

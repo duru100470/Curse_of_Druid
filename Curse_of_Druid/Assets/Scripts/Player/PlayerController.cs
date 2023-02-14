@@ -159,15 +159,6 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D raycastHit2DDown1 = Physics2D.Raycast(Pos1, Vector3.down, 0.6f, LayerMask.GetMask("Stepable"));
         RaycastHit2D raycastHit2DDown2 = Physics2D.Raycast(Pos2, Vector3.down, 0.6f, LayerMask.GetMask("Stepable"));
 
-        if (raycastHit2DDown1.collider == null && raycastHit2DDown2.collider == null)
-            return;
-
-        if (raycastHit2DDown1.collider == raycastHit2DDown2.collider)
-        {
-            (raycastHit2DDown1.collider.GetComponent<IStep>())?.OnStep(player, true);
-            return;
-        }
-
         (raycastHit2DDown1.collider?.GetComponent<IStep>())?.OnStep(player, true);
         (raycastHit2DDown2.collider?.GetComponent<IStep>())?.OnStep(player, true);
     }
