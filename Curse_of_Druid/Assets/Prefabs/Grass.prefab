@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 332989911470151318}
   - component: {fileID: -8965900696496366356}
   - component: {fileID: 5897092951169526035}
+  - component: {fileID: -4197765217347316712}
   m_Layer: 7
   m_Name: Grass
   m_TagString: Tile
@@ -125,8 +126,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileId: 0
-  tileRuleList: []
   timeInterval: 5
   maxGrowNumber: 2
   burnTime: 0
   spreadTime: 0
+--- !u!114 &-4197765217347316712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2507256815584847663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39819acc5f7e48499f170be4edd8b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeInterval: 0
+  maxGrowNumber: 0

@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public StateMachine stateMachine;
     [SerializeField]
     private float maxSpeed;
+    private float originalSpeed;
     [SerializeField]
     private float maxFallingSpeed;
     [SerializeField]
@@ -43,6 +44,9 @@ public class PlayerController : MonoBehaviour
     public float JumpMaxTime => jumpMaxTime;
     public float WallJumpForce => wallJumpForce;
 
+    private Dictionary<Tile, int> slowList = new();
+    public Dictionary<Tile, int> SlowList => slowList;
+
     // Initialize states
     private void Awake()
     {
@@ -55,6 +59,8 @@ public class PlayerController : MonoBehaviour
         player = GetComponent<Player>();
 
         anim.speed = 0.3f;
+
+        originalSpeed = maxSpeed;
     }
 
     private void Update()
@@ -186,19 +192,15 @@ public class PlayerController : MonoBehaviour
         IsWallJumpInputEnable = true;
     }
 
-    /*
-    private void OnCollisionEnter2D(Collision2D other)
+    public void GetSlowDebuff()
     {
-        IStep step = other.collider.GetComponent<IStep>();
-        if (step == null) return;
+        var maxSlowValue = 0f;
 
-        var stepPos = other.collider.bounds.center.y + other.collider.bounds.extents.y / 2;
+        foreach (var (k, v) in slowList)
+        {
+            maxSlowValue = Mathf.Min(maxSlowValue, v);
+        }
 
-        Debug.Log(stepPos);
-        Debug.Log(this.transform.position.y);
-        if (stepPos > this.transform.position.y) return;
-
-        step.OnStep(player, false);
+        maxSpeed = originalSpeed + maxSlowValue;
     }
-    */
 }

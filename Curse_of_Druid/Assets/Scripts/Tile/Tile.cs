@@ -20,9 +20,8 @@ public class Tile : MonoBehaviour
 
     public void Destroy()
     {
-        // todo
-        // TileManager TileArray에서 Tile info 삭제해야함
         DestroyCallback(Pos);
+        TileManager.Inst.RemoveTile(Pos);
 
         Destroy(this.gameObject);
     }

@@ -3,18 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrassTile : RuleTile, IFlammable
+public class GrassTile : Tile, IFlammable
 {
     [SerializeField]
     private float timeInterval;
     [SerializeField]
     private int maxGrowNumber;
     private int growNumber = 0;
-    private float speed;
-    private GameObject player;
-    private PlayerController playerController;
     
-    public Obstacle Obstacle { get; set; }
     private bool isBurning = false;
     public bool IsBurning => isBurning;
     [SerializeField]
@@ -25,19 +21,18 @@ public class GrassTile : RuleTile, IFlammable
     private void Start()
     {
         StartCoroutine(Grow());
-        player = GameObject.Find("Player");
-        speed = player.GetComponent<PlayerController>().MaxSpeed;
-        playerController = player.GetComponent<PlayerController>();
     }
 
     private IEnumerator Grow()
     {
-        yield return new WaitForSeconds(timeInterval);
-
-        if (growNumber < maxGrowNumber)
+        while (true)
         {
-            growNumber++;
-            StartCoroutine(Grow());
+            yield return new WaitForSeconds(timeInterval);
+
+            if (growNumber < maxGrowNumber)
+            {
+                growNumber++;
+            }
         }
     }
 
@@ -72,19 +67,23 @@ public class GrassTile : RuleTile, IFlammable
         }
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player" && growNumber <= maxGrowNumber)
-        {
-            playerController.MaxSpeed = speed - growNumber;
-        }
+        PlayerController pc = other.GetComponent<PlayerController>();
+
+        if (pc == null) return;
+
+        pc.SlowList[this] = (-1) * growNumber;
+        pc.GetSlowDebuff();
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Player" && growNumber <= maxGrowNumber)
-        {
-            playerController.MaxSpeed = speed;
-        }
+        PlayerController pc = other.GetComponent<PlayerController>();
+
+        if (pc == null) return;
+
+        pc.SlowList.Remove(this);
+        pc.GetSlowDebuff();
     }
 }

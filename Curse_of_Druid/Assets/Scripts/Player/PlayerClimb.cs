@@ -52,6 +52,7 @@ public class PlayerClimb : IState
     {
         pc.rigid2d.velocity = new Vector2(0f, Mathf.Min(pc.rigid2d.velocity.y * 0.94f, 0.1f));
 
+        pc.Step();
         // fixme
 
         if (maxFallingSpeed > pc.rigid2d.velocity.y)

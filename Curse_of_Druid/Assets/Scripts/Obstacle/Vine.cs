@@ -15,6 +15,7 @@ public class Vine : Obstacle
     {
         StartCoroutine(Grow());
         growingPoint = new Coordinate(0, -1) + Coordinate.WorldPointToCoordinate(transform.position);
+        supportingTileCoorList.Add(new Coordinate(0, -1));
     }
 
     private IEnumerator Grow()
