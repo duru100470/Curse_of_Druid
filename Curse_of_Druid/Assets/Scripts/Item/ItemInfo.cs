@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New ItemInfo", menuName = "Item/Item Info")]
 public class ItemInfo : ScriptableObject
 {
-    public readonly string itemName;
-    public readonly ITEM_ID itemID;
-    public readonly int maxDurability;
-    public readonly Sprite[] itemSprite;
+    public string itemName;
+    public ITEM_ID itemID;
+    public int maxDurability;
+    public Sprite[] itemSprite;
 }

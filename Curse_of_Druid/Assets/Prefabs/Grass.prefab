@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1805387417153474135}
   - component: {fileID: 332989911470151318}
   - component: {fileID: -8965900696496366356}
-  - component: {fileID: 2091366474638456561}
+  - component: {fileID: 5897092951169526035}
   m_Layer: 7
   m_Name: Grass
   m_TagString: Tile
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.63674796, g: 0.7735849, b: 0.60938054, a: 0.29411766}
+  m_Sprite: {fileID: -1876385073, guid: 1c56162d7283eb246baac8cc2aac5f05, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2091366474638456561
+--- !u!114 &5897092951169526035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,14 +121,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2507256815584847663}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f39819acc5f7e48499f170be4edd8b4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 44062ab8095aa5e46b6d09d06c04d668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tileId: 0
-  ruleTileSprites: []
+  tileRuleList: []
+  timeInterval: 5
+  maxGrowNumber: 2
   burnTime: 0
   spreadTime: 0
-  spreadSize: {x: 0, y: 0}
-  damageType: 0
-  timeInterval: 10
-  maxGrowNumber: 2

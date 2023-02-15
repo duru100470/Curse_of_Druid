@@ -12,7 +12,7 @@ public class Slot : MonoBehaviour
 
     public Item item { set; get; }
 
-    private void Start()
+    private void Awake()
     {
         ClearSlot();
         imageSelected.color = new Color(1f, 1f, 1f, 0f);
@@ -56,7 +56,7 @@ public class Slot : MonoBehaviour
 
     public void FreshSlot()
     {
-        image.sprite = item?.itemSprite;
+        image.sprite = item?.ItemSprite;
         SetColor((item != null) ? 1f : 0f);
         SetCount(item?.Durability ?? 0);
     }

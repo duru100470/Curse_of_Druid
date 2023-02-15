@@ -61,6 +61,8 @@ public class PlayerJump : IState
     {
         float h = Input.GetAxisRaw("Horizontal");
 
+        pc.Step();
+
         pc.HorizontalMove(h);
         if (maxFallingSpeed > pc.rigid2d.velocity.y)
             maxFallingSpeed = pc.rigid2d.velocity.y;

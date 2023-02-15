@@ -2,31 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThornTrap : Obstacle
+public class ThornTrap : Obstacle, IStep
 {
-    /*
-    private bool isPlayerFromUp;
+    private bool lastBool;
 
-    void Update()
+    public void OnStep(Entity entity, bool _bool)
     {
-        RaycastHit2D hitData = Physics2D.Raycast(transform.position + new Vector3(0, 1, 0), transform.up);
-        if (hitData)
+        if (entity is IDamageable && lastBool)
         {
-            //Debug.Log(hitData.collider.tag);
-            if (hitData.collider.tag == "Player")
-            {
-                isPlayerFromUp = true;
-            }
+            (entity as IDamageable ).Dead();
         }
-    }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (isPlayerFromUp == true)
-        {
-            GameObject.Find("Player").GetComponent<Player>().Dead();
-            Debug.Log("dead");
-        }
+        lastBool = _bool;
     }
-    */
 }

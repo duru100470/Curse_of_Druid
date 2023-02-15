@@ -6,7 +6,7 @@ public class CrackedPlatform : RuleTile, IStep
 {
     private bool isSuccess;
 
-    public void OnStep(Entity entity)
+    public void OnStep(Entity entity, bool _bool)
     {
         if (entity is Player)
         {

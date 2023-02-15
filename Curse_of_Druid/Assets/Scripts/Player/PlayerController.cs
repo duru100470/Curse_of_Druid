@@ -92,13 +92,12 @@ public class PlayerController : MonoBehaviour
         }
 
         // Check Side
-        RaycastHit2D raycastHit2DRight = Physics2D.Raycast(rigid2d.position, Vector3.right, 0.35f, LayerMask.GetMask("Ground"));
-        RaycastHit2D raycastHit2DLeft = Physics2D.Raycast(rigid2d.position, Vector3.left, 0.35f, LayerMask.GetMask("Ground"));
+        var wall = IsThereWall();
 
-        if (raycastHit2DRight.collider == null && h > 0)
+        if (wall != 1 && h > 0)
             rigid2d.AddForce(Vector2.right * h, ForceMode2D.Impulse);
 
-        if (raycastHit2DLeft.collider == null && h < 0)
+        if (wall != -1 && h < 0)
             rigid2d.AddForce(Vector2.right * h, ForceMode2D.Impulse);
 
         if (rigid2d.velocity.x > MaxSpeed)
@@ -169,6 +168,27 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
+    public void Step()
+    {
+        Vector2 Pos1 = new Vector2(rigid2d.position.x + 0.23f, rigid2d.position.y);
+        Vector2 Pos2 = new Vector2(rigid2d.position.x - 0.23f, rigid2d.position.y);
+
+        RaycastHit2D raycastHit2DDown1 = Physics2D.Raycast(Pos1, Vector3.down, 0.6f, LayerMask.GetMask("Stepable"));
+        RaycastHit2D raycastHit2DDown2 = Physics2D.Raycast(Pos2, Vector3.down, 0.6f, LayerMask.GetMask("Stepable"));
+
+        if (raycastHit2DDown1.collider == null && raycastHit2DDown2.collider == null)
+            return;
+
+        if (raycastHit2DDown1.collider == raycastHit2DDown2.collider)
+        {
+            (raycastHit2DDown1.collider.GetComponent<IStep>())?.OnStep(player, true);
+            return;
+        }
+
+        (raycastHit2DDown1.collider?.GetComponent<IStep>())?.OnStep(player, true);
+        (raycastHit2DDown2.collider?.GetComponent<IStep>())?.OnStep(player, true);
+    }
+
     private IEnumerator DelayCoyoteTime(float time)
     {
         yield return new WaitForSeconds(time);
@@ -189,12 +209,19 @@ public class PlayerController : MonoBehaviour
         IsWallJumpInputEnable = true;
     }
 
+    /*
     private void OnCollisionEnter2D(Collision2D other)
     {
-        // fix me
-        // 위에서 밟을 때만 step이 일어나야함 
         IStep step = other.collider.GetComponent<IStep>();
+        if (step == null) return;
 
-        step?.OnStep(player);
+        var stepPos = other.collider.bounds.center.y + other.collider.bounds.extents.y / 2;
+
+        Debug.Log(stepPos);
+        Debug.Log(this.transform.position.y);
+        if (stepPos > this.transform.position.y) return;
+
+        step.OnStep(player, false);
     }
+    */
 }

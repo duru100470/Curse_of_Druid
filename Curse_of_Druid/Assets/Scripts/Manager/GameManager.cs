@@ -10,10 +10,18 @@ public class GameManager : SingletonBehavior<GameManager>
     [SerializeField]
     private int worldYSize;
     private Player player;
+    [Header("Item Debug")]
+    [SerializeField]
+    private ItemInfo itemInfo;
 
     private void Awake()
     {
         LoadMapAsync();
+    }
+    
+    private void Start()
+    {
+        TestItem();
     }
 
     private void LoadMapAsync()
@@ -31,7 +39,7 @@ public class GameManager : SingletonBehavior<GameManager>
             Tile tile = tileObj.GetComponent<Tile>();
             tile.SetPos();
             (tile as RuleTile)?.UpdateRuleTile();
-            TileManager.Inst.TileDict[tile.Pos] = tile;
+            TileManager.Inst.AddTile(tile.Pos, tile);
             Debug.Log($"X: {tile.Pos.X}, Y: {tile.Pos.Y}, TileID: {tile.TileId}");
         }
 
@@ -41,5 +49,15 @@ public class GameManager : SingletonBehavior<GameManager>
     private void InitializePlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
+
+    private void TestItem()
+    {
+        Item item = new DebugItem();
+        item.ItemInfo = itemInfo;
+        item.ItemSprite = itemInfo.itemSprite[0];
+        item.Durability = itemInfo.maxDurability;
+
+        Debug.Log(UIManager.Inst.Inventory.AcquireItem(ref item));
     }
 }

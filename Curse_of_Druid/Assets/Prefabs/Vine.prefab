@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9433962, g: 0.50186014, b: 0.084549636, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.015686275}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -124,11 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b2c318fac2931498b8c65024051eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileId: 0
-  ruleTileSprites: []
-  burnTime: 0
-  spreadTime: 0
-  spreadSize: {x: 0, y: 0}
-  damageType: 0
   timeInterval: 2
-  _Vine: {fileID: 2507256815584847663}
+  vinePrefab: {fileID: 1994705651471762012, guid: 1edb3881f645a424da643ea2d28509b0, type: 3}

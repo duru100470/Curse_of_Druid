@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,10 +26,11 @@ public class TileManager : SingletonBehavior<TileManager>
     }
 
     /// <summary>
-    /// 특정 Coordinate에 TILE_ID 타일을 설치 (성공여부 반환)
+    /// Do not use this method
     /// </summary>
     public bool PlaceTile(Coordinate coor, TILE_ID tileType, bool isGenerating = false)
     {
+        Debug.LogError("Do not use this method");
         if (TileDict.ContainsKey(coor)) return false;
 
         GameObject newTile = Instantiate(tilePrefabList[(int)tileType]);
@@ -51,10 +53,11 @@ public class TileManager : SingletonBehavior<TileManager>
     }
 
     /// <summary>
-    /// 특정 Coordinate에 타일을 제거 (성공여부 반환)
+    /// Do not use this method
     /// </summary>
     public bool DestroyTile(Coordinate coor)
     {
+        Debug.LogError("Do not use this method");
         if (!TileDict.ContainsKey(coor)) return false;
 
         Destroy(TileDict[coor].gameObject);
@@ -67,6 +70,26 @@ public class TileManager : SingletonBehavior<TileManager>
         UpdateAdjacentRuleTile(coor);
 
         return true;
+    }
+
+    public void AddTile(Coordinate coor, Tile tile)
+    {
+        TileDict[coor] = tile;
+        (tile as RuleTile)?.UpdateRuleTile();
+        UpdateAdjacentRuleTile(coor);
+    }
+
+    public void RemoveTile(Coordinate coor)
+    {
+        try
+        {
+            TileDict.Remove(coor);
+            UpdateAdjacentRuleTile(coor);
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+        }
     }
 
     public void UpdateAdjacentRuleTile(Coordinate coor)
