@@ -45,6 +45,7 @@ public class Player : Entity, IDamageable
     {
         health = Mathf.Max(0, health - amount);
         EventManager.Inst.PostNotification(EVENT_TYPE.PlayerHPChange, this, health);
+        UIManager.Inst.SetPlayerLife(health);
         if (health == 0)
         {
             EventManager.Inst.PostNotification(EVENT_TYPE.GameOver, this, dmgType);
