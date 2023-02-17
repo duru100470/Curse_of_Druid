@@ -170,12 +170,6 @@ public class PlayerController : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator DelayWallJump()
-    {
-        yield return new WaitForSeconds(wallJumpTime);
-        IsWallJumpEnable = true;
-    }
-
     public IEnumerator DelayWallJumpInput()
     {
         yield return new WaitForSeconds(wallJumpInputBuffer);

@@ -21,7 +21,6 @@ public class PlayerClimb : IState
     }
     public void OperateExit()
     {
-        pc.StartCoroutine(pc.DelayWallJump());
         pc.rigid2d.gravityScale = 1;
         pc.anim.SetBool("isClimbing", false);
         pc.anim.speed = 0.3f;

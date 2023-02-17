@@ -15,6 +15,7 @@ public class PlayerRun : IState
     {
         pc.anim.SetBool("isRunning", true);
         pc.anim.speed = 0.8f;
+        pc.IsWallJumpEnable = true;
     }
 
     public void OperateExit()
