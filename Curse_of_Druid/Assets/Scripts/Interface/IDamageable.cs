@@ -9,5 +9,6 @@ public enum DAMAGE_TYPE
     Melee,
     Projectile,
     Falling,
-    Flame
+    Flame,
+    Step
 }

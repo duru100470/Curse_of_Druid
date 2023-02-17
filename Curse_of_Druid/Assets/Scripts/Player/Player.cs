@@ -7,6 +7,7 @@ public class Player : Entity, IDamageable
     private Item curItem;
     public Item CurItem => curItem;
     private PlayerController playerController;
+    public PlayerController PlayerController => playerController;
 
     protected override void Awake()
     {

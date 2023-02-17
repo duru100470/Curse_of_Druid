@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public bool IsCoyoteTimeEnable { get; set; }
     public bool IsWallJumpEnable { get; set; } = true;
     public bool IsWallJumpInputEnable { get; set; } = true;
+    public bool HasSteppedEntity { get; set; } = false;
     public bool IsHeadingRight { get; private set; } = true;
 
     public SpriteRenderer spriteRenderer { get; set; }
@@ -159,8 +160,28 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D raycastHit2DDown1 = Physics2D.Raycast(Pos1, Vector3.down, 0.6f, LayerMask.GetMask("Stepable"));
         RaycastHit2D raycastHit2DDown2 = Physics2D.Raycast(Pos2, Vector3.down, 0.6f, LayerMask.GetMask("Stepable"));
 
-        (raycastHit2DDown1.collider?.GetComponent<IStep>())?.OnStep(player, true);
-        (raycastHit2DDown2.collider?.GetComponent<IStep>())?.OnStep(player, true);
+        var stepLeft = raycastHit2DDown1.collider?.GetComponent<IStep>();
+        var stepRight = raycastHit2DDown2.collider?.GetComponent<IStep>();
+
+        stepLeft?.OnStep(player, true);
+        stepRight?.OnStep(player, true);
+
+        if (stepLeft != null)
+        {
+            HasSteppedEntity = stepLeft is Enemy;
+            Debug.Log(HasSteppedEntity);
+        }
+
+        if (stepRight != null)
+        {
+            HasSteppedEntity |= stepRight is Enemy;
+            Debug.Log(HasSteppedEntity);
+        }
+
+        if (HasSteppedEntity)
+        {
+            stateMachine.SetState(new PlayerJump(this));
+        }
     }
 
     private IEnumerator DelayCoyoteTime(float time)
