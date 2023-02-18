@@ -11,7 +11,7 @@ public class Tile : MonoBehaviour
 
     public Coordinate Pos { get; set; }
     public TILE_ID TileId => tileId;
-    public Action<Coordinate> DestroyCallback {get;set;}
+    public Action<Coordinate> DestroyCallback {get; set;}
 
     public void SetPos()
     {
@@ -20,9 +20,9 @@ public class Tile : MonoBehaviour
 
     public void Destroy()
     {
-        // todo
-        // TileManager TileArray에서 Tile info 삭제해야함
+        Debug.Log("Destroyed");
         DestroyCallback(Pos);
+        TileManager.Inst.RemoveTile(Pos);
 
         Destroy(this.gameObject);
     }

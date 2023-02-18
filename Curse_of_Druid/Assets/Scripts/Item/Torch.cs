@@ -12,9 +12,10 @@ public class Torch : Item
             Player player = user as Player;
             int x = player.Coor.X;
             int y = player.Coor.Y;
-            Coordinate coor_target = new Coordinate(x, y);
+            Coordinate coor_target = new Coordinate(x-1, y);
             Tile target;
             TileManager.Inst.TileDict.TryGetValue(coor_target, out target);
+            Debug.Log($"{target}");
             if (target is IFlammable)
             {
                 IFlammable flammable_target = target as IFlammable;
