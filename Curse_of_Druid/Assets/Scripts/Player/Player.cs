@@ -7,6 +7,7 @@ public class Player : Entity, IDamageable
     private Item curItem;
     public Item CurItem => curItem;
     private PlayerController playerController;
+    public PlayerController PlayerController => playerController;
 
     protected override void Awake()
     {
@@ -57,6 +58,7 @@ public class Player : Entity, IDamageable
     public void Dead()
     {
         playerController.stateMachine.SetState(new PlayerDead(playerController));
+        playerController.stateMachine.isStateLocked = true;
     }
 
     private IEnumerator Stun(float duration)

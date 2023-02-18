@@ -13,6 +13,7 @@ public class PlayerIdle : IState
 
     public void OperateEnter()
     {
+        pc.IsWallJumpEnable = true;
     }
 
     public void OperateExit()

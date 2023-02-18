@@ -6,7 +6,7 @@ public class Obstacle : MonoBehaviour, IListener
 {
     protected List<Tile> childrenTileList;
     public List<Tile> ChildrenTileList => childrenTileList;
-    protected List<Coordinate> supportingTileCoorList;
+    protected List<Coordinate> supportingTileCoorList = new List<Coordinate>();
 
     protected virtual void Awake()
     {

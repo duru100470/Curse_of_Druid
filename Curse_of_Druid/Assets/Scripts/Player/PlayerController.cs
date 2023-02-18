@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public StateMachine stateMachine;
     [SerializeField]
     private float maxSpeed;
+    private float originalSpeed;
     [SerializeField]
     private float maxFallingSpeed;
     [SerializeField]
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public bool IsCoyoteTimeEnable { get; set; }
     public bool IsWallJumpEnable { get; set; } = true;
     public bool IsWallJumpInputEnable { get; set; } = true;
+    public bool HasSteppedEntity { get; set; } = false;
     public bool IsHeadingRight { get; private set; } = true;
 
     public SpriteRenderer spriteRenderer { get; set; }
@@ -43,6 +45,9 @@ public class PlayerController : MonoBehaviour
     public float JumpMaxTime => jumpMaxTime;
     public float WallJumpForce => wallJumpForce;
 
+    private Dictionary<Tile, int> slowList = new();
+    public Dictionary<Tile, int> SlowList => slowList;
+
     // Initialize states
     private void Awake()
     {
@@ -55,6 +60,8 @@ public class PlayerController : MonoBehaviour
         player = GetComponent<Player>();
 
         anim.speed = 0.3f;
+
+        originalSpeed = maxSpeed;
     }
 
     private void Update()
@@ -153,17 +160,30 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D raycastHit2DDown1 = Physics2D.Raycast(Pos1, Vector3.down, 0.6f, LayerMask.GetMask("Stepable"));
         RaycastHit2D raycastHit2DDown2 = Physics2D.Raycast(Pos2, Vector3.down, 0.6f, LayerMask.GetMask("Stepable"));
 
-        if (raycastHit2DDown1.collider == null && raycastHit2DDown2.collider == null)
-            return;
+        var stepLeft = raycastHit2DDown1.collider?.GetComponent<IStep>();
+        var stepRight = raycastHit2DDown2.collider?.GetComponent<IStep>();
 
-        if (raycastHit2DDown1.collider == raycastHit2DDown2.collider)
+        stepLeft?.OnStep(player, true);
+
+        if (stepLeft != stepRight)
+            stepRight?.OnStep(player, true);
+
+        if (stepLeft != null)
         {
-            (raycastHit2DDown1.collider.GetComponent<IStep>())?.OnStep(player, true);
-            return;
+            HasSteppedEntity = stepLeft is Enemy;
+            Debug.Log(HasSteppedEntity);
         }
 
-        (raycastHit2DDown1.collider?.GetComponent<IStep>())?.OnStep(player, true);
-        (raycastHit2DDown2.collider?.GetComponent<IStep>())?.OnStep(player, true);
+        if (stepRight != null)
+        {
+            HasSteppedEntity |= stepRight is Enemy;
+            Debug.Log(HasSteppedEntity);
+        }
+
+        if (HasSteppedEntity)
+        {
+            stateMachine.SetState(new PlayerJump(this));
+        }
     }
 
     private IEnumerator DelayCoyoteTime(float time)
@@ -173,12 +193,6 @@ public class PlayerController : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator DelayWallJump()
-    {
-        yield return new WaitForSeconds(wallJumpTime);
-        IsWallJumpEnable = true;
-    }
-
     public IEnumerator DelayWallJumpInput()
     {
         yield return new WaitForSeconds(wallJumpInputBuffer);
@@ -186,19 +200,15 @@ public class PlayerController : MonoBehaviour
         IsWallJumpInputEnable = true;
     }
 
-    /*
-    private void OnCollisionEnter2D(Collision2D other)
+    public void GetSlowDebuff()
     {
-        IStep step = other.collider.GetComponent<IStep>();
-        if (step == null) return;
+        var maxSlowValue = 0f;
 
-        var stepPos = other.collider.bounds.center.y + other.collider.bounds.extents.y / 2;
+        foreach (var (k, v) in slowList)
+        {
+            maxSlowValue = Mathf.Min(maxSlowValue, v);
+        }
 
-        Debug.Log(stepPos);
-        Debug.Log(this.transform.position.y);
-        if (stepPos > this.transform.position.y) return;
-
-        step.OnStep(player, false);
+        maxSpeed = originalSpeed + maxSlowValue;
     }
-    */
 }

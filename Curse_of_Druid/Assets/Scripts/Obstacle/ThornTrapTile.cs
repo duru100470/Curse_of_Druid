@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThornTrapTile : RuleTile, IFlammable
+public class ThornTrapTile : Tile, IFlammable
 {
     public Obstacle Obstacle { get; set; }
     private bool isBurning = false;

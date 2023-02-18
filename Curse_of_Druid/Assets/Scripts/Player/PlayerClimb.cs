@@ -21,7 +21,6 @@ public class PlayerClimb : IState
     }
     public void OperateExit()
     {
-        pc.StartCoroutine(pc.DelayWallJump());
         pc.rigid2d.gravityScale = 1;
         pc.anim.SetBool("isClimbing", false);
         pc.anim.speed = 0.3f;
@@ -52,6 +51,7 @@ public class PlayerClimb : IState
     {
         pc.rigid2d.velocity = new Vector2(0f, Mathf.Min(pc.rigid2d.velocity.y * 0.94f, 0.1f));
 
+        pc.Step();
         // fixme
 
         if (maxFallingSpeed > pc.rigid2d.velocity.y)

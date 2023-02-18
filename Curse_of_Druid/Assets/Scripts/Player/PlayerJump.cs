@@ -17,7 +17,7 @@ public class PlayerJump : IState
         pc.anim.SetBool("isJumping", true);
         pc.anim.speed = 0.7f;
 
-        if (pc.IsThereLand() == false || pc.JumpCount == 0)
+        if ((pc.IsThereLand() == false || pc.JumpCount == 0) && pc.HasSteppedEntity == false)
         {
             return;
         }
@@ -26,8 +26,14 @@ public class PlayerJump : IState
         pc.IsCoyoteTimeEnable = false;
         pc.StartCoroutine(ControlJump());
 
+        if (pc.HasSteppedEntity)
+        {
+            pc.rigid2d.AddForce(Vector2.up * pc.JumpPower * 0.2f, ForceMode2D.Impulse);
+        }
+
         pc.IsJumping = true;
         pc.JumpCount--;
+        pc.HasSteppedEntity = false;
     }
     public void OperateExit()
     {
@@ -49,7 +55,8 @@ public class PlayerJump : IState
     {
         float h = Input.GetAxisRaw("Horizontal");
 
-        pc.Step();
+        if (pc.rigid2d.velocity.y < 0)
+            pc.Step();
 
         pc.HorizontalMove(h);
         if (maxFallingSpeed > pc.rigid2d.velocity.y)
@@ -70,7 +77,7 @@ public class PlayerJump : IState
                 return;
             }
         }
-        
+
         if (pc.rigid2d.velocity.y <= 0)
         {
             if (pc.IsThereLand())
