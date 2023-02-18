@@ -53,9 +53,9 @@ public class GameManager : SingletonBehavior<GameManager>
 
     private void TestItem()
     {
-        Item item = new DebugItem();
+        Item item = new Pickaxe();
         item.ItemInfo = itemInfo;
-        item.ItemSprite = itemInfo.itemSprite[0];
+        // item.ItemSprite = itemInfo.itemSprite[0];
         item.Durability = itemInfo.maxDurability;
 
         Debug.Log(UIManager.Inst.Inventory.AcquireItem(ref item));

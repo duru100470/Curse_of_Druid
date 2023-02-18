@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public float JumpTime { get; set; } = 0f;
     public int JumpCount { get; set; }
     public bool IsJumping { get; set; }
+    public bool IsClimbingLeft { get; set; }
+    public bool IsClimbingRight { get; set; }
     public bool IsCoyoteTimeEnable { get; set; }
     public bool IsWallJumpEnable { get; set; } = true;
     public bool IsWallJumpInputEnable { get; set; } = true;
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
 
     public float MaxSpeed { get { return maxSpeed; } set { maxSpeed = value; } }
     public float MaxFallingSpeed => maxFallingSpeed;
+    public float ClimbingSpeed => climbingSpeed;
     public float JumpPower => jumpPower;
     public int JumpMaxCount => jumpMaxCount;
     public float JumpMaxTime => jumpMaxTime;
@@ -150,6 +153,25 @@ public class PlayerController : MonoBehaviour
             }
             return false;
         }
+    }
+    // 검증 필요
+    public bool IsThereWall(int direction)
+    {
+        // direction; left : -1, right : 1
+        Vector2 Pos = new Vector2(rigid2d.position.x + direction * 1f, rigid2d.position.y);
+
+        RaycastHit2D raycastHit2Dleft = Physics2D.Raycast(rigid2d.position, rigid2d.velocity, 0.6f, LayerMask.GetMask("LeftWall"));
+        RaycastHit2D raycastHit2Dright = Physics2D.Raycast(rigid2d.position, rigid2d.velocity, 0.6f, LayerMask.GetMask("RightWall"));
+
+        if (direction == 1 && raycastHit2Dright.collider != null)
+        {
+            return true;
+        }
+        else if (direction == -1 && raycastHit2Dleft.collider != null)
+        {
+            return true;
+        }
+        return false;
     }
 
     public void Step()

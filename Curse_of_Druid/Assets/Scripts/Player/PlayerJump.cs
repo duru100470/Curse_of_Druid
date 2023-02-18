@@ -46,6 +46,18 @@ public class PlayerJump : IState
     }
     public void OperateUpdate()
     {
+        if (Input.GetAxisRaw("Horizontal") == 0) {
+            pc.rigid2d.velocity = new Vector2(0, pc.rigid2d.velocity.y);
+        }
+        else if (Input.GetAxisRaw("Horizontal") == 1 && pc.IsThereWall(1)) {
+            pc.stateMachine.SetState(new PlayerClimbing(pc));
+            pc.IsClimbingRight = true;
+        }
+        else if (Input.GetAxisRaw("Horizontal") == -1 && pc.IsThereWall(-1)) {
+            pc.stateMachine.SetState(new PlayerClimbing(pc));
+            pc.IsClimbingLeft = true;
+        }
+        pc.anim.SetFloat("ySpeed", pc.rigid2d.velocity.y);
         if (Input.GetAxisRaw("Horizontal") == 0)
             pc.rigid2d.velocity = new Vector2(0, pc.rigid2d.velocity.y);
 

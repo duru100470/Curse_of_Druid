@@ -11,7 +11,7 @@ public class Tile : MonoBehaviour
 
     public Coordinate Pos { get; set; }
     public TILE_ID TileId => tileId;
-    public Action<Coordinate> DestroyCallback {get;set;}
+    public Action<Coordinate> DestroyCallback {get; set;}
 
     public void SetPos()
     {
