@@ -164,7 +164,9 @@ public class PlayerController : MonoBehaviour
         var stepRight = raycastHit2DDown2.collider?.GetComponent<IStep>();
 
         stepLeft?.OnStep(player, true);
-        stepRight?.OnStep(player, true);
+
+        if (stepLeft != stepRight)
+            stepRight?.OnStep(player, true);
 
         if (stepLeft != null)
         {
