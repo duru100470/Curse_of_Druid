@@ -53,7 +53,7 @@ public class GameManager : SingletonBehavior<GameManager>
 
     private void TestItem()
     {
-        Item item = new Pickaxe();
+        Item item = new Torch();
         item.ItemInfo = itemInfo;
         // item.ItemSprite = itemInfo.itemSprite[0];
         item.Durability = itemInfo.maxDurability;
