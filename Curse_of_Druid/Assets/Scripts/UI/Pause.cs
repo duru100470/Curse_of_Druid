@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
@@ -75,6 +76,7 @@ public class Pause : MonoBehaviour
         isGamePaused = false;
         isKeySettingOpen = false;
         //메인 화면으로 전환
+        SceneManager.LoadScene("TitleScene");
     }
 
     public void Restart()
