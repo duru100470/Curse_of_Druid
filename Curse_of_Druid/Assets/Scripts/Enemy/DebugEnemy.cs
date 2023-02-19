@@ -44,8 +44,6 @@ public class DebugEnemy : Enemy, IDamageable, IStep
 
             // Knockback
 
-            (entity as Player).PlayerController.rigid2d.AddForce(Vector2.up * 7f, ForceMode2D.Impulse);
-
             if (other.collider.transform.position.x > this.transform.position.x)
                 (entity as Player).PlayerController.rigid2d.AddForce(Vector2.right * 6f, ForceMode2D.Impulse);
             else
