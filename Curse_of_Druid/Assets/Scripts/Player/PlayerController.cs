@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     private float wallJumpForce;
     [SerializeField]
     private float wallJumpInputBuffer;
+    [SerializeField]
+    private float climbingSpeed;
     public float JumpTime { get; set; } = 0f;
     public int JumpCount { get; set; }
     public bool IsJumping { get; set; }
