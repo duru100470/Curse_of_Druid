@@ -17,6 +17,7 @@ public class Machete : Item
             Debug.Log($"{target}");
             Durability--;
             player.AttackEntity(3, DAMAGE_TYPE.Machete);
+            player.PlayAttackAnim("Machete");
             Debug.Log(UIManager.Inst.Inventory.UseItem(this));
             if (Durability == 0)
             {

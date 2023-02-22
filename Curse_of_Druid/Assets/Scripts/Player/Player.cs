@@ -12,6 +12,8 @@ public class Player : Entity, IDamageable
     private Transform attackLocation;
     [SerializeField]
     private float attackRange;
+    [SerializeField]
+    private Animator attackAnimator;
 
     protected override void Awake()
     {
@@ -56,6 +58,21 @@ public class Player : Entity, IDamageable
         }
     }
 
+    public void PlayAttackAnim(string swingType)
+    {
+        attackAnimator.speed = 0.3f;
+
+        switch (swingType)
+        {
+            case "Pickaxe":
+                attackAnimator.Play("PlayerAttackPickaxe");
+                break;
+            case "Machete":
+                attackAnimator.Play("PlayerAttackMachete");
+                break;
+        }
+    }
+
     public void GetDamage(int amount, DAMAGE_TYPE dmgType)
     {
         SoundManager.Inst.PlayEffectSound(SOUND_NAME.PlayerHurt);
@@ -89,5 +106,6 @@ public class Player : Entity, IDamageable
         playerController.stateMachine.SetState(new PlayerSwing(playerController));
         yield return new WaitForSeconds(duration);
         playerController.stateMachine.SetState(new PlayerIdle(playerController));
+        attackAnimator.Play("PlayerAttackNone");
     }
 }
