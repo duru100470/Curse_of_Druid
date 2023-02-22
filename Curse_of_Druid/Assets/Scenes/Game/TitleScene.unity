@@ -637,10 +637,10 @@ MonoBehaviour:
   m_RefResolutionX: 480
   m_RefResolutionY: 270
   m_UpscaleRT: 0
-  m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
+  m_PixelSnapping: 1
+  m_CropFrameX: 1
+  m_CropFrameY: 1
+  m_StretchFill: 1
 --- !u!114 &1466890698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,6 +660,9 @@ MonoBehaviour:
   minPos: {x: 0, y: 0}
   maxPos: {x: 0, y: 0}
   bound: 0
+  lookUpDistance: 0
+  smoothTimeLookup: 0
+  lookUpVelocity: {x: 0, y: 0}
 --- !u!81 &1466890699
 AudioListener:
   m_ObjectHideFlags: 0
