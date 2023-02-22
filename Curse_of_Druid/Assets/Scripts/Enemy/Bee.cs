@@ -6,11 +6,13 @@ public class Bee : Enemy, IDamageable, IStep
 {
     public StateMachine stateMachine;
     public Rigidbody2D rigid2d { get; set; }
-    public bool IsHeadingRight = true;
+    public bool IsHeadingRight { get; set; } = true;
+    
     protected override void Awake()
     {
-        Debug.Log("Awaken");
         stateMachine = new StateMachine(new BeeIdle(this));
+        stateMachine.DoOperateUpdate();
+        rigid2d = GetComponent<Rigidbody2D>();
     }
 
     public void OnStep(Entity entity, bool _bool)

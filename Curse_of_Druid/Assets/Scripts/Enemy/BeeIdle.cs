@@ -13,22 +13,23 @@ public class BeeIdle : IState
 
     public void OperateEnter()
     {
-        bee.StartCoroutine(Wait());
+        
     }
 
     public void OperateExit()
     {
-        bee.stateMachine.SetState(new BeeMove(bee));
         bee.IsHeadingRight = !bee.IsHeadingRight;
     }
     public void OperateUpdate()
     {
+        bee.StartCoroutine(Wait());
+        bee.stateMachine.SetState(new BeeMove(bee));
     }
     public void OperateFixedUpdate()
     {
 
     }
-    IEnumerator Wait()
+    private IEnumerator Wait()
     {
         yield return new WaitForSeconds(1.0f);
     }
