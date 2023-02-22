@@ -38,7 +38,7 @@ public class SoundManager : SingletonBehavior<SoundManager>
         var audioSourceToUse = audioSources[emptyAudioIndex];
 
         audioSourceToUse.clip = clipList[(int)soundName];
-        audioSourceToUse.volume = volume;
+        audioSourceToUse.volume = SFXVolume;
         audioSourceToUse.pitch = pitch;
         audioSourceToUse.loop = isLooping;
 
