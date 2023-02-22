@@ -62,7 +62,7 @@ public class DebugEnemy : Enemy, IDamageable, IStep
             && thisTopPosition.y > targetCenterPosition.y
             && thisCenterPosition.y > targetBottomPosition.y)
         {
-            Debug.Log("GetDamage");
+            Debug.Log("Get Damage");
             (entity as Player).GetDamage(1, DAMAGE_TYPE.Melee);
 
             // Knockback
