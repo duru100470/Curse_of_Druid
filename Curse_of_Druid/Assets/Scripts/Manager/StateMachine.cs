@@ -10,6 +10,7 @@ public class StateMachine
     public StateMachine(IState defaultState)
     {
         CurruentState = defaultState;
+        CurruentState.OperateEnter();
     }
 
     public void SetState(IState state)
@@ -21,7 +22,7 @@ public class StateMachine
             return;
         }
 
-        // Debug.Log($"{CurruentState} => {state}");
+        Debug.Log($"{CurruentState} => {state}");
 
         CurruentState.OperateExit();
 

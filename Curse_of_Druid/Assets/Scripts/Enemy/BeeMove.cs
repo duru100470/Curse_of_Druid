@@ -13,23 +13,24 @@ public class BeeMove : IState
 
     public void OperateEnter()
     {
-        if (bee.IsHeadingRight) bee.rigid2d.velocity = new Vector2(bee.Speed, 0);
-        else bee.rigid2d.velocity = new Vector2(-bee.Speed, 0);
-        bee.stateMachine.SetState(new BeeIdle(bee));
+        if (bee.IsHeadingRight) bee.rigid2d.velocity = new Vector2(bee.Speed, 0f);
+        else bee.rigid2d.velocity = new Vector2(-bee.Speed, 0f);
+        bee.StartCoroutine(Wait());
     }
 
     public void OperateExit()
     {
-        bee.IsHeadingRight = !bee.IsHeadingRight;
     }
     public void OperateUpdate()
     {
-
     }
     public void OperateFixedUpdate()
     {
-
+        
     }
-
-
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1.0f);
+        bee.stateMachine.SetState(new BeeIdle(bee));
+    }
 }

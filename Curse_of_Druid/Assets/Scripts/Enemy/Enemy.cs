@@ -10,6 +10,7 @@ public abstract class Enemy : Entity
     protected DAMAGE_TYPE damageType;
     [SerializeField]
     protected string enemyName;
+    [SerializeField]
     protected float speed;
 
     public int MaxHealth => maxHealth;
