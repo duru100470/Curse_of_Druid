@@ -108,8 +108,8 @@ TextureImporter:
       name: die_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 2
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -129,8 +129,8 @@ TextureImporter:
       name: die_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 34
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -150,8 +150,8 @@ TextureImporter:
       name: die_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 66
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -171,8 +171,8 @@ TextureImporter:
       name: die_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
+        x: 98
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -192,8 +192,8 @@ TextureImporter:
       name: die_4
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
+        x: 130
+        y: 2
         width: 32
         height: 32
       alignment: 0

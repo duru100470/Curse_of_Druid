@@ -4,18 +4,32 @@ using UnityEngine;
 
 public class CrackedPlatform : RuleTile, IStep
 {
-    private bool isSuccess;
+    [SerializeField]
+    private Sprite[] crackAnimation;
+    [SerializeField]
+    private SpriteRenderer crackSpriteRenderer;
+    private bool isCracked = false;
 
     public void OnStep(Entity entity, bool _bool)
     {
+        if (isCracked) return;
+
         if (entity is Player)
         {
-            Invoke("DestroyPlatform", 1.5f);
+            isCracked = true;  
+            Debug.Log("asdasd");
+            StartCoroutine(DestroyPlatform());
         }
     }
 
-    void DestroyPlatform()
+    private IEnumerator DestroyPlatform()
     {
-        Destroy();
+        crackSpriteRenderer.sprite = crackAnimation[0];
+        yield return new WaitForSeconds(1f);
+        crackSpriteRenderer.sprite = crackAnimation[1];
+        yield return new WaitForSeconds(1f);
+        crackSpriteRenderer.sprite = crackAnimation[2];
+        yield return new WaitForSeconds(1f);
+        Destroy(this.gameObject);
     }
 }
