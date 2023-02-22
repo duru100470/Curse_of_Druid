@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c60b877c7744614bad81b631cd26d73, type: 3}
   m_Name: New ItemInfo
   m_EditorClassIdentifier: 
-  itemName: Pickaxe
+  itemName: Debug
   itemID: 0
   maxDurability: 100
   itemSprite: []
