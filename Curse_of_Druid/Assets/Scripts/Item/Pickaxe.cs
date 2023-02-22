@@ -16,7 +16,6 @@ public class Pickaxe : Item
             Tile target;
             TileManager.Inst.TileDict.TryGetValue(coor_target, out target);
             Debug.Log($"{target}");
-            Durability--;
             if (Durability == 0)
             {
                 // Destroy(gameObject);
@@ -24,6 +23,7 @@ public class Pickaxe : Item
             if (target is DestroyedPlatform)
             {
                 target.Destroy();
+                Durability--;
                 Debug.Log(UIManager.Inst.Inventory.UseItem(this));
                 Debug.Log("Item is used");
                 return true;

@@ -15,13 +15,13 @@ public class Machete : Item
             Tile target;
             TileManager.Inst.TileDict.TryGetValue(coor_target, out target);
             Debug.Log($"{target}");
-            Durability--;
             if (Durability == 0)
             {
                 // Destroy(gameObject);
             }
             if (target is GrassTile)
             {
+                Durability--;
                 target.Destroy();
                 Debug.Log(UIManager.Inst.Inventory.UseItem(this));
                 Debug.Log("Item is used");
@@ -29,6 +29,7 @@ public class Machete : Item
             }
             else if (target is VineTile)
             {
+                Durability--;
                 target.Destroy();
                 Debug.Log(UIManager.Inst.Inventory.UseItem(this));
                 Debug.Log("Item is used");
