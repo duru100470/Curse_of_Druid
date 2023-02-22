@@ -2371,7 +2371,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5176250010619701311, guid: 0a655066b3ebbaf4a980ae1ca11ea2e5, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5176250010619701311, guid: 0a655066b3ebbaf4a980ae1ca11ea2e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16861,10 +16861,10 @@ MonoBehaviour:
   m_RefResolutionX: 480
   m_RefResolutionY: 270
   m_UpscaleRT: 0
-  m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
+  m_PixelSnapping: 1
+  m_CropFrameX: 1
+  m_CropFrameY: 1
+  m_StretchFill: 1
 --- !u!1001 &2030489053
 PrefabInstance:
   m_ObjectHideFlags: 0
