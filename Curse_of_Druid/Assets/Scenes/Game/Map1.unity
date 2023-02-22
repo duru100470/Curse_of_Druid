@@ -6020,6 +6020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Exit
       objectReference: {fileID: 0}
+    - target: {fileID: 6301254112184527840, guid: bfb4b9b910d365f40a95513214fe4244, type: 3}
+      propertyPath: nextScene
+      value: Map2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfb4b9b910d365f40a95513214fe4244, type: 3}
 --- !u!1 &1651052566
