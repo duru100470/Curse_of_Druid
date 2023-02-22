@@ -14,6 +14,7 @@ public class PlayerJump : IState
 
     public void OperateEnter()
     {
+        SoundManager.Instance.PlayEffectSound(SOUND_NAME.PlayerJump);
         pc.anim.SetBool("isJumping", true);
         pc.anim.speed = 0.7f;
 
