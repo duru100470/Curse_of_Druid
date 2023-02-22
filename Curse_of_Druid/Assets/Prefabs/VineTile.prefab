@@ -84,7 +84,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &-491336278111331916
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileId: 6
+  spriteRenderer: {fileID: 1994705651471762015}
   tileRuleList:
   - sprite: {fileID: -450725711, guid: 035aec938d1c5db4b9963f6b59f6153d, type: 3}
     tileRuleInfo: 000000000000000000000000000000000000000000000000000000000000000000000000
