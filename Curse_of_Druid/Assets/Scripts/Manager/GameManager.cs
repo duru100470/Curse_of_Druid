@@ -21,7 +21,7 @@ public class GameManager : SingletonBehavior<GameManager>
     private void Start()
     {
         LoadMapAsync();
-        TestItem();
+        // TestItem();
     }
 
     private void LoadMapAsync()
