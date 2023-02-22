@@ -18,6 +18,7 @@ public class DebugEnemy : Enemy, IDamageable, IStep
 
     public void GetDamage(int amount, DAMAGE_TYPE damageType)
     {
+        if (damageType != DAMAGE_TYPE.Step && damageType != DAMAGE_TYPE.Machete) return;
         health = Mathf.Max(0, health - amount);
         Debug.Log(health);
         if (health == 0)

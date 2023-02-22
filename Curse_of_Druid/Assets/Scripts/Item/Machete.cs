@@ -16,7 +16,8 @@ public class Machete : Item
             TileManager.Inst.TileDict.TryGetValue(coor_target, out target);
             Debug.Log($"{target}");
             Durability--;
-            player.AttackEntity(1, DAMAGE_TYPE.Machete);
+            player.AttackEntity(3, DAMAGE_TYPE.Machete);
+            Debug.Log(UIManager.Inst.Inventory.UseItem(this));
             if (Durability == 0)
             {
                 // Destroy(gameObject);
@@ -26,7 +27,6 @@ public class Machete : Item
                 SoundManager.Instance.PlayEffectSound(SOUND_NAME.Swing);
                 SoundManager.Instance.PlayEffectSound(SOUND_NAME.Cut);
                 target.Destroy();
-                Debug.Log(UIManager.Inst.Inventory.UseItem(this));
                 Debug.Log("Item is used");
                 return true;
             }
@@ -35,7 +35,6 @@ public class Machete : Item
                 SoundManager.Instance.PlayEffectSound(SOUND_NAME.Swing);
                 SoundManager.Instance.PlayEffectSound(SOUND_NAME.Cut);
                 target.Destroy();
-                Debug.Log(UIManager.Inst.Inventory.UseItem(this));
                 Debug.Log("Item is used");
                 return true;
             }

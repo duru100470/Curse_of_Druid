@@ -18,6 +18,7 @@ public class Pickaxe : Item
             Debug.Log($"{target}");
             Durability--;
             player.AttackEntity(1, DAMAGE_TYPE.Pickaxe);
+            Debug.Log(UIManager.Inst.Inventory.UseItem(this));
             if (Durability == 0)
             {
                 // Destroy(gameObject);
@@ -28,8 +29,6 @@ public class Pickaxe : Item
                 SoundManager.Instance.PlayEffectSound(SOUND_NAME.Pickaxe);
                 SoundManager.Instance.PlayEffectSound(SOUND_NAME.PickaxeHitRock);
                 target.Destroy();
-                Debug.Log(UIManager.Inst.Inventory.UseItem(this));
-                Debug.Log("Item is used");
                 return true;
             }
             else
