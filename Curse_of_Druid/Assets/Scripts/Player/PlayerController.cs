@@ -84,11 +84,11 @@ public class PlayerController : MonoBehaviour
         // Interaction Test
         if (Input.GetKeyDown(KeyCode.G))
         {
-            var interactions = interactionList.Where(e => e.IsAvailable);
+            var interactions = interactionList.Where(e => e.IsAvailable).ToList();
 
-            foreach (var interaction in interactions)
+            for (int i = interactions.Count - 1; i >= 0; i--)
             {
-                interaction.Interact(player);
+                interactions[i].Interact(player);
             }
         }
     }
