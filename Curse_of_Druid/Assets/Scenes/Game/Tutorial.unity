@@ -7377,6 +7377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileId: 0
   isExited: 0
+  nextScene: Map1
 --- !u!1001 &839658835
 PrefabInstance:
   m_ObjectHideFlags: 0
