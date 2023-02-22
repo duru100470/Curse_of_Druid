@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmAudioSource: {fileID: 6376985979920021949}
-  clipList: []
+  clipList:
+  - {fileID: 8300000, guid: e9637ca4a6aa84545b7a178a5e563744, type: 3}
 --- !u!82 &6376985979920021949
 AudioSource:
   m_ObjectHideFlags: 0

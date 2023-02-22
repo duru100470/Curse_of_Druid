@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+
+////SoundManager.Instance.메소드 호출 ㅇㅋ? 하 씨발 힘들다
 public class SoundManager : SingletonBehavior<SoundManager>
 {
     public static SoundManager instance = null;
@@ -55,7 +58,7 @@ public class SoundManager : SingletonBehavior<SoundManager>
         bgmAudioSource.volume = volume;
     }
 
-    public void PauseBGM(SOUND_NAME soundName)
+    public void PauseBGM()
     {
         bgmAudioSource.Pause();
     }
@@ -71,7 +74,7 @@ public class SoundManager : SingletonBehavior<SoundManager>
         }
     }
 
-    public void StopBGM(SOUND_NAME soundName)
+    public void StopBGM()
     {
         bgmAudioSource.Stop();
     }
@@ -112,12 +115,20 @@ public class SoundManager : SingletonBehavior<SoundManager>
             Destroy(this.gameObject);
         }
     }
+    public static SoundManager Instance
+    {
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+            return instance;
+        }
+    }
 }
 
 public enum SOUND_NAME
 {
-    BUTTON_CLICK_SOUND,
-
-    MAIN_BGM,
-    LEVEL_BGM
-}
+    PlayerHurt
+};
