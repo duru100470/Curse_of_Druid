@@ -9,7 +9,7 @@ public class Lever : Tile, IInteractive
     [SerializeField]
     private bool isPulled = false;
 
-    public bool IsAvailable { get; set; }
+    public bool IsAvailable { get; set; } = true;
 
     public void Interact(Entity entity)
     {
@@ -24,7 +24,10 @@ public class Lever : Tile, IInteractive
 
         EventManager.Inst.PostNotification(EVENT_TYPE.LeverPulled, this, leverId);
 
+        Debug.Log("lever is pulled!!");
+
         // 애니메이션 추후에 적용
         isPulled = true;
+        IsAvailable = false;
     }
 }

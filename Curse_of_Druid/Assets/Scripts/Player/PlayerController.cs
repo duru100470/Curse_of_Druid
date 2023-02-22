@@ -94,6 +94,28 @@ public class PlayerController : MonoBehaviour
         stateMachine.DoOperateFixedUpdate();
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        var interaction = other.GetComponent<IInteractive>();
+        Debug.Log(other);
+        Debug.Log(interaction);
+
+        if (interaction != null)
+        {
+            interactionList.Add(interaction);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        var interaction = other.GetComponent<IInteractive>();
+
+        if (interaction != null)
+        {
+            interactionList.Remove(interaction);
+        }
+    }
+
     public void HorizontalMove(float h)
     {
         // Flip Sprite
