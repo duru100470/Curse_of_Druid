@@ -33,7 +33,11 @@ public class PlayerIdle : IState
             pc.rigid2d.velocity = new Vector2(0, pc.rigid2d.velocity.y);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetAxisRaw("Vertical") == -1 && Input.GetKeyDown(KeyCode.Space))
+        {
+            pc.stateMachine.SetState(new PlayerDownJump(pc));
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
             pc.stateMachine.SetState(new PlayerJump(pc));
         }
