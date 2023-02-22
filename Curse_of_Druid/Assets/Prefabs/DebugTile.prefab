@@ -125,4 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileId: 0
-  tileRuleList: []
+  spriteRenderer: {fileID: 7439931720744610341}
+  tileRuleList:
+  - sprite: {fileID: 21300000, guid: db7ea732487a5624ca474dd5a0aab751, type: 3}
+    tileRuleInfo: 000000000000000000000000000000000000000000000000000000000000000000000000

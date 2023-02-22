@@ -6,18 +6,16 @@ using UnityEngine;
 public class RuleTile : Tile
 {
     [Header("RuleTile")]
+    [SerializeField]
     protected SpriteRenderer spriteRenderer;
     [SerializeField]
     protected List<TileRule> tileRuleList;
-    private List<Func<bool>> funcList;
+    private List<Func<bool>> funcList = new List<Func<bool>>();
 
     public List<TileRule> TileRuleList => tileRuleList;
 
 
     protected virtual void Awake() {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        funcList = new List<Func<bool>>();
-
         // Add func list
         funcList.Add(IsThereLeftUpTile);
         funcList.Add(IsThereUpTile);
