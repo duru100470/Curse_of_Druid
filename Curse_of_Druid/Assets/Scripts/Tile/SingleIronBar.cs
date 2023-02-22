@@ -22,7 +22,7 @@ public class SingleIronBar : Tile, IListener
                 if (leverId != (int)param || isOpened) break;
 
                 isOpened = true;
-                gameObject.GetComponent<BoxCollider>().enabled = false;
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 break;
         }
     }

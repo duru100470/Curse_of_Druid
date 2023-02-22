@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour, IListener
 {
-    protected List<Tile> childrenTileList;
+    protected List<Tile> childrenTileList = new List<Tile>();
     public List<Tile> ChildrenTileList => childrenTileList;
     protected List<Coordinate> supportingTileCoorList = new List<Coordinate>();
 

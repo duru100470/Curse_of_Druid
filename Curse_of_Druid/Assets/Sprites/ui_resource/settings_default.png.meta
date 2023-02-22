@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 17d2de75a7b93a9409d71192903fc674
+=======
+guid: e40ffd18c71164b40809e70344b975ab
+>>>>>>> MinJong
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +46,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 2
+=======
+  spriteMode: 1
+>>>>>>> MinJong
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,6 +111,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
+<<<<<<< HEAD
     sprites:
     - serializedVersion: 2
       name: settings_default_0
@@ -146,6 +155,9 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+=======
+    sprites: []
+>>>>>>> MinJong
     outline: []
     physicsShape: []
     bones: []
@@ -156,9 +168,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+<<<<<<< HEAD
     nameFileIdTable:
       settings_default_1: 1576902653
       settings_default_0: -1472139114
+=======
+    nameFileIdTable: {}
+>>>>>>> MinJong
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

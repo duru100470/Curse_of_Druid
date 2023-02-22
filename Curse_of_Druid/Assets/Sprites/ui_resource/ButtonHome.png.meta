@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 3c8aa7efc51efe84d8f698bc80e952f8
+=======
+guid: 29ccfb08c12247446b111629853b674c
+>>>>>>> MinJong
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +46,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 2
+=======
+  spriteMode: 1
+>>>>>>> MinJong
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,6 +111,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
+<<<<<<< HEAD
     sprites:
     - serializedVersion: 2
       name: ButtonHome_0
@@ -146,6 +155,9 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+=======
+    sprites: []
+>>>>>>> MinJong
     outline: []
     physicsShape: []
     bones: []
@@ -156,9 +168,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+<<<<<<< HEAD
     nameFileIdTable:
       ButtonHome_0: 1075486197
       ButtonHome_1: -1523073145
+=======
+    nameFileIdTable: {}
+>>>>>>> MinJong
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

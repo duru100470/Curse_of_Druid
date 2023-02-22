@@ -20,7 +20,8 @@ public class Tile : MonoBehaviour
 
     public void Destroy()
     {
-        // DestroyCallback(Pos);
+        if (DestroyCallback != null)
+            DestroyCallback(Pos);
         TileManager.Inst.RemoveTile(Pos);
 
         Destroy(this.gameObject);

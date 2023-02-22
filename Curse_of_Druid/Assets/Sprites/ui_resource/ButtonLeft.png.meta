@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 1ff5b90aa6b94da49b86aa8aaae820ee
+=======
+guid: 62f9f42191dfc4c41aa62e84e396982a
+>>>>>>> MinJong
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +46,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 2
+=======
+  spriteMode: 1
+>>>>>>> MinJong
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,6 +111,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
+<<<<<<< HEAD
     sprites:
     - serializedVersion: 2
       name: ButtonLeft_0
@@ -146,6 +155,9 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+=======
+    sprites: []
+>>>>>>> MinJong
     outline: []
     physicsShape: []
     bones: []
@@ -156,9 +168,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+<<<<<<< HEAD
     nameFileIdTable:
       ButtonLeft_0: 1443475099
       ButtonLeft_1: -1682619263
+=======
+    nameFileIdTable: {}
+>>>>>>> MinJong
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

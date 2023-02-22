@@ -16,6 +16,6 @@ public class CrackedPlatform : RuleTile, IStep
 
     void DestroyPlatform()
     {
-        isSuccess = TileManager.Inst.DestroyTile(this.Pos);
+        Destroy();
     }
 }
