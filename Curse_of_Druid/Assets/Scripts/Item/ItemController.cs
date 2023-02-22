@@ -40,7 +40,6 @@ public class ItemController : Entity, IInteractive
 
         if (entity is Player)
         {
-            UIManager.Inst.Inventory.AcquireItem(ref curItem);
             Debug.Log(UIManager.Inst.Inventory.AcquireItem(ref curItem));
         }
         Destroy(this.gameObject);

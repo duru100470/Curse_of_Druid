@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 8325b071ced96e843ad746318eaa2253
+=======
+guid: 70bc10f97329deb47850849a509f7125
+>>>>>>> MinJong
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

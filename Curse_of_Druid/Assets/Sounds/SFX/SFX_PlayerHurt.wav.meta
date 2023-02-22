@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: e9637ca4a6aa84545b7a178a5e563744
+=======
+guid: 329e9b84a40710440906e13ca048ee59
+>>>>>>> MinJong
 AudioImporter:
   externalObjects: {}
   serializedVersion: 6
