@@ -29,10 +29,12 @@ public class Player : Entity, IDamageable
     private void SelectSlot()
     {
         // Select Inventory slots
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A)) {
             UIManager.Inst.Inventory.GetItemInfo(0)?.OnUse(this);
-        if (Input.GetKeyDown(KeyCode.S))
+        }
+        if (Input.GetKeyDown(KeyCode.S)) {
             UIManager.Inst.Inventory.GetItemInfo(1)?.OnUse(this);
+        }
 
     }
 

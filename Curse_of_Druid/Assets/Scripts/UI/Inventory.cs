@@ -81,7 +81,10 @@ public class Inventory : MonoBehaviour
         return isSuccessful;
     }
 
-    public Item GetItemInfo(int _slot) => slots[_slot].item;
+    public Item GetItemInfo(int _slot) {
+        if (slots[_slot].item != null) return slots[_slot].item;
+        else return null;
+    }
 
     public void FreshInventory()
     {
@@ -93,7 +96,7 @@ public class Inventory : MonoBehaviour
 
     public bool UseItem(Item _item)
     {
-        Debug.Log(_item);
+        // Debug.Log(_item);
         bool isSuccessful = false;
         if (_item.ItemInfo.itemID == ITEM_ID.Pickaxe)
         {

@@ -13,16 +13,9 @@ public class RockRoll : IState
 
     public void OperateEnter()
     {
-        if (rock.IsHeadingRight) rock.rigid2d.velocity = new Vector2(rock.Speed, 0);
-        else rock.rigid2d.velocity = new Vector2(-rock.Speed, 0);
-    }
-
-    public void OperateExit()
-    {
-
-    }
-    public void OperateUpdate()
-    {
+        if (rock.IsHeadingRight) rock.rigid2d.velocity = new Vector2(rock.Speed, 0f);
+        else rock.rigid2d.velocity = new Vector2(-rock.Speed, 0f);
+        rock.StartCoroutine(Wait());
         if (rock.WallCollide() == 1) {
             Debug.Log("wall");
             rock.stateMachine.SetState(new RockIdle(rock));
@@ -32,9 +25,22 @@ public class RockRoll : IState
             rock.stateMachine.SetState(new RockIdle(rock));
         }
     }
+
+    public void OperateExit()
+    {
+
+    }
+    public void OperateUpdate()
+    {
+
+    }
     public void OperateFixedUpdate()
     {
 
+    }
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1.0f);
     }
 }
 

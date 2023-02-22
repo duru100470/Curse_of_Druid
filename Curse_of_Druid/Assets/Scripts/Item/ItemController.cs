@@ -16,7 +16,8 @@ public class ItemController : Entity, IInteractive
     protected override void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        curItem = new Pickaxe();
+        if (itemInfo.itemID == ITEM_ID.Pickaxe) curItem = new Pickaxe();
+        else if (itemInfo.itemID == ITEM_ID.Machete) curItem = new Machete();
         curItem.ItemInfo = itemInfo;
         curItem.Durability = itemInfo.maxDurability;
         spriteRenderer.sprite = curItem.ItemInfo.itemSprite[0];
