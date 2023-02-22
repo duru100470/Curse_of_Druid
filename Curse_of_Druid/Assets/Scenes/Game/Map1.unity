@@ -4502,7 +4502,7 @@ MonoBehaviour:
   coor:
     x: 0
     y: 0
-  attackLocation: {fileID: 0}
+  attackLocation: {fileID: 1252786306}
   attackRange: 0
 --- !u!114 &1252786310
 MonoBehaviour:
