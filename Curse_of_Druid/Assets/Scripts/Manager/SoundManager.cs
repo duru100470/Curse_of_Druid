@@ -115,7 +115,15 @@ public class SoundManager : SingletonBehavior<SoundManager>
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        var obj = FindObjectsOfType<SoundManager>();
+        if(obj.Length == 1)
+        {
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
