@@ -45,13 +45,13 @@ public class Player : Entity, IDamageable
     }
 
     // 이 메소드 호출하면 앞에 있는 적 공격함
-    public override void AttackEntity(int damageAmount)
+    public override void AttackEntity(int damageAmount, DAMAGE_TYPE dmgType)
     {
         Collider2D[] damage = Physics2D.OverlapCircleAll(attackLocation.position, attackRange);
 
         for (int i = 0; i < damage.Length; i++)
         {
-            damage[i].GetComponent<IDamageable>()?.GetDamage(damageAmount, DAMAGE_TYPE.Melee);
+            damage[i].GetComponent<IDamageable>()?.GetDamage(damageAmount, dmgType);
         }
     }
 

@@ -13,9 +13,16 @@ public class RockRoll : IState
 
     public void OperateEnter()
     {
-        if (rock.IsHeadingRight) rock.rigid2d.velocity = new Vector2(rock.Speed, 0f);
-        else rock.rigid2d.velocity = new Vector2(-rock.Speed, 0f);
-        rock.StartCoroutine(Wait());
+        Debug.Log("Rock Rolling");
+        if (rock.IsHeadingRight) {
+            Debug.Log("Heading Right");
+            // rock.rigid2d.velocity = new Vector2(rock.Speed, 0f);
+        }
+        else {
+            Debug.Log("Heading Left");
+            // rock.rigid2d.velocity = new Vector2(-rock.Speed, 0f);
+        }
+        // rock.StartCoroutine(Wait());
     }
 
     public void OperateExit()
@@ -24,7 +31,22 @@ public class RockRoll : IState
     }
     public void OperateUpdate()
     {
-
+        int isCollided = rock.WallCollide();
+        // Debug.Log(isCollided);
+        if (isCollided == 1 && rock.IsHeadingRight) {
+            Debug.Log("Right wall");
+            rock.stateMachine.SetState(new RockIdle(rock));
+        }
+        else if (isCollided == -1 && !rock.IsHeadingRight) {
+            Debug.Log("Left wall");
+            rock.stateMachine.SetState(new RockIdle(rock));
+        }
+        else if (rock.IsHeadingRight) {
+            rock.transform.Translate(Vector3.right * 0.05f);
+        }
+        else if (!rock.IsHeadingRight) {
+            rock.transform.Translate(Vector3.left * 0.05f);
+        }
     }
     public void OperateFixedUpdate()
     {
@@ -32,12 +54,14 @@ public class RockRoll : IState
     }
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(1.0f);
-                if (rock.WallCollide() == 1) {
+        int isCollided = rock.WallCollide();
+        Debug.Log(isCollided);
+        yield return new WaitWhile(() => (isCollided == 0));
+        if (isCollided == 1) {
             Debug.Log("wall");
             rock.stateMachine.SetState(new RockIdle(rock));
         }
-        else if (rock.WallCollide() == -1) {
+        else if (isCollided == -1) {
             Debug.Log("wall");
             rock.stateMachine.SetState(new RockIdle(rock));
         }

@@ -17,6 +17,7 @@ public class Wolf : Enemy, IDamageable, IStep
 
     public void GetDamage(int amount, DAMAGE_TYPE damageType)
     {
+        if (damageType != DAMAGE_TYPE.Step && damageType != DAMAGE_TYPE.Machete && damageType != DAMAGE_TYPE.Pickaxe) return;
         health = Mathf.Max(0, health - amount);
         Debug.Log(health);
         if (health == 0)
@@ -54,22 +55,5 @@ public class Wolf : Enemy, IDamageable, IStep
             else
                 (entity as Player).PlayerController.rigid2d.AddForce(Vector2.left * 6f, ForceMode2D.Impulse);
         }
-    }
-    public int WallCollide()
-    {
-        // ToDo : zero -> pos of enemy
-        RaycastHit2D raycastHit2DLeft = Physics2D.Raycast(transform.position, Vector3.left, 0.35f, LayerMask.GetMask("Ground"));
-        RaycastHit2D raycastHit2DRight = Physics2D.Raycast(transform.position, Vector3.right, 0.35f, LayerMask.GetMask("Ground"));
-
-        if (raycastHit2DLeft.collider != null)
-        {
-            return -1;
-        }
-        else if (raycastHit2DRight.collider != null)
-        {
-            return 1;
-        }
-
-        return 0;
     }
 }

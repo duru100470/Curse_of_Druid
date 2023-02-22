@@ -15,8 +15,14 @@ public class Rock : Enemy, IDamageable
         stateMachine = new StateMachine(new RockIdle(this));
     }
 
+    private void Update()
+    {
+        stateMachine.DoOperateUpdate();
+    }
+
     public void GetDamage(int amount, DAMAGE_TYPE damageType)
     {
+        if (damageType != DAMAGE_TYPE.Pickaxe) return;
         health = Mathf.Max(0, health - amount);
         Debug.Log(health);
         if (health == 0)
@@ -54,9 +60,9 @@ public class Rock : Enemy, IDamageable
     public int WallCollide()
     {
         // ToDo : zero -> pos of enemy
-        RaycastHit2D raycastHit2DLeft = Physics2D.Raycast(transform.position, Vector3.left, 0.35f, LayerMask.GetMask("Ground"));
-        RaycastHit2D raycastHit2DRight = Physics2D.Raycast(transform.position, Vector3.right, 0.35f, LayerMask.GetMask("Ground"));
-
+        RaycastHit2D raycastHit2DLeft = Physics2D.Raycast(transform.position, Vector3.left, 0.5f, LayerMask.GetMask("Ground"));
+        RaycastHit2D raycastHit2DRight = Physics2D.Raycast(transform.position, Vector3.right, 0.5f, LayerMask.GetMask("Ground"));
+        Debug.DrawRay(transform.position, transform.position-Vector3.left, Color.red);
         if (raycastHit2DLeft.collider != null)
         {
             return -1;

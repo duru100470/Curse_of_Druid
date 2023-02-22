@@ -10,5 +10,7 @@ public enum DAMAGE_TYPE
     Projectile,
     Falling,
     Flame,
-    Step
+    Step, 
+    Machete,
+    Pickaxe
 }
