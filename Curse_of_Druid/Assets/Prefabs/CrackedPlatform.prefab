@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 332989911470151318}
   - component: {fileID: -8965900696496366356}
   - component: {fileID: 6728310700819516265}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: CrackedPlatform
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 66ccbb10e5488cb4b925b33e270a534a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db7ea732487a5624ca474dd5a0aab751, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,7 +126,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileId: 3
+  spriteRenderer: {fileID: 3837735358179795445}
   tileRuleList: []
+  crackAnimation:
+  - {fileID: 901719298, guid: a1b066da50d73b24dad68379dc9c8b8d, type: 3}
+  - {fileID: 2049417396, guid: a1b066da50d73b24dad68379dc9c8b8d, type: 3}
+  - {fileID: -1761290481, guid: a1b066da50d73b24dad68379dc9c8b8d, type: 3}
+  crackSpriteRenderer: {fileID: 3837735358179795445}
 --- !u!1 &2724453155600282278
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +143,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4586376849513024510}
   - component: {fileID: 3837735358179795445}
-  m_Layer: 0
+  - component: {fileID: 1133480497}
+  m_Layer: 6
   m_Name: Crack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +207,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1761290481, guid: a1b066da50d73b24dad68379dc9c8b8d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -208,6 +215,32 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1133480497
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724453155600282278}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

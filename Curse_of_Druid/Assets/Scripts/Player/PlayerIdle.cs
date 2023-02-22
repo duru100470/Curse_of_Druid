@@ -21,6 +21,8 @@ public class PlayerIdle : IState
     }
     public void OperateUpdate()
     {
+        pc.Step();
+
         // Transition
         if (Input.GetAxisRaw("Horizontal") != 0)
         {

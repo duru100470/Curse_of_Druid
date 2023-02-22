@@ -108,8 +108,8 @@ TextureImporter:
       name: walk_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 2
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -129,8 +129,8 @@ TextureImporter:
       name: walk_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 34
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -150,8 +150,8 @@ TextureImporter:
       name: walk_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 66
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -171,8 +171,8 @@ TextureImporter:
       name: walk_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
+        x: 98
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -192,8 +192,8 @@ TextureImporter:
       name: walk_4
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
+        x: 130
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -213,8 +213,8 @@ TextureImporter:
       name: walk_5
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
+        x: 162
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -234,8 +234,8 @@ TextureImporter:
       name: walk_6
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
+        x: 194
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -255,8 +255,8 @@ TextureImporter:
       name: walk_7
       rect:
         serializedVersion: 2
-        x: 224
-        y: 0
+        x: 226
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -276,8 +276,8 @@ TextureImporter:
       name: walk_8
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
+        x: 258
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -297,8 +297,8 @@ TextureImporter:
       name: walk_9
       rect:
         serializedVersion: 2
-        x: 288
-        y: 0
+        x: 290
+        y: 2
         width: 32
         height: 32
       alignment: 0
@@ -318,8 +318,8 @@ TextureImporter:
       name: walk_10
       rect:
         serializedVersion: 2
-        x: 320
-        y: 0
+        x: 322
+        y: 2
         width: 32
         height: 32
       alignment: 0

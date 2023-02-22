@@ -8,6 +8,10 @@ public class Player : Entity, IDamageable
     public Item CurItem => curItem;
     private PlayerController playerController;
     public PlayerController PlayerController => playerController;
+    [SerializeField]
+    private Transform attackLocation;
+    [SerializeField]
+    private float attackRange;
 
     protected override void Awake()
     {
@@ -30,6 +34,23 @@ public class Player : Entity, IDamageable
         if (Input.GetKeyDown(KeyCode.S))
             UIManager.Inst.Inventory.GetItemInfo(1)?.OnUse(this);
 
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackLocation.position, attackRange);
+    }
+
+    // 이 메소드 호출하면 앞에 있는 적 공격함
+    public override void AttackEntity(int damageAmount)
+    {
+        Collider2D[] damage = Physics2D.OverlapCircleAll(attackLocation.position, attackRange);
+
+        for (int i = 0; i < damage.Length; i++)
+        {
+            damage[i].GetComponent<IDamageable>()?.GetDamage(damageAmount, DAMAGE_TYPE.Melee);
+        }
     }
 
     public void GetDamage(int amount, DAMAGE_TYPE dmgType)

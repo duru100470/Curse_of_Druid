@@ -22,6 +22,7 @@ public class MainCamera : MonoBehaviour
     private float smoothTimeLookup;
     [SerializeField]
     private Vector2 lookUpVelocity;
+    private float posYOffset = 0f;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -31,20 +32,20 @@ public class MainCamera : MonoBehaviour
         
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            posY = Mathf.SmoothDamp(transform.position.y, player.transform.position.y + lookUpDistance, ref lookUpVelocity.y, smoothTimeLookup);
-            transform.position = new Vector3(posX, posY, transform.position.z);
-            return;
+            posYOffset = Mathf.SmoothDamp(posYOffset, lookUpDistance, ref lookUpVelocity.y, smoothTimeLookup);
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            posY = Mathf.SmoothDamp(transform.position.y, player.transform.position.y - lookUpDistance, ref lookUpVelocity.y, smoothTimeLookup);
-            transform.position = new Vector3(posX, posY, transform.position.z);
-            return;
+            posYOffset = Mathf.SmoothDamp(posYOffset, -lookUpDistance, ref lookUpVelocity.y, smoothTimeLookup);
+        }
+        else
+        {
+            posYOffset = Mathf.SmoothDamp(posYOffset, 0f, ref lookUpVelocity.y, smoothTimeLookup);
         }
 
         posY = Mathf.SmoothDamp(transform.position.y, player.transform.position.y, ref velocity.y, smoothTimeY);
 
-        transform.position = new Vector3(posX, posY, transform.position.z);
+        transform.position = new Vector3(posX, posY + posYOffset, transform.position.z);
 
         if (bound)
         {

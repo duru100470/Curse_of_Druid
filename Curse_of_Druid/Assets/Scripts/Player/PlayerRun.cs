@@ -26,6 +26,8 @@ public class PlayerRun : IState
 
     public void OperateUpdate()
     {
+        pc.Step();
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             pc.stateMachine.SetState(new PlayerJump(pc));

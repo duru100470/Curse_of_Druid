@@ -15,7 +15,7 @@ public abstract class Entity : MonoBehaviour
     protected Coordinate coor;
     public Coordinate Coor => coor;
 
-    public virtual void AttackEntity() { }
+    public virtual void AttackEntity(int damageAmount) { }
     public virtual void BreakTile() { }
 
     protected virtual void Awake()
