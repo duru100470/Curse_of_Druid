@@ -8,9 +8,10 @@ public class Machete : Item
         if (user is Player)
         {
             Player player = user as Player;
-            int x = player.Coor.X;
-            int y = player.Coor.Y;
-            Coordinate coor_target = new Coordinate(x, y);
+            bool IsRight = player.PlayerController.IsHeadingRight;
+            Coordinate coor_target;
+            if (IsRight) coor_target = player.Coor + new Coordinate(1, 0);
+            else coor_target = player.Coor + new Coordinate(-1, 0);
             Tile target;
             TileManager.Inst.TileDict.TryGetValue(coor_target, out target);
             Durability--;
@@ -24,14 +25,12 @@ public class Machete : Item
                 Debug.Log("Item is used");
                 return true;
             }
-            /*
             else if (target is VineTile)
             {
                 target.Destroy();
                 Debug.Log("Item is used");
                 return true;
             }
-            */
             else return false;
         }
         else return false;

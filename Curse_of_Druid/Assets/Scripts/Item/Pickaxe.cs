@@ -10,10 +10,10 @@ public class Pickaxe : Item
         if (user is Player)
         {
             Player player = user as Player;
-            int x = player.Coor.X;
-            int y = player.Coor.Y;
-            Coordinate coor_target = new Coordinate(x - 1, y);
-            Debug.Log($"{x-1}, {y}");
+            bool IsRight = player.PlayerController.IsHeadingRight;
+            Coordinate coor_target;
+            if (IsRight) coor_target = player.Coor + new Coordinate(1, 0);
+            else coor_target = player.Coor + new Coordinate(-1, 0);
             Tile target;
             TileManager.Inst.TileDict.TryGetValue(coor_target, out target);
             Debug.Log($"{target}");

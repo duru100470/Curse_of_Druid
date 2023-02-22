@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VineTile : RuleTile
+public class VineTile : RuleTile, IFlammable
 {
     public Obstacle Obstacle { get; set; }
     private bool isBurning = false;

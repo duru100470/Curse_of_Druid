@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour
 
     public float MaxSpeed { get { return maxSpeed; } set { maxSpeed = value; } }
     public float MaxFallingSpeed => maxFallingSpeed;
-    public float ClimbingSpeed => climbingSpeed;
     public float JumpPower => jumpPower;
     public int JumpMaxCount => jumpMaxCount;
     public float JumpMaxTime => jumpMaxTime;

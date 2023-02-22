@@ -50,11 +50,11 @@ public class PlayerJump : IState
             pc.rigid2d.velocity = new Vector2(0, pc.rigid2d.velocity.y);
         }
         else if (Input.GetAxisRaw("Horizontal") == 1 && pc.IsThereWall(1)) {
-            pc.stateMachine.SetState(new PlayerClimbing(pc));
+            pc.stateMachine.SetState(new PlayerClimb(pc));
             pc.IsClimbingRight = true;
         }
         else if (Input.GetAxisRaw("Horizontal") == -1 && pc.IsThereWall(-1)) {
-            pc.stateMachine.SetState(new PlayerClimbing(pc));
+            pc.stateMachine.SetState(new PlayerClimb(pc));
             pc.IsClimbingLeft = true;
         }
         pc.anim.SetFloat("ySpeed", pc.rigid2d.velocity.y);
