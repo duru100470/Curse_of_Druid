@@ -96,7 +96,7 @@ public class Inventory : MonoBehaviour
 
     public bool UseItem(Item _item)
     {
-        // Debug.Log(_item);
+        Debug.Log(_item);
         bool isSuccessful = false;
         if (_item.ItemInfo.itemID == ITEM_ID.Pickaxe)
         {
