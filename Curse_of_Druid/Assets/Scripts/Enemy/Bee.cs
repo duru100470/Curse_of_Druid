@@ -10,9 +10,8 @@ public class Bee : Enemy, IDamageable, IStep
     
     protected override void Awake()
     {
-        stateMachine = new StateMachine(new BeeIdle(this));
-        stateMachine.DoOperateUpdate();
         rigid2d = GetComponent<Rigidbody2D>();
+        stateMachine = new StateMachine(new BeeMove(this));
     }
 
     public void OnStep(Entity entity, bool _bool)

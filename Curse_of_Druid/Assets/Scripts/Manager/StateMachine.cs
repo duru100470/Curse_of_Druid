@@ -10,6 +10,7 @@ public class StateMachine
     public StateMachine(IState defaultState)
     {
         CurruentState = defaultState;
+        CurruentState.OperateEnter();
     }
 
     public void SetState(IState state)

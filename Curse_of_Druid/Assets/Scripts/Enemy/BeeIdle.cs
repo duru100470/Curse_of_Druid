@@ -13,7 +13,7 @@ public class BeeIdle : IState
 
     public void OperateEnter()
     {
-        
+        bee.StartCoroutine(Wait());
     }
 
     public void OperateExit()
@@ -22,8 +22,7 @@ public class BeeIdle : IState
     }
     public void OperateUpdate()
     {
-        bee.StartCoroutine(Wait());
-        bee.stateMachine.SetState(new BeeMove(bee));
+        
     }
     public void OperateFixedUpdate()
     {
@@ -32,5 +31,6 @@ public class BeeIdle : IState
     private IEnumerator Wait()
     {
         yield return new WaitForSeconds(1.0f);
+        bee.stateMachine.SetState(new BeeMove(bee));
     }
 }

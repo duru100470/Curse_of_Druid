@@ -15,6 +15,7 @@ public class BeeMove : IState
     {
         if (bee.IsHeadingRight) bee.rigid2d.velocity = new Vector2(bee.Speed, 0);
         else bee.rigid2d.velocity = new Vector2(-bee.Speed, 0);
+        bee.StartCoroutine(Move());
     }
 
     public void OperateExit()
@@ -23,16 +24,25 @@ public class BeeMove : IState
     }
     public void OperateUpdate()
     {
-        bee.StartCoroutine(Wait());
-        bee.stateMachine.SetState(new BeeIdle(bee));
+        
     }
     public void OperateFixedUpdate()
     {
-
+        
     }
-    private IEnumerator Wait()
+    private IEnumerator Move()
     {
-        yield return new WaitForSeconds(3.0f);
+        var runTime = 0.0f;
+        var duration = 3.0f;
+
+        while (runTime < duration)
+        {
+            runTime += Time.deltaTime;
+
+            bee.transform.position = Vector2.Lerp(bee.transform.position, bee.transform.position + new Vector2(0.1f, 0), runTime / duration);
+            
+            yield return null;
+        }
     }
 
 }
