@@ -22,13 +22,20 @@ public class Pickaxe : Item
             }
             if (target is DestroyedPlatform)
             {
+                SoundManager.Instance.PlayEffectSound(SOUND_NAME.Swing);
+                SoundManager.Instance.PlayEffectSound(SOUND_NAME.Pickaxe);
+                SoundManager.Instance.PlayEffectSound(SOUND_NAME.PickaxeHitRock);
                 target.Destroy();
                 Durability--;
                 Debug.Log(UIManager.Inst.Inventory.UseItem(this));
                 Debug.Log("Item is used");
                 return true;
             }
-            else return false;
+            else
+            {
+                SoundManager.Instance.PlayEffectSound(SOUND_NAME.Swing);
+                return false;
+            }
         }
         else return false;
     }
