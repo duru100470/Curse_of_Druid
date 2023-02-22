@@ -34,15 +34,16 @@ public class BeeMove : IState
     {
         var runTime = 0.0f;
         var duration = 3.0f;
-
+        
         while (runTime < duration)
         {
             runTime += Time.deltaTime;
 
-            bee.transform.position = Vector2.Lerp(bee.transform.position, bee.transform.position + new Vector2(0.1f, 0), runTime / duration);
+            // bee.transform.position = Vector2.Lerp(bee.transform.position, bee.transform.position + new Vector2(0.1f, 0), runTime / duration);
             
             yield return null;
         }
+        yield return null;
     }
 
 }
