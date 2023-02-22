@@ -9,7 +9,7 @@ public abstract class Entity : MonoBehaviour
     protected int health;
     [SerializeField]
     protected int maxHealth;
-    public int Health { get { return health; } set { health = value; } }
+    public int Health => health;
 
     [SerializeField]
     protected Coordinate coor;

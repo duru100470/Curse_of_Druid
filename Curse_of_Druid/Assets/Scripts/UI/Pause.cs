@@ -15,7 +15,6 @@ public class Pause : MonoBehaviour
     private GameObject inventory;
     private bool isGamePaused;
     private bool isKeySettingOpen;
-    private Entity player;
 
     void Awake()
     {
@@ -23,17 +22,12 @@ public class Pause : MonoBehaviour
         keySettingPanel.SetActive(false);
     }
 
-    void Start()
-    {
-        player = GameObject.Find("Player").GetComponent<Player>();
-    }
-
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("pause : " + isGamePaused);
-            Debug.Log("key : " + isKeySettingOpen);
+            //Debug.Log("pause : " + isGamePaused);
+            //Debug.Log("key : " + isKeySettingOpen);
             if(isGamePaused && !isKeySettingOpen)
             {
                 Resume();
@@ -88,8 +82,6 @@ public class Pause : MonoBehaviour
         isKeySettingOpen = false;
         //재시작
         inventory.GetComponent<Inventory>().FreshInventory();
-        player.Health = 100;
-        UIManager.Inst.SetPlayerLife(player.Health);
     }
 
     public void KeySetting()
