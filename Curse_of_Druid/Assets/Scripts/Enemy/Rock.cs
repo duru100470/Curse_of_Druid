@@ -6,13 +6,13 @@ public class Rock : Enemy, IDamageable
 {
     public StateMachine stateMachine;
     public Rigidbody2D rigid2d { get; set; }
-
-    public bool IsHeadingRight = true;
+    public bool IsHeadingRight { get; set; }
 
     protected override void Awake()
     {
-        stateMachine = new StateMachine(new RockIdle(this));
+        IsHeadingRight = true;
         rigid2d = GetComponent<Rigidbody2D>();
+        stateMachine = new StateMachine(new RockIdle(this));
     }
 
     public void GetDamage(int amount, DAMAGE_TYPE damageType)
@@ -54,8 +54,8 @@ public class Rock : Enemy, IDamageable
     public int WallCollide()
     {
         // ToDo : zero -> pos of enemy
-        RaycastHit2D raycastHit2DLeft = Physics2D.Raycast(Vector2.zero, Vector3.left, 0.35f, LayerMask.GetMask("Ground"));
-        RaycastHit2D raycastHit2DRight = Physics2D.Raycast(Vector2.zero, Vector3.right, 0.35f, LayerMask.GetMask("Ground"));
+        RaycastHit2D raycastHit2DLeft = Physics2D.Raycast(transform.position, Vector3.left, 0.35f, LayerMask.GetMask("Ground"));
+        RaycastHit2D raycastHit2DRight = Physics2D.Raycast(transform.position, Vector3.right, 0.35f, LayerMask.GetMask("Ground"));
 
         if (raycastHit2DLeft.collider != null)
         {
