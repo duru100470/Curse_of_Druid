@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -450725711, guid: 035aec938d1c5db4b9963f6b59f6153d, type: 3}
+  m_Sprite: {fileID: 1737088934, guid: 4f97cf84ad6fb4e4eb28c50f396c1673, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &-491336278111331916
@@ -149,11 +149,9 @@ MonoBehaviour:
   tileId: 6
   spriteRenderer: {fileID: 1994705651471762015}
   tileRuleList:
-  - sprite: {fileID: -450725711, guid: 035aec938d1c5db4b9963f6b59f6153d, type: 3}
-    tileRuleInfo: 000000000000000000000000000000000000000000000000000000000000000000000000
-  - sprite: {fileID: -450725711, guid: 035aec938d1c5db4b9963f6b59f6153d, type: 3}
+  - sprite: {fileID: 1737088934, guid: 4f97cf84ad6fb4e4eb28c50f396c1673, type: 3}
     tileRuleInfo: 000000000100000000000000000000000000000000000000000000000100000000000000
-  - sprite: {fileID: -264354007, guid: 035aec938d1c5db4b9963f6b59f6153d, type: 3}
+  - sprite: {fileID: -1420776392, guid: 4f97cf84ad6fb4e4eb28c50f396c1673, type: 3}
     tileRuleInfo: 000000000100000000000000000000000000000000000000000000000200000000000000
   burnTime: 0
   spreadTime: 0
