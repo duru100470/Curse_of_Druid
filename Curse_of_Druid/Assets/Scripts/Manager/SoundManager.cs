@@ -17,8 +17,10 @@ public class SoundManager : SingletonBehavior<SoundManager>
     private readonly HashSet<int> usingIndexs = new HashSet<int>();
     [SerializeField]
     private List<AudioClip> clipList;
+    private float SFXVolume = 1.0f;
 
-    public void PlayEffectSound(SOUND_NAME soundName, float volume = 1f, float pitch = 1f)
+
+    public void PlayEffectSound(SOUND_NAME soundName)
     {
         int emptyAudioIndex = -1;
         for (int i = 0; i < audioSources.Count; ++i)
@@ -40,8 +42,7 @@ public class SoundManager : SingletonBehavior<SoundManager>
         var audioSourceToUse = audioSources[emptyAudioIndex];
 
         audioSourceToUse.clip = clipList[(int)soundName];
-        audioSourceToUse.volume = volume;
-        audioSourceToUse.pitch = pitch;
+        audioSourceToUse.volume = SFXVolume;
         audioSourceToUse.loop = false;
 
         audioSourceToUse.Play();
@@ -56,6 +57,11 @@ public class SoundManager : SingletonBehavior<SoundManager>
     public void SetBGMVolume(float volume = 1f)
     {
         bgmAudioSource.volume = volume;
+    }
+
+    public void SetSFXVolume(float volume = 1f)
+    {
+        SFXVolume = volume;
     }
 
     public void PauseBGM()
