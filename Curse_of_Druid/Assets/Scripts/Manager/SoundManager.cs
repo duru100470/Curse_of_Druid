@@ -113,6 +113,11 @@ public class SoundManager : SingletonBehavior<SoundManager>
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     private void Start()
     {
         PlayBGM(SOUND_NAME.BGM);
