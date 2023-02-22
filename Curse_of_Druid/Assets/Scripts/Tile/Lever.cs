@@ -2,13 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lever : Tile
+public class Lever : Tile, IInteractive
 {
     [SerializeField]
     private int leverId = 0;
     [SerializeField]
     private bool isPulled = false;
-    
+
+    public bool IsAvailable { get; set; }
+
+    public void Interact(Entity entity)
+    {
+        if (entity is not Player) return;
+
+        PullLever();
+    }
+
     public void PullLever()
     {
         if (isPulled) return;

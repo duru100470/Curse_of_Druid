@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
@@ -45,6 +46,8 @@ public class PlayerController : MonoBehaviour
     public float JumpMaxTime => jumpMaxTime;
     public float WallJumpForce => wallJumpForce;
 
+    private List<IInteractive> interactionList = new List<IInteractive>();
+    public List<IInteractive> InteractionList => interactionList;
     private Dictionary<Tile, int> slowList = new();
     public Dictionary<Tile, int> SlowList => slowList;
 
@@ -72,6 +75,17 @@ public class PlayerController : MonoBehaviour
         if (rigid2d.velocity.y < (-1) * maxFallingSpeed)
         {
             rigid2d.velocity = new Vector2(rigid2d.velocity.x, (-1) * maxFallingSpeed);
+        }
+
+        // Interaction Test
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            var interactions = interactionList.Where(e => e.IsAvailable);
+
+            foreach (var interaction in interactions)
+            {
+                interaction.Interact(player);
+            }
         }
     }
 
