@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -1876385073, guid: 1c56162d7283eb246baac8cc2aac5f05, type: 3}
+  m_Sprite: {fileID: 2102083906, guid: 1c56162d7283eb246baac8cc2aac5f05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,6 +128,10 @@ MonoBehaviour:
   tileId: 0
   timeInterval: 5
   maxGrowNumber: 2
+  grassSprites:
+  - {fileID: 2102083906, guid: 1c56162d7283eb246baac8cc2aac5f05, type: 3}
+  - {fileID: -2001009864, guid: 1c56162d7283eb246baac8cc2aac5f05, type: 3}
+  - {fileID: -1876385073, guid: 1c56162d7283eb246baac8cc2aac5f05, type: 3}
   burnTime: 0
   spreadTime: 0
 --- !u!114 &-4197765217347316712

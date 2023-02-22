@@ -9,6 +9,8 @@ public class GrassTile : Tile, IFlammable
     private float timeInterval;
     [SerializeField]
     private int maxGrowNumber;
+    [SerializeField]
+    private Sprite[] grassSprites;
     private int growNumber = 0;
     
     private bool isBurning = false;
@@ -32,6 +34,7 @@ public class GrassTile : Tile, IFlammable
             if (growNumber < maxGrowNumber)
             {
                 growNumber++;
+                GetComponent<SpriteRenderer>().sprite = grassSprites[growNumber];
             }
         }
     }
