@@ -47,6 +47,7 @@ public class Player : Entity, IDamageable
     // 이 메소드 호출하면 앞에 있는 적 공격함
     public override void AttackEntity(int damageAmount, DAMAGE_TYPE dmgType)
     {
+        StartCoroutine(Swing(1f));
         Collider2D[] damage = Physics2D.OverlapCircleAll(attackLocation.position, attackRange);
 
         for (int i = 0; i < damage.Length; i++)
@@ -77,7 +78,15 @@ public class Player : Entity, IDamageable
 
     private IEnumerator Stun(float duration)
     {
+        StopCoroutine(Swing(1f));
         playerController.stateMachine.SetState(new PlayerStun(playerController));
+        yield return new WaitForSeconds(duration);
+        playerController.stateMachine.SetState(new PlayerIdle(playerController));
+    }
+
+    private IEnumerator Swing(float duration)
+    {
+        playerController.stateMachine.SetState(new PlayerSwing(playerController));
         yield return new WaitForSeconds(duration);
         playerController.stateMachine.SetState(new PlayerIdle(playerController));
     }
