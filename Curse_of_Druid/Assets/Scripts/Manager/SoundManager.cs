@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-////SoundManager.Instance.메소드 호출 ㅇㅋ? 하 씨발 힘들다
 public class SoundManager : SingletonBehavior<SoundManager>
 {
-    public static SoundManager instance = null;
     /// <summary>
     /// fixme
     /// </summary>
@@ -19,7 +16,7 @@ public class SoundManager : SingletonBehavior<SoundManager>
     private List<AudioClip> clipList;
     private float SFXVolume = 1.0f;
 
-    public void PlayEffectSound(SOUND_NAME soundName, bool isLooping, float volume = 1f, float pitch = 1f)
+    public void PlayEffectSound(SOUND_NAME soundName, bool isLooping = true, float volume = 1f, float pitch = 1f)
     {
         int emptyAudioIndex = -1;
         for (int i = 0; i < audioSources.Count; ++i)
@@ -118,31 +115,7 @@ public class SoundManager : SingletonBehavior<SoundManager>
 
     private void Start()
     {
-        PlayBGM();
-    }
-
-        void Awake()
-    {
-        if (null == instance)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
-    public static SoundManager Instance
-    {
-        get
-        {
-            if (null == instance)
-            {
-                return null;
-            }
-            return instance;
-        }
+        // PlayBGM();
     }
 }
 
