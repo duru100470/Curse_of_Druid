@@ -1208,6 +1208,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7030541348174749315, guid: f05a3b117995ad74881ee513a3ff3436, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7439931720744610330, guid: f05a3b117995ad74881ee513a3ff3436, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -6961,8 +6965,8 @@ MonoBehaviour:
   minPos: {x: 0, y: 0}
   maxPos: {x: 0, y: 0}
   bound: 0
-  lookUpDistance: 0
-  smoothTimeLookup: 0
+  lookUpDistance: 2
+  smoothTimeLookup: 0.1
   lookUpVelocity: {x: 0, y: 0}
 --- !u!114 &2029767915
 MonoBehaviour:
