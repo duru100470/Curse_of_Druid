@@ -16,7 +16,7 @@ public class SoundManager : SingletonBehavior<SoundManager>
     private List<AudioClip> clipList;
     private float SFXVolume = 1.0f;
 
-    public void PlayEffectSound(SOUND_NAME soundName, bool isLooping = true, float volume = 1f, float pitch = 1f)
+    public void PlayEffectSound(SOUND_NAME soundName, bool isLooping = false, float volume = 1f, float pitch = 1f)
     {
         /*
         int emptyAudioIndex = -1;
@@ -39,7 +39,7 @@ public class SoundManager : SingletonBehavior<SoundManager>
         var audioSourceToUse = audioSources[emptyAudioIndex];
 
         audioSourceToUse.clip = clipList[(int)soundName];
-        audioSourceToUse.volume = volume;
+        audioSourceToUse.volume = SFXVolume;
         audioSourceToUse.pitch = pitch;
         audioSourceToUse.loop = isLooping;
 
@@ -115,9 +115,14 @@ public class SoundManager : SingletonBehavior<SoundManager>
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     private void Start()
     {
-        // PlayBGM();
+        PlayBGM(SOUND_NAME.BGM);
     }
 }
 
@@ -133,5 +138,6 @@ public enum SOUND_NAME
     PlayerHurt,
     PlayerRun,
     PlayerRunGrass,
-    Swing
+    Swing,
+    BGM
 };

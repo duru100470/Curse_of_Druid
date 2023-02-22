@@ -18,6 +18,7 @@ public class Pickaxe : Item
             Debug.Log($"{target}");
             Durability--;
             player.AttackEntity(3, DAMAGE_TYPE.Pickaxe);
+            player.PlayAttackAnim("Pickaxe");
             Debug.Log(UIManager.Inst.Inventory.UseItem(this));
             if (Durability == 0)
             {

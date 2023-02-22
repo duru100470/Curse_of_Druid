@@ -38,8 +38,6 @@ public class Pause : MonoBehaviour
         keySettingPanel.SetActive(false);
         maxBGMVolume = 7f;
         maxSFXVolume = 7f;
-        curBGMVolume = maxBGMVolume;
-        curSFXVolume = maxSFXVolume;
     }
 
     void Start()
@@ -50,6 +48,8 @@ public class Pause : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
         BGMVolume.text = maxBGMVolume.ToString();
         SFXVolume.text = maxSFXVolume.ToString();
+        curBGMVolume = maxBGMVolume;
+        curSFXVolume = maxSFXVolume;
     }
 
     void Update()
@@ -141,7 +141,7 @@ public class Pause : MonoBehaviour
 
     public void ReduceBGMVolume()
     {
-        if (curBGMVolume != 0f)
+        if (curBGMVolume > 0f)
         {
             curBGMVolume = curBGMVolume - 1f;
             BGMVolume.text = curBGMVolume.ToString();
@@ -151,7 +151,7 @@ public class Pause : MonoBehaviour
 
     public void IncreaseBGMVolume()
     {
-        if (curBGMVolume != 7f)
+        if (curBGMVolume < 7f)
         {
             curBGMVolume = curBGMVolume + 1f;
             BGMVolume.text = curBGMVolume.ToString();
@@ -161,7 +161,7 @@ public class Pause : MonoBehaviour
 
     public void ReduceSFXVolume()
     {
-        if (curSFXVolume != 0f)
+        if (curSFXVolume > 0f)
         {
             curSFXVolume = curSFXVolume - 1f;
             SFXVolume.text = curSFXVolume.ToString();
@@ -171,7 +171,7 @@ public class Pause : MonoBehaviour
 
     public void IncreaseSFXVolume()
     {
-        if (curSFXVolume != 7f)
+        if (curSFXVolume < 7f)
         {
             curSFXVolume = curSFXVolume + 1f;
             SFXVolume.text = curSFXVolume.ToString();

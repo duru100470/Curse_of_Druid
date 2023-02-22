@@ -12,6 +12,8 @@ public class Player : Entity, IDamageable
     private Transform attackLocation;
     [SerializeField]
     private float attackRange;
+    [SerializeField]
+    private Animator attackAnimator;
 
     protected override void Awake()
     {
@@ -47,11 +49,27 @@ public class Player : Entity, IDamageable
     // 이 메소드 호출하면 앞에 있는 적 공격함
     public override void AttackEntity(int damageAmount, DAMAGE_TYPE dmgType)
     {
+        StartCoroutine(Swing(1f));
         Collider2D[] damage = Physics2D.OverlapCircleAll(attackLocation.position, attackRange);
 
         for (int i = 0; i < damage.Length; i++)
         {
             damage[i].GetComponent<IDamageable>()?.GetDamage(damageAmount, dmgType);
+        }
+    }
+
+    public void PlayAttackAnim(string swingType)
+    {
+        attackAnimator.speed = 0.3f;
+
+        switch (swingType)
+        {
+            case "Pickaxe":
+                attackAnimator.Play("PlayerAttackPickaxe");
+                break;
+            case "Machete":
+                attackAnimator.Play("PlayerAttackMachete");
+                break;
         }
     }
 
@@ -77,8 +95,17 @@ public class Player : Entity, IDamageable
 
     private IEnumerator Stun(float duration)
     {
+        StopCoroutine(Swing(1f));
         playerController.stateMachine.SetState(new PlayerStun(playerController));
         yield return new WaitForSeconds(duration);
         playerController.stateMachine.SetState(new PlayerIdle(playerController));
+    }
+
+    private IEnumerator Swing(float duration)
+    {
+        playerController.stateMachine.SetState(new PlayerSwing(playerController));
+        yield return new WaitForSeconds(duration);
+        playerController.stateMachine.SetState(new PlayerIdle(playerController));
+        attackAnimator.Play("PlayerAttackNone");
     }
 }
