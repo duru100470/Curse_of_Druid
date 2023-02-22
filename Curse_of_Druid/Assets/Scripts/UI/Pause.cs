@@ -141,41 +141,41 @@ public class Pause : MonoBehaviour
 
     public void ReduceBGMVolume()
     {
-        if (curBGMVolume != 0f)
+        if (curBGMVolume > 0f)
         {
             curBGMVolume = curBGMVolume - 1f;
             BGMVolume.text = curBGMVolume.ToString();
-            SoundManager.Instance.SetBGMVolume(curBGMVolume / 7f);
+            SoundManager.Inst.SetBGMVolume(curBGMVolume / 7f);
         }
     }
 
     public void IncreaseBGMVolume()
     {
-        if (curBGMVolume != 7f)
+        if (curBGMVolume < 7f)
         {
             curBGMVolume = curBGMVolume + 1f;
             BGMVolume.text = curBGMVolume.ToString();
-            SoundManager.Instance.SetBGMVolume(curBGMVolume / 7f);
+            SoundManager.Inst.SetBGMVolume(curBGMVolume / 7f);
         }
     }
 
     public void ReduceSFXVolume()
     {
-        if (curSFXVolume != 0f)
+        if (curSFXVolume > 0f)
         {
             curSFXVolume = curSFXVolume - 1f;
             SFXVolume.text = curSFXVolume.ToString();
-            SoundManager.Instance.SetSFXVolume(curSFXVolume / 7f);
+            SoundManager.Inst.SetSFXVolume(curSFXVolume / 7f);
         }
     }
 
     public void IncreaseSFXVolume()
     {
-        if (curSFXVolume != 7f)
+        if (curSFXVolume < 7f)
         {
             curSFXVolume = curSFXVolume + 1f;
             SFXVolume.text = curSFXVolume.ToString();
-            SoundManager.Instance.SetSFXVolume(curSFXVolume / 7f);
+            SoundManager.Inst.SetSFXVolume(curSFXVolume / 7f);
         }
     }
 }

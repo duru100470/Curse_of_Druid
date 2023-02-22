@@ -115,7 +115,7 @@ public class SoundManager : SingletonBehavior<SoundManager>
 
     private void Start()
     {
-        // PlayBGM();
+        PlayBGM(SOUND_NAME.BGM);
     }
 }
 
@@ -131,5 +131,6 @@ public enum SOUND_NAME
     PlayerHurt,
     PlayerRun,
     PlayerRunGrass,
-    Swing
+    Swing,
+    BGM
 };
