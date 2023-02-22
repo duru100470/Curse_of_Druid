@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MainCamera : MonoBehaviour
 {
+    [Header("Player Tracking")]
     [SerializeField]
     private float smoothTimeX, smoothTimeY;
     [SerializeField]
@@ -14,18 +15,34 @@ public class MainCamera : MonoBehaviour
     private Vector2 minPos, maxPos;
     [SerializeField]
     private bool bound;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Look up/down")]
+    [SerializeField]
+    private float lookUpDistance;
+    [SerializeField]
+    private float smoothTimeLookup;
+    [SerializeField]
+    private Vector2 lookUpVelocity;
 
     // Update is called once per frame
     void FixedUpdate()
     {
         float posX = Mathf.SmoothDamp(transform.position.x, player.transform.position.x, ref velocity.x, smoothTimeX);
-        float posY = Mathf.SmoothDamp(transform.position.y, player.transform.position.y, ref velocity.y, smoothTimeY);
+        float posY;
+        
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            posY = Mathf.SmoothDamp(transform.position.y, player.transform.position.y + lookUpDistance, ref lookUpVelocity.y, smoothTimeLookup);
+            transform.position = new Vector3(posX, posY, transform.position.z);
+            return;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            posY = Mathf.SmoothDamp(transform.position.y, player.transform.position.y - lookUpDistance, ref lookUpVelocity.y, smoothTimeLookup);
+            transform.position = new Vector3(posX, posY, transform.position.z);
+            return;
+        }
+
+        posY = Mathf.SmoothDamp(transform.position.y, player.transform.position.y, ref velocity.y, smoothTimeY);
 
         transform.position = new Vector3(posX, posY, transform.position.z);
 
