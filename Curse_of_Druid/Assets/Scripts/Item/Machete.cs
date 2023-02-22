@@ -23,6 +23,8 @@ public class Machete : Item
             }
             if (target is GrassTile)
             {
+                SoundManager.Instance.PlayEffectSound(SOUND_NAME.Swing);
+                SoundManager.Instance.PlayEffectSound(SOUND_NAME.Cut);
                 target.Destroy();
                 Debug.Log(UIManager.Inst.Inventory.UseItem(this));
                 Debug.Log("Item is used");
@@ -30,12 +32,18 @@ public class Machete : Item
             }
             else if (target is VineTile)
             {
+                SoundManager.Instance.PlayEffectSound(SOUND_NAME.Swing);
+                SoundManager.Instance.PlayEffectSound(SOUND_NAME.Cut);
                 target.Destroy();
                 Debug.Log(UIManager.Inst.Inventory.UseItem(this));
                 Debug.Log("Item is used");
                 return true;
             }
-            else return false;
+            else
+            {
+                SoundManager.Instance.PlayEffectSound(SOUND_NAME.Swing);
+                return false;
+            }
         }
         else return false;
     }

@@ -16,6 +16,12 @@ public class Exit : Tile, IInteractive
     public void Interact(Entity entity)
     {
         if (entity is not Player) return;
+        SoundManager.Instance.PlayEffectSound(SOUND_NAME.GateChoir);
+        Invoke("ChangeScene", 1.0f);
+    }
+
+    void ChangeScene()
+    {
         SceneManager.LoadScene(nextScene);
     }
 }

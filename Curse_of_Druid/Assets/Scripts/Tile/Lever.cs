@@ -30,6 +30,8 @@ public class Lever : Tile, IInteractive
 
         EventManager.Inst.PostNotification(EVENT_TYPE.LeverPulled, this, leverId);
 
+        SoundManager.Instance.PlayEffectSound(SOUND_NAME.LeverSwitch);
+        
         Debug.Log("lever is pulled!!");
 
         animator.SetBool("isPull", true);
