@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SoundManager : SingletonBehavior<SoundManager>
 {
+    public static SoundManager instance = null;
     /// <summary>
     /// fixme
     /// </summary>
@@ -44,14 +45,14 @@ public class SoundManager : SingletonBehavior<SoundManager>
         usingIndexs.Remove(emptyAudioIndex);
     }
 
-    public void PlayBGM(SOUND_NAME soundName, float volume = 1f, float pitch = 1f)
+    public void PlayBGM()
     {
-        bgmAudioSource.clip = clipList[(int)soundName];
-        bgmAudioSource.volume = volume;
-        bgmAudioSource.pitch = pitch;
-        bgmAudioSource.loop = false;
-
         bgmAudioSource.Play();
+    }
+
+    public void SetBGMVolume(float volume = 1f)
+    {
+        bgmAudioSource.volume = volume;
     }
 
     public void PauseBGM(SOUND_NAME soundName)
@@ -92,6 +93,24 @@ public class SoundManager : SingletonBehavior<SoundManager>
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void Start()
+    {
+        PlayBGM();
+    }
+
+        void Awake()
+    {
+        if (null == instance)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
 
