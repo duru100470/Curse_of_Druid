@@ -6965,8 +6965,8 @@ MonoBehaviour:
   minPos: {x: 0, y: 0}
   maxPos: {x: 0, y: 0}
   bound: 0
-  lookUpDistance: 0
-  smoothTimeLookup: 0
+  lookUpDistance: 2
+  smoothTimeLookup: 0.1
   lookUpVelocity: {x: 0, y: 0}
 --- !u!114 &2029767915
 MonoBehaviour:
