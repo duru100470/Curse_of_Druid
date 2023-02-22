@@ -22,6 +22,7 @@ public class Pause : MonoBehaviour
     private Vector3 playerPos;
     private bool isGamePaused;
     private bool isKeySettingOpen;
+    private Scene currentScene;
 
     void Awake()
     {
@@ -34,6 +35,7 @@ public class Pause : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<Player>();
         lifeText.text = player.Health.ToString();
         playerPos = player.transform.position;
+        currentScene = SceneManager.GetActiveScene();
     }
 
     void Update()
@@ -98,10 +100,18 @@ public class Pause : MonoBehaviour
         isGamePaused = false;
         isKeySettingOpen = false;
         //재시작 (인벤토리 비우기, 씬 바꾸기?)
-        inventory.GetComponent<Inventory>().FreshInventory();
+        /*inventory.GetComponent<Inventory>().FreshInventory();
         player.Health = 100;
         lifeText.text = player.Health.ToString();
-        player.transform.position = playerPos;
+        player.transform.position = playerPos;*/
+        if(currentScene.name is "Tutorial")
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
+        else
+        {
+            SceneManager.LoadScene("Map1");
+        }
     }
 
     public void KeySetting()
