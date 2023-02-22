@@ -38,13 +38,23 @@ public class DebugEnemy : Enemy, IDamageable, IStep
 
         if (entity == null) return;
 
-        if (entity is Player)
+        var collider = GetComponent<Collider2D>();
+
+        var thisCenterPosition = collider.bounds.center;
+        var thisTopPosition = collider.bounds.center + new Vector3(0.0f, collider.bounds.extents.y, 0.0f);
+        var targetCenterPosition = other.collider.bounds.center;
+        var targetBottomPosition = other.collider.bounds.center - new Vector3(0.0f, other.collider.bounds.extents.y, 0.0f);
+
+        Debug.Log(thisTopPosition);
+        Debug.Log(targetCenterPosition);
+
+        if (entity is Player
+            && thisTopPosition.y > targetCenterPosition.y
+            && thisCenterPosition.y > targetBottomPosition.y)
         {
             (entity as Player).GetDamage(1, DAMAGE_TYPE.Melee);
 
             // Knockback
-
-            (entity as Player).PlayerController.rigid2d.AddForce(Vector2.up * 7f, ForceMode2D.Impulse);
 
             if (other.collider.transform.position.x > this.transform.position.x)
                 (entity as Player).PlayerController.rigid2d.AddForce(Vector2.right * 6f, ForceMode2D.Impulse);

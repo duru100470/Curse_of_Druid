@@ -13,7 +13,7 @@ public class ThornTrap : Obstacle, IStep
     {
         if (entity is IDamageable)
         {
-            (entity as IDamageable).Dead();
+            (entity as IDamageable).GetDamage(9999, DAMAGE_TYPE.Melee);
         }
     }
 }
