@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698fd76a9add2b647ab1db5e818c04ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToLoad: Hena
+  SceneToLoad: Tutorial
 --- !u!1 &288292761
 GameObject:
   m_ObjectHideFlags: 0

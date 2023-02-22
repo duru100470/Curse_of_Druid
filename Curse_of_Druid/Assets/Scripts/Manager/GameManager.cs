@@ -16,11 +16,11 @@ public class GameManager : SingletonBehavior<GameManager>
 
     private void Awake()
     {
-        LoadMapAsync();
     }
     
     private void Start()
     {
+        LoadMapAsync();
         TestItem();
     }
 
