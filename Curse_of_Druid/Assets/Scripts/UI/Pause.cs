@@ -18,16 +18,28 @@ public class Pause : MonoBehaviour
     private GameObject life;
     [SerializeField]
     private TextMeshProUGUI lifeText;
+    [SerializeField]
+    private TextMeshProUGUI BGMVolume;
+    [SerializeField]
+    private TextMeshProUGUI SFXVolume;
     private Entity player;
     private Vector3 playerPos;
     private bool isGamePaused;
     private bool isKeySettingOpen;
     private Scene currentScene;
+    private float maxBGMVolume;
+    private float maxSFXVolume;
+    private float curBGMVolume;
+    private float curSFXVolume;
 
     void Awake()
     {
         basePanel.SetActive(false);
         keySettingPanel.SetActive(false);
+        maxBGMVolume = 7f;
+        maxSFXVolume = 7f;
+        curBGMVolume = maxBGMVolume;
+        curSFXVolume = maxSFXVolume;
     }
 
     void Start()
@@ -36,6 +48,8 @@ public class Pause : MonoBehaviour
         lifeText.text = player.Health.ToString();
         playerPos = player.transform.position;
         currentScene = SceneManager.GetActiveScene();
+        BGMVolume.text = maxBGMVolume.ToString();
+        SFXVolume.text = maxSFXVolume.ToString();
     }
 
     void Update()
@@ -123,5 +137,45 @@ public class Pause : MonoBehaviour
         life.SetActive(false);
         isGamePaused = true;
         isKeySettingOpen = true;
+    }
+
+    public void ReduceBGMVolume()
+    {
+        if (curBGMVolume != 0f)
+        {
+            curBGMVolume = curBGMVolume - 1f;
+            BGMVolume.text = curBGMVolume.ToString();
+            SoundManager.Instance.SetBGMVolume(curBGMVolume / 7f);
+        }
+    }
+
+    public void IncreaseBGMVolume()
+    {
+        if (curBGMVolume != 7f)
+        {
+            curBGMVolume = curBGMVolume + 1f;
+            BGMVolume.text = curBGMVolume.ToString();
+            SoundManager.Instance.SetBGMVolume(curBGMVolume / 7f);
+        }
+    }
+
+    public void ReduceSFXVolume()
+    {
+        if (curSFXVolume != 0f)
+        {
+            curSFXVolume = curSFXVolume - 1f;
+            SFXVolume.text = curSFXVolume.ToString();
+            SoundManager.Instance.SetSFXVolume(curSFXVolume / 7f);
+        }
+    }
+
+    public void IncreaseSFXVolume()
+    {
+        if (curSFXVolume != 7f)
+        {
+            curSFXVolume = curSFXVolume + 1f;
+            SFXVolume.text = curSFXVolume.ToString();
+            SoundManager.Instance.SetSFXVolume(curSFXVolume / 7f);
+        }
     }
 }

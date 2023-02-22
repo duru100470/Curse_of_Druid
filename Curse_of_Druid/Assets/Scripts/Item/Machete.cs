@@ -24,23 +24,25 @@ public class Machete : Item
             }
             if (target is GrassTile)
             {
-                SoundManager.Instance.PlayEffectSound(SOUND_NAME.Swing);
-                SoundManager.Instance.PlayEffectSound(SOUND_NAME.Cut);
+                SoundManager.Inst.PlayEffectSound(SOUND_NAME.Swing);
+                SoundManager.Inst.PlayEffectSound(SOUND_NAME.Cut);
+                Durability--;
                 target.Destroy();
                 Debug.Log("Item is used");
                 return true;
             }
             else if (target is VineTile)
             {
-                SoundManager.Instance.PlayEffectSound(SOUND_NAME.Swing);
-                SoundManager.Instance.PlayEffectSound(SOUND_NAME.Cut);
+                SoundManager.Inst.PlayEffectSound(SOUND_NAME.Swing);
+                SoundManager.Inst.PlayEffectSound(SOUND_NAME.Cut);
+                Durability--;
                 target.Destroy();
                 Debug.Log("Item is used");
                 return true;
             }
             else
             {
-                SoundManager.Instance.PlayEffectSound(SOUND_NAME.Swing);
+                SoundManager.Inst.PlayEffectSound(SOUND_NAME.Swing);
                 return false;
             }
         }
