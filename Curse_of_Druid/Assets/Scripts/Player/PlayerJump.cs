@@ -67,7 +67,7 @@ public class PlayerJump : IState
     {
         float h = Input.GetAxisRaw("Horizontal");
 
-        if (pc.rigid2d.velocity.y < 0)
+        if (pc.rigid2d.velocity.y <= 0)
             pc.Step();
 
         pc.HorizontalMove(h);
