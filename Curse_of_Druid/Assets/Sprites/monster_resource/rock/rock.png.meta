@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -108,10 +108,10 @@ TextureImporter:
       name: rock_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2
         y: 34
-        width: 32.57143
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f6b196761c99e040828b9b91cf29070
-      internalID: -816914691
+      spriteID: 86c83d1fdb176534c8a1e7cf708d5fc3
+      internalID: -937790754
       vertices: []
       indices: 
       edges: []
@@ -129,10 +129,10 @@ TextureImporter:
       name: rock_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 34
         y: 34
-        width: 32.57143
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95339216d241e5148863120495e944ef
-      internalID: 314889689
+      spriteID: 59b57dc8face5bf4c9565ae6be6e2d64
+      internalID: 971015193
       vertices: []
       indices: 
       edges: []
@@ -150,10 +150,10 @@ TextureImporter:
       name: rock_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 66
         y: 34
-        width: 32.57143
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79c756485861b6346992a46ce1d522dc
-      internalID: 49564254
+      spriteID: 124e5276f3ff84c4a92096298c16d56c
+      internalID: 606997368
       vertices: []
       indices: 
       edges: []
@@ -171,10 +171,10 @@ TextureImporter:
       name: rock_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 98
         y: 34
-        width: 32.57143
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2872a995f06a43047b359fb00594a17b
-      internalID: 2094252606
+      spriteID: 429c11fb2d204984992731766a91ee6f
+      internalID: 1447710669
       vertices: []
       indices: 
       edges: []
@@ -192,10 +192,10 @@ TextureImporter:
       name: rock_4
       rect:
         serializedVersion: 2
-        x: 128
+        x: 130
         y: 34
-        width: 32.57143
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc70b366d2d13ee4f8ddc8e37fb39a61
-      internalID: 1922706429
+      spriteID: 09b604ff3b0b1254e9aa7138f158434b
+      internalID: 1734667354
       vertices: []
       indices: 
       edges: []
@@ -213,10 +213,10 @@ TextureImporter:
       name: rock_5
       rect:
         serializedVersion: 2
-        x: 160
+        x: 162
         y: 34
-        width: 32.57143
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca308bf4a7caec3489b13accccba0455
-      internalID: 509909074
+      spriteID: cbe27f71879b4bb4bbff6192a0247217
+      internalID: 1992661209
       vertices: []
       indices: 
       edges: []
@@ -234,10 +234,10 @@ TextureImporter:
       name: rock_6
       rect:
         serializedVersion: 2
-        x: 192
+        x: 194
         y: 34
-        width: 32.57143
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,8 +245,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfba31f92cf10d34eaf326274b0310b5
-      internalID: -953245687
+      spriteID: 79d3f45ceff46fd4dbd52e35a872ba3d
+      internalID: -186217610
       vertices: []
       indices: 
       edges: []
@@ -255,10 +255,10 @@ TextureImporter:
       name: rock_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32.57143
-        height: 34
+        x: 2
+        y: 2
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,8 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1a45054c52f46e43b0e6bee1c366349
-      internalID: 1119055339
+      spriteID: f4ca66c38ed583f40850e46fd77df8b4
+      internalID: -382378402
       vertices: []
       indices: 
       edges: []
@@ -276,10 +276,10 @@ TextureImporter:
       name: rock_8
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32.57143
-        height: 34
+        x: 34
+        y: 2
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,8 +287,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 041fe056c4e78214ab9d22ea0c847fb3
-      internalID: -1664381138
+      spriteID: 4a2038a14b2dc744789ad1f30f3f2c0b
+      internalID: -773260853
       vertices: []
       indices: 
       edges: []
@@ -297,10 +297,10 @@ TextureImporter:
       name: rock_9
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32.57143
-        height: 34
+        x: 66
+        y: 2
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -308,8 +308,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94e0727aed075854b8b6976489a9c719
-      internalID: 1312028428
+      spriteID: 6fee467c0b4581749b28e1215d98bd20
+      internalID: 1597059286
       vertices: []
       indices: 
       edges: []
@@ -318,10 +318,10 @@ TextureImporter:
       name: rock_10
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32.57143
-        height: 34
+        x: 98
+        y: 2
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -329,29 +329,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35bac4f2f876752479bf98caad2f30a5
-      internalID: -360691367
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rock_11
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32.57143
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 538ae1ac5cdcab448a0e0c36f2589970
-      internalID: -1164298125
+      spriteID: 5212aed8f54c51f4292a1a3335976bc3
+      internalID: -77621641
       vertices: []
       indices: 
       edges: []
@@ -367,18 +346,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      rock_5: 509909074
-      rock_11: -1164298125
-      rock_9: 1312028428
-      rock_2: 49564254
-      rock_8: -1664381138
-      rock_0: -816914691
-      rock_1: 314889689
-      rock_4: 1922706429
-      rock_6: -953245687
-      rock_7: 1119055339
-      rock_3: 2094252606
-      rock_10: -360691367
+      rock_5: 1992661209
+      rock_9: 1597059286
+      rock_2: 606997368
+      rock_8: -773260853
+      rock_0: -937790754
+      rock_1: 971015193
+      rock_4: 1734667354
+      rock_6: -186217610
+      rock_7: -382378402
+      rock_3: 1447710669
+      rock_10: -77621641
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

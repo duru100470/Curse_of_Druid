@@ -1477,7 +1477,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &190683726
@@ -5733,7 +5733,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &663697925
@@ -12324,7 +12324,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1507999658
@@ -15840,6 +15840,9 @@ MonoBehaviour:
   minPos: {x: 0, y: 0}
   maxPos: {x: 0, y: 0}
   bound: 0
+  lookUpDistance: 0
+  smoothTimeLookup: 0
+  lookUpVelocity: {x: 0, y: 0}
 --- !u!114 &2029767915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16163,7 +16166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 382415225}
-  playerHealth: {fileID: 718717832}
+  playerHealth: {fileID: 0}
 --- !u!4 &2090233352 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7439931720744610330, guid: f05a3b117995ad74881ee513a3ff3436, type: 3}
