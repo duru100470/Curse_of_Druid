@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1967286690286452662}
   - component: {fileID: 2035777170055312844}
   - component: {fileID: 2292948337132251610}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: DestroyedPlatform
   m_TagString: Tile
   m_Icon: {fileID: 0}
