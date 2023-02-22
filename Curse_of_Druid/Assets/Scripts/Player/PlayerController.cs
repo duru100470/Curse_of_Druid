@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float climbingSpeed;
     public float JumpTime { get; set; } = 0f;
-    public int JumpCount { get; set; }
+    public int JumpCount { get; set; } = 1;
     public bool IsJumping { get; set; }
     public bool IsClimbingLeft { get; set; }
     public bool IsClimbingRight { get; set; }

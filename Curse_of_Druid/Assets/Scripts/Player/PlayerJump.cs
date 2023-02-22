@@ -19,6 +19,7 @@ public class PlayerJump : IState
 
         if ((pc.IsThereLand() == false || pc.JumpCount == 0) && pc.HasSteppedEntity == false)
         {
+            // Debug.Log(pc.JumpCount);
             return;
         }
 

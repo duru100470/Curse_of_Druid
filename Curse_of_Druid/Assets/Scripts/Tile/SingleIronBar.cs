@@ -23,6 +23,7 @@ public class SingleIronBar : Tile, IListener
 
                 isOpened = true;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                Destroy(this.gameObject);
                 break;
         }
     }
