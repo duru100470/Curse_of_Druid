@@ -14,7 +14,7 @@ public class SoundManager : SingletonBehavior<SoundManager>
     [SerializeField]
     private List<AudioClip> clipList;
 
-    public void PlayEffectSound(SOUND_NAME soundName, float volume = 1f, float pitch = 1f)
+    public void PlayEffectSound(SOUND_NAME soundName, bool isLooping, float volume = 1f, float pitch = 1f)
     {
         int emptyAudioIndex = -1;
         for (int i = 0; i < audioSources.Count; ++i)
@@ -38,10 +38,22 @@ public class SoundManager : SingletonBehavior<SoundManager>
         audioSourceToUse.clip = clipList[(int)soundName];
         audioSourceToUse.volume = volume;
         audioSourceToUse.pitch = pitch;
-        audioSourceToUse.loop = false;
+        audioSourceToUse.loop = isLooping;
 
         audioSourceToUse.Play();
         usingIndexs.Remove(emptyAudioIndex);
+    }
+
+    public void StopEffectSound(SOUND_NAME soundName)
+    {
+        AudioClip clip = clipList[(int)soundName];
+        for (int i = 0; i < audioSources.Count; i++)
+        {
+            if (audioSources[i].isPlaying && audioSources[i].clip == clip)
+            {
+                audioSources[i].Stop();
+            }
+        }
     }
 
     public void PlayBGM(SOUND_NAME soundName, float volume = 1f, float pitch = 1f)
