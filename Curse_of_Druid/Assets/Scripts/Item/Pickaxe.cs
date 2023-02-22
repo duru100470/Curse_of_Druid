@@ -25,6 +25,7 @@ public class Pickaxe : Item
             if (target is DestroyedPlatform)
             {
                 target.Destroy();
+                Debug.Log(UIManager.Inst.Inventory.UseItem(this));
                 Debug.Log("Item is used");
                 return true;
             }

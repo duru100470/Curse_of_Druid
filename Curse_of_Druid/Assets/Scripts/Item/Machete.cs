@@ -22,12 +22,14 @@ public class Machete : Item
             if (target is GrassTile)
             {
                 target.Destroy();
+                Debug.Log(UIManager.Inst.Inventory.UseItem(this));
                 Debug.Log("Item is used");
                 return true;
             }
             else if (target is VineTile)
             {
                 target.Destroy();
+                Debug.Log(UIManager.Inst.Inventory.UseItem(this));
                 Debug.Log("Item is used");
                 return true;
             }

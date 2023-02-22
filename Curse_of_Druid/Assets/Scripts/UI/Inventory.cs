@@ -91,6 +91,39 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public bool UseItem(Item _item)
+    {
+        Debug.Log(_item);
+        bool isSuccessful = false;
+        if (_item.ItemInfo.itemID == ITEM_ID.Pickaxe)
+        {
+            if (slots[0].item == null)
+            {
+                return isSuccessful;
+            }
+            else 
+            {
+                FreshInventory();
+                isSuccessful = true;
+                return isSuccessful;
+            }
+        }
+        else if(_item.ItemInfo.itemID == ITEM_ID.Machete)
+        {
+            if (slots[1].item == null)
+            {
+                return isSuccessful;
+            }
+            else
+            {
+                FreshInventory();
+                isSuccessful = true;
+                return isSuccessful;
+            }
+        }
+        return isSuccessful;
+    }
+
     public bool FindItem(ITEM_ID itemType)
     {
         foreach (var slot in slots)
