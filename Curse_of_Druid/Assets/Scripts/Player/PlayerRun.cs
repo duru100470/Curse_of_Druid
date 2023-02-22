@@ -13,6 +13,7 @@ public class PlayerRun : IState
 
     public void OperateEnter()
     {
+        SoundManager.Inst.PlayEffectSound(SOUND_NAME.PlayerRun);
         pc.anim.SetBool("isRunning", true);
         pc.anim.speed = 0.8f;
         pc.IsWallJumpEnable = true;
@@ -20,6 +21,7 @@ public class PlayerRun : IState
 
     public void OperateExit()
     {
+        SoundManager.Inst.StopEffectSound(SOUND_NAME.PlayerRun);
         pc.anim.SetBool("isRunning", false);
         pc.anim.speed = 0.3f;
     }

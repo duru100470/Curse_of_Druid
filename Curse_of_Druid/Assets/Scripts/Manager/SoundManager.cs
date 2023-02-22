@@ -18,7 +18,6 @@ public class SoundManager : SingletonBehavior<SoundManager>
 
     public void PlayEffectSound(SOUND_NAME soundName, bool isLooping = false, float volume = 1f, float pitch = 1f)
     {
-        /*
         int emptyAudioIndex = -1;
         for (int i = 0; i < audioSources.Count; ++i)
         {
@@ -45,7 +44,6 @@ public class SoundManager : SingletonBehavior<SoundManager>
 
         audioSourceToUse.Play();
         usingIndexs.Remove(emptyAudioIndex);
-        */
     }
 
     public void StopEffectSound(SOUND_NAME soundName)

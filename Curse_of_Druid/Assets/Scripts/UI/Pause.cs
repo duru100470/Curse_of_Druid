@@ -38,8 +38,6 @@ public class Pause : MonoBehaviour
         keySettingPanel.SetActive(false);
         maxBGMVolume = 7f;
         maxSFXVolume = 7f;
-        curBGMVolume = maxBGMVolume;
-        curSFXVolume = maxSFXVolume;
     }
 
     void Start()
@@ -50,6 +48,8 @@ public class Pause : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
         BGMVolume.text = maxBGMVolume.ToString();
         SFXVolume.text = maxSFXVolume.ToString();
+        curBGMVolume = maxBGMVolume;
+        curSFXVolume = maxSFXVolume;
     }
 
     void Update()

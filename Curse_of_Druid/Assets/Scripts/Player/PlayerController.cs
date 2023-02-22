@@ -108,6 +108,12 @@ public class PlayerController : MonoBehaviour
         {
             interactionList.Add(interaction);
         }
+
+        Obstacle grass = other.GetComponent<Grass>();
+        if (grass)
+        {
+            SoundManager.Inst.PlayEffectSound(SOUND_NAME.PlayerRunGrass);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -117,6 +123,12 @@ public class PlayerController : MonoBehaviour
         if (interaction != null)
         {
             interactionList.Remove(interaction);
+        }
+
+        Obstacle grass = other.GetComponent<Grass>();
+        if (grass)
+        {
+            SoundManager.Inst.StopEffectSound(SOUND_NAME.PlayerRunGrass);
         }
     }
 
