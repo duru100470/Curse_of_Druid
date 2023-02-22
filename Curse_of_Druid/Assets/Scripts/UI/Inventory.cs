@@ -43,7 +43,9 @@ public class Inventory : MonoBehaviour
             }
             else 
             {
-                isSuccessful = false;
+                slots[0].item.Durability = slots[0].item.ItemInfo.maxDurability;
+                FreshInventory();
+                isSuccessful = true;
                 return isSuccessful;
             }
         }
@@ -58,7 +60,9 @@ public class Inventory : MonoBehaviour
             }
             else 
             {
-                isSuccessful = false;
+                slots[1].item.Durability = slots[1].item.ItemInfo.maxDurability;
+                FreshInventory();
+                isSuccessful = true;
                 return isSuccessful;
             }
         }
