@@ -15,7 +15,7 @@ public class Slot : MonoBehaviour
     private void Awake()
     {
         ClearSlot();
-        imageSelected.color = new Color(1f, 1f, 1f, 0f);
+        //imageSelected.color = new Color(1f, 1f, 1f, 0f);
     }
 
     private void SetColor(float _alpha)
@@ -36,7 +36,7 @@ public class Slot : MonoBehaviour
 
     public void SetImageSelectedColor(float _alpha)
     {
-        imageSelected.color = new Color(1f, 1f, 1f, _alpha);
+        //imageSelected.color = new Color(1f, 1f, 1f, _alpha);
     }
 
     public void AddItem(ref Item _item)

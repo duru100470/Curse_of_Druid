@@ -8,8 +8,14 @@ public class Lever : Tile, IInteractive
     private int leverId = 0;
     [SerializeField]
     private bool isPulled = false;
+    private Animator animator;
 
     public bool IsAvailable { get; set; } = true;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public void Interact(Entity entity)
     {
@@ -25,6 +31,8 @@ public class Lever : Tile, IInteractive
         EventManager.Inst.PostNotification(EVENT_TYPE.LeverPulled, this, leverId);
 
         Debug.Log("lever is pulled!!");
+
+        animator.SetBool("isPull", true);
 
         // 애니메이션 추후에 적용
         isPulled = true;
