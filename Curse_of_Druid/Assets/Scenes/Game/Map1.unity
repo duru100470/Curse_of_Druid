@@ -1282,7 +1282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileId: 0
   isExited: 0
-  nextScene: TitleScene
+  nextScene: Map2
 --- !u!1 &382492369
 GameObject:
   m_ObjectHideFlags: 0
