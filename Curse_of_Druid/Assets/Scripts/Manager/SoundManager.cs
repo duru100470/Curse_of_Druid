@@ -130,5 +130,15 @@ public class SoundManager : SingletonBehavior<SoundManager>
 
 public enum SOUND_NAME
 {
-    PlayerHurt
+    Cut,
+    GateChoir,
+    GetItem,
+    LeverSwitch,
+    Pickaxe,
+    PickaxeHitRock,
+    PlayerJump,
+    PlayerHurt,
+    PlayerRun,
+    PlayerRunGrass,
+    Swing
 };

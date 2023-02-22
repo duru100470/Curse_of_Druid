@@ -857,6 +857,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6376985979920021948, guid: d58bdeac594eb2443b7d69312500d53d, type: 3}
+      propertyPath: clipList.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376985979920021948, guid: d58bdeac594eb2443b7d69312500d53d, type: 3}
+      propertyPath: clipList.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5bcea313091264d4fac951b7c086bf19, type: 3}
+    - target: {fileID: 6376985979920021948, guid: d58bdeac594eb2443b7d69312500d53d, type: 3}
+      propertyPath: clipList.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: f83882213af67db48bccc46916e497a1, type: 3}
+    - target: {fileID: 6376985979920021948, guid: d58bdeac594eb2443b7d69312500d53d, type: 3}
+      propertyPath: clipList.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3613121ea8461304fb15e070c2dd1773, type: 3}
+    - target: {fileID: 6376985979920021948, guid: d58bdeac594eb2443b7d69312500d53d, type: 3}
+      propertyPath: clipList.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 661a210aabfc8574aa57d472c2c102fe, type: 3}
+    - target: {fileID: 6376985979920021948, guid: d58bdeac594eb2443b7d69312500d53d, type: 3}
+      propertyPath: clipList.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: cbe79b1eb3effa14f89742b1e0b947d3, type: 3}
+    - target: {fileID: 6376985979920021948, guid: d58bdeac594eb2443b7d69312500d53d, type: 3}
+      propertyPath: clipList.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 68f35389ed0c4324d9b975f7778f3a58, type: 3}
+    - target: {fileID: 6376985979920021948, guid: d58bdeac594eb2443b7d69312500d53d, type: 3}
+      propertyPath: clipList.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 350900e95ee6201409ddfa8c6a2705a1, type: 3}
+    - target: {fileID: 6376985979920021948, guid: d58bdeac594eb2443b7d69312500d53d, type: 3}
+      propertyPath: clipList.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: e9637ca4a6aa84545b7a178a5e563744, type: 3}
+    - target: {fileID: 6376985979920021948, guid: d58bdeac594eb2443b7d69312500d53d, type: 3}
+      propertyPath: clipList.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9ce801f891f7b8a4d904425a5840e1e3, type: 3}
+    - target: {fileID: 6376985979920021948, guid: d58bdeac594eb2443b7d69312500d53d, type: 3}
+      propertyPath: clipList.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: 81405a6ab4742b348bd8c57ea967b9b4, type: 3}
+    - target: {fileID: 6376985979920021948, guid: d58bdeac594eb2443b7d69312500d53d, type: 3}
+      propertyPath: clipList.Array.data[10]
+      value: 
+      objectReference: {fileID: 8300000, guid: 80f55b45ddb3f02478c3f8b54df8e9b1, type: 3}
     - target: {fileID: 6376985979920021950, guid: d58bdeac594eb2443b7d69312500d53d, type: 3}
       propertyPath: m_Name
       value: SoundManager

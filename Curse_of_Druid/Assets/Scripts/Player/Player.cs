@@ -55,6 +55,7 @@ public class Player : Entity, IDamageable
 
     public void GetDamage(int amount, DAMAGE_TYPE dmgType)
     {
+        SoundManager.Instance.PlayEffectSound(SOUND_NAME.PlayerHurt);
         health = Mathf.Max(0, health - amount);
         EventManager.Inst.PostNotification(EVENT_TYPE.PlayerHPChange, this, health);
         if (health == 0)
