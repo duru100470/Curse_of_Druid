@@ -3453,7 +3453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldXSize: 100
   worldYSize: 100
-  itemInfo: {fileID: 11400000, guid: 0ad06b135ce2bda4fa4eca582bb30f60, type: 2}
+  itemInfo: {fileID: 11400000, guid: 6790404e0c917c94a85c5c8859ac194c, type: 2}
 --- !u!4 &1512350974
 Transform:
   m_ObjectHideFlags: 0
