@@ -13,7 +13,10 @@ public enum TILE_ID
 
 public enum ITEM_ID
 {
-    Debug
+    Debug,
+    Pickaxe,
+    Machete,
+    Torch
 }
 
 [System.Serializable]
