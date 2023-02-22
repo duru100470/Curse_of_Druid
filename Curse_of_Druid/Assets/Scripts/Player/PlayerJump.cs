@@ -14,13 +14,13 @@ public class PlayerJump : IState
 
     public void OperateEnter()
     {
-        SoundManager.Inst.PlayEffectSound(SOUND_NAME.PlayerJump);
+        // SoundManager.Inst.PlayEffectSound(SOUND_NAME.PlayerJump);
         pc.anim.SetBool("isJumping", true);
         pc.anim.speed = 0.7f;
 
         if ((pc.IsThereLand() == false || pc.JumpCount == 0) && pc.HasSteppedEntity == false)
         {
-            // Debug.Log(pc.JumpCount);
+            Debug.Log(pc.JumpCount);
             return;
         }
 

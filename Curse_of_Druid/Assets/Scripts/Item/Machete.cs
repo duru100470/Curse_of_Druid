@@ -24,8 +24,8 @@ public class Machete : Item
             }
             if (target is GrassTile)
             {
-                SoundManager.Inst.PlayEffectSound(SOUND_NAME.Swing);
-                SoundManager.Inst.PlayEffectSound(SOUND_NAME.Cut);
+                // SoundManager.Inst.PlayEffectSound(SOUND_NAME.Swing);
+                // SoundManager.Inst.PlayEffectSound(SOUND_NAME.Cut);
                 Durability--;
                 target.Destroy();
                 Debug.Log("Item is used");
@@ -33,8 +33,8 @@ public class Machete : Item
             }
             else if (target is VineTile)
             {
-                SoundManager.Inst.PlayEffectSound(SOUND_NAME.Swing);
-                SoundManager.Inst.PlayEffectSound(SOUND_NAME.Cut);
+                // SoundManager.Inst.PlayEffectSound(SOUND_NAME.Swing);
+                // SoundManager.Inst.PlayEffectSound(SOUND_NAME.Cut);
                 Durability--;
                 target.Destroy();
                 Debug.Log("Item is used");
@@ -42,7 +42,7 @@ public class Machete : Item
             }
             else
             {
-                SoundManager.Inst.PlayEffectSound(SOUND_NAME.Swing);
+                // SoundManager.Inst.PlayEffectSound(SOUND_NAME.Swing);
                 return false;
             }
         }

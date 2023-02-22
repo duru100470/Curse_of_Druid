@@ -17,7 +17,7 @@ public class Pickaxe : Item
             TileManager.Inst.TileDict.TryGetValue(coor_target, out target);
             Debug.Log($"{target}");
             Durability--;
-            player.AttackEntity(1, DAMAGE_TYPE.Pickaxe);
+            player.AttackEntity(3, DAMAGE_TYPE.Pickaxe);
             Debug.Log(UIManager.Inst.Inventory.UseItem(this));
             if (Durability == 0)
             {
@@ -25,15 +25,15 @@ public class Pickaxe : Item
             }
             if (target is DestroyedPlatform)
             {
-                SoundManager.Inst.PlayEffectSound(SOUND_NAME.Swing);
-                SoundManager.Inst.PlayEffectSound(SOUND_NAME.Pickaxe);
-                SoundManager.Inst.PlayEffectSound(SOUND_NAME.PickaxeHitRock);
+                // SoundManager.Inst.PlayEffectSound(SOUND_NAME.Swing);
+                // SoundManager.Inst.PlayEffectSound(SOUND_NAME.Pickaxe);
+                // SoundManager.Inst.PlayEffectSound(SOUND_NAME.PickaxeHitRock);
                 target.Destroy();
                 return true;
             }
             else
             {
-                SoundManager.Inst.PlayEffectSound(SOUND_NAME.Swing);
+                // SoundManager.Inst.PlayEffectSound(SOUND_NAME.Swing);
                 return false;
             }
         }

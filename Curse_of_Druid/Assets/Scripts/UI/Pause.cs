@@ -145,7 +145,7 @@ public class Pause : MonoBehaviour
         {
             curBGMVolume = curBGMVolume - 1f;
             BGMVolume.text = curBGMVolume.ToString();
-            SoundManager.Instance.SetBGMVolume(curBGMVolume / 7f);
+            SoundManager.Inst.SetBGMVolume(curBGMVolume / 7f);
         }
     }
 
@@ -155,7 +155,7 @@ public class Pause : MonoBehaviour
         {
             curBGMVolume = curBGMVolume + 1f;
             BGMVolume.text = curBGMVolume.ToString();
-            SoundManager.Instance.SetBGMVolume(curBGMVolume / 7f);
+            SoundManager.Inst.SetBGMVolume(curBGMVolume / 7f);
         }
     }
 
@@ -165,7 +165,7 @@ public class Pause : MonoBehaviour
         {
             curSFXVolume = curSFXVolume - 1f;
             SFXVolume.text = curSFXVolume.ToString();
-            SoundManager.Instance.SetSFXVolume(curSFXVolume / 7f);
+            SoundManager.Inst.SetSFXVolume(curSFXVolume / 7f);
         }
     }
 
@@ -175,7 +175,7 @@ public class Pause : MonoBehaviour
         {
             curSFXVolume = curSFXVolume + 1f;
             SFXVolume.text = curSFXVolume.ToString();
-            SoundManager.Instance.SetSFXVolume(curSFXVolume / 7f);
+            SoundManager.Inst.SetSFXVolume(curSFXVolume / 7f);
         }
     }
 }

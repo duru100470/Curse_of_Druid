@@ -41,7 +41,7 @@ public class ItemController : Entity, IInteractive
 
         if (entity is Player)
         {
-            SoundManager.Inst.PlayEffectSound(SOUND_NAME.GetItem);
+            // SoundManager.Inst.PlayEffectSound(SOUND_NAME.GetItem);
             Debug.Log(UIManager.Inst.Inventory.AcquireItem(ref curItem));
         }
         Destroy(this.gameObject);
