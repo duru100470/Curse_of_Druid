@@ -14,11 +14,11 @@ public class RockIdle : IState
     public void OperateEnter()
     {
         rock.StartCoroutine(Wait());
+        rock.stateMachine.SetState(new RockRoll(rock));
     }
 
     public void OperateExit()
     {
-        rock.stateMachine.SetState(new RockRoll(rock));
         rock.IsHeadingRight = !rock.IsHeadingRight;
     }
     public void OperateUpdate()

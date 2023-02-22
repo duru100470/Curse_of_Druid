@@ -7,7 +7,7 @@ public class Rock : Enemy, IDamageable
     public StateMachine stateMachine;
     public Rigidbody2D rigid2d { get; set; }
 
-    public bool IsHeadingRight = true;
+    public bool IsHeadingRight { get; set; } = true;
 
     protected override void Awake()
     {
