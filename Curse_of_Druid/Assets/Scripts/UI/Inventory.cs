@@ -103,6 +103,7 @@ public class Inventory : MonoBehaviour
             }
             else 
             {
+                if (slots[0].item.Durability == 0) RemoveItem(0);
                 FreshInventory();
                 isSuccessful = true;
                 return isSuccessful;
@@ -116,6 +117,7 @@ public class Inventory : MonoBehaviour
             }
             else
             {
+                if (slots[1].item.Durability == 0) RemoveItem(1);
                 FreshInventory();
                 isSuccessful = true;
                 return isSuccessful;

@@ -6,7 +6,6 @@ public class Pickaxe : Item
 {
     public override bool OnUse(Entity user)
     {
-        Debug.Log("Left Clicked");
         if (user is Player)
         {
             Player player = user as Player;

@@ -14,6 +14,7 @@ public class Machete : Item
             else coor_target = player.Coor + new Coordinate(-1, 0);
             Tile target;
             TileManager.Inst.TileDict.TryGetValue(coor_target, out target);
+            Debug.Log($"{target}");
             Durability--;
             if (Durability == 0)
             {
