@@ -6,10 +6,11 @@ public class Bee : Enemy, IDamageable, IStep
 {
     public StateMachine stateMachine;
     public Rigidbody2D rigid2d { get; set; }
-    public bool IsHeadingRight { get; set; } = true;
+    public bool IsHeadingRight { get; set; }
     
     protected override void Awake()
     {
+        IsHeadingRight = true;
         rigid2d = GetComponent<Rigidbody2D>();
         stateMachine = new StateMachine(new BeeMove(this));
     }

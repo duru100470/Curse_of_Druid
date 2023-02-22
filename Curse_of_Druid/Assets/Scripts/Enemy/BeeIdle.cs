@@ -13,16 +13,17 @@ public class BeeIdle : IState
 
     public void OperateEnter()
     {
+        bee.IsHeadingRight = !(bee.IsHeadingRight);
+        bee.rigid2d.velocity = Vector2.zero;
         bee.StartCoroutine(Wait());
     }
 
     public void OperateExit()
     {
-        bee.IsHeadingRight = !bee.IsHeadingRight;
     }
     public void OperateUpdate()
     {
-        
+
     }
     public void OperateFixedUpdate()
     {
