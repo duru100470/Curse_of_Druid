@@ -56,7 +56,9 @@ public class Player : Entity, IDamageable
     public void GetDamage(int amount, DAMAGE_TYPE dmgType)
     {
         health = Mathf.Max(0, health - amount);
+        Debug.Log("Y");
         EventManager.Inst.PostNotification(EVENT_TYPE.PlayerHPChange, this, health);
+        Debug.Log("X");
         if (health == 0)
         {
             EventManager.Inst.PostNotification(EVENT_TYPE.GameOver, this, dmgType);
