@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private float wallJumpForce;
     [SerializeField]
     private float wallJumpInputBuffer;
+    [SerializeField]
+    private float climbingSpeed;
     public float JumpTime { get; set; } = 0f;
     public int JumpCount { get; set; }
     public bool IsJumping { get; set; }
@@ -47,6 +50,8 @@ public class PlayerController : MonoBehaviour
     public float JumpMaxTime => jumpMaxTime;
     public float WallJumpForce => wallJumpForce;
 
+    private List<IInteractive> interactionList = new List<IInteractive>();
+    public List<IInteractive> InteractionList => interactionList;
     private Dictionary<Tile, int> slowList = new();
     public Dictionary<Tile, int> SlowList => slowList;
 
@@ -75,11 +80,44 @@ public class PlayerController : MonoBehaviour
         {
             rigid2d.velocity = new Vector2(rigid2d.velocity.x, (-1) * maxFallingSpeed);
         }
+
+        // Interaction Test
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            var interactions = interactionList.Where(e => e.IsAvailable);
+
+            foreach (var interaction in interactions)
+            {
+                interaction.Interact(player);
+            }
+        }
     }
 
     private void FixedUpdate()
     {
         stateMachine.DoOperateFixedUpdate();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        var interaction = other.GetComponent<IInteractive>();
+        Debug.Log(other);
+        Debug.Log(interaction);
+
+        if (interaction != null)
+        {
+            interactionList.Add(interaction);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        var interaction = other.GetComponent<IInteractive>();
+
+        if (interaction != null)
+        {
+            interactionList.Remove(interaction);
+        }
     }
 
     public void HorizontalMove(float h)

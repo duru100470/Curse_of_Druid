@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class Pause : MonoBehaviour
     private GameObject pauseButton;
     [SerializeField]
     private GameObject keySettingPanel;
+    [SerializeField]
+    private GameObject inventory;
     private bool isGamePaused;
     private bool isKeySettingOpen;
 
-    void Start()
+    void Awake()
     {
         basePanel.SetActive(false);
         keySettingPanel.SetActive(false);
@@ -23,6 +26,8 @@ public class Pause : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+            //Debug.Log("pause : " + isGamePaused);
+            //Debug.Log("key : " + isKeySettingOpen);
             if(isGamePaused && !isKeySettingOpen)
             {
                 Resume();
@@ -42,7 +47,9 @@ public class Pause : MonoBehaviour
     {
         basePanel.SetActive(false);
         pauseButton.SetActive(true);
+        inventory.SetActive(true);
         isGamePaused = false;
+        isKeySettingOpen = false;
     }
 
     public void Menu()
@@ -50,6 +57,7 @@ public class Pause : MonoBehaviour
         basePanel.SetActive(true);
         pauseButton.SetActive(false);
         keySettingPanel.SetActive(false);
+        inventory.SetActive(false);
         isGamePaused = true;
         isKeySettingOpen = false;
     }
@@ -58,14 +66,22 @@ public class Pause : MonoBehaviour
     {
         basePanel.SetActive(false);
         pauseButton.SetActive(true);
-        //메인 화면으로 나가기
+        inventory.SetActive(false);
+        isGamePaused = false;
+        isKeySettingOpen = false;
+        //메인 화면으로 전환
+        SceneManager.LoadScene("TitleScene");
     }
 
     public void Restart()
     {
         basePanel.SetActive(false);
         pauseButton.SetActive(true);
+        inventory.SetActive(true);
+        isGamePaused = false;
+        isKeySettingOpen = false;
         //재시작
+        inventory.GetComponent<Inventory>().FreshInventory();
     }
 
     public void KeySetting()
@@ -73,6 +89,8 @@ public class Pause : MonoBehaviour
         basePanel.SetActive(false);
         keySettingPanel.SetActive(true);
         pauseButton.SetActive(false);
+        inventory.SetActive(false);
+        isGamePaused = true;
         isKeySettingOpen = true;
     }
 }

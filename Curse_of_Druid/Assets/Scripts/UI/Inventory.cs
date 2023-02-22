@@ -51,6 +51,54 @@ public class Inventory : MonoBehaviour
             }
         }
 
+        /*UI 기획대로 칸을 고정하기 위해서 필요할 것 같은 코드.
+        아이템 줍기 테스트가 아직 안 되기 때문에 코드 테스트를 아직 못함.
+        if(_item.ItemInfo.itemID == Pickaxe)
+        {
+            if(slots[0].item == null)
+            {
+                slot.AddItem(ref _item);
+                isSuccessful = true;
+                return isSuccessful;
+            }
+            if(slots[0].item != null)
+            {
+                slots[0].item.Durability = slots[0].item.ItemInfo.maxDurability;
+                isSuccessful = true;
+                return isSuccessful;
+            }
+        }
+        else if(_item.ItemInfo.itemID == Machete)
+        {
+            if(slots[1].item == null)
+            {
+                slot.AddItem(ref _item);
+                isSuccessful = true;
+                return isSuccessful;
+            }
+            if(slots[1].item != null)
+            {
+                slots[1].item.Durability = slots[1].item.ItemInfo.maxDurability;
+                isSuccessful = true;
+                return isSuccessful;
+            }
+        }
+        else if(_item.ItemInfo.itemID == Torch)
+        {
+            if(slots[2].item == null)
+            {
+                slot.AddItem(ref _item);
+                isSuccessful = true;
+                return isSuccessful;
+            }
+            if(slots[2].item != null)
+            {
+                slots[2].item.Durability = slots[2].item.ItemInfo.maxDurability;
+                isSuccessful = true;
+                return isSuccessful;
+            }
+        }*/
+
         return isSuccessful;
     }
 
