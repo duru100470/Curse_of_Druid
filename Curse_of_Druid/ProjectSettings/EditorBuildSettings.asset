@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/TitleScene.unity
+    path: Assets/Scenes/Game/TitleScene.unity
     guid: 997bcc3f28daeaa4c9177f02cea4f987
   - enabled: 1
-    path: Assets/Scenes/Hena.unity
-    guid: 7468534d7c7e74948a45268dade3d90b
-  - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
+    path: Assets/Scenes/Game/Tutorial.unity
     guid: 438a8b74847532c49b1b0c96b4627684
+  - enabled: 1
+    path: Assets/Scenes/Game/Map1.unity
+    guid: 67c1e1d5d33920d4eaa465da542e6c1e
   m_configObjects: {}
