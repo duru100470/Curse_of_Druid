@@ -1469,7 +1469,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 853933855, guid: 4fc4835cb3e01a444b29f31f9ad1489d, type: 3}
+  m_Sprite: {fileID: 5838149, guid: 4fc4835cb3e01a444b29f31f9ad1489d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1477,7 +1477,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &190683726
@@ -12316,7 +12316,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 853933855, guid: 4fc4835cb3e01a444b29f31f9ad1489d, type: 3}
+  m_Sprite: {fileID: 5838149, guid: 4fc4835cb3e01a444b29f31f9ad1489d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12324,7 +12324,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1507999658
@@ -15840,8 +15840,8 @@ MonoBehaviour:
   minPos: {x: 0, y: 0}
   maxPos: {x: 0, y: 0}
   bound: 0
-  lookUpDistance: 0
-  smoothTimeLookup: 0
+  lookUpDistance: 2
+  smoothTimeLookup: 0.1
   lookUpVelocity: {x: 0, y: 0}
 --- !u!114 &2029767915
 MonoBehaviour:
@@ -16166,7 +16166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 382415225}
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 718717832}
 --- !u!4 &2090233352 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7439931720744610330, guid: f05a3b117995ad74881ee513a3ff3436, type: 3}
