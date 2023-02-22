@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RockIdle : IState
+public class WolfIdle : IState
 {
-    private Rock rock;
+    private Wolf wolf;
 
-    public RockIdle(Rock rock)
+    public WolfIdle(Wolf wolf)
     {
-        this.rock = rock;
+        this.wolf = wolf;
     }
 
     public void OperateEnter()
     {
-        rock.IsHeadingRight = !(rock.IsHeadingRight);
-        rock.rigid2d.velocity = Vector2.zero;
-        rock.StartCoroutine(Wait());
+        wolf.IsHeadingRight = !(wolf.IsHeadingRight);
+        wolf.rigid2d.velocity = Vector2.zero;
+        wolf.StartCoroutine(Wait());
     }
 
     public void OperateExit()
@@ -32,7 +32,7 @@ public class RockIdle : IState
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(3.0f);
-        rock.stateMachine.SetState(new RockRoll(rock));
+        // rock.stateMachine.SetState(new RockRoll(rock));
     }
 
 }
