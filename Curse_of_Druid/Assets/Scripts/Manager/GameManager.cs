@@ -9,6 +9,8 @@ public class GameManager : SingletonBehavior<GameManager>
     private int worldXSize;
     [SerializeField]
     private int worldYSize;
+    [SerializeField]
+    private bool isTutorial;
     private Player player;
     [Header("Item Debug")]
     [SerializeField]
@@ -21,6 +23,8 @@ public class GameManager : SingletonBehavior<GameManager>
     private void Start()
     {
         LoadMapAsync();
+        if (!isTutorial)
+            Timer.Inst.StartTimer();
         // TestItem();
     }
 

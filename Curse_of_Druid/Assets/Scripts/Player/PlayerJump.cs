@@ -100,9 +100,9 @@ public class PlayerJump : IState
                 if (maxFallingSpeed == -20)
                     pc.player.GetDamage(99, DAMAGE_TYPE.Falling);
                 else if (maxFallingSpeed < -17)
-                    pc.player.GetDamage(20, DAMAGE_TYPE.Falling);
+                    pc.player.GetDamage(2, DAMAGE_TYPE.Falling);
                 else if (maxFallingSpeed < -15)
-                    pc.player.GetDamage(10, DAMAGE_TYPE.Falling);
+                    pc.player.GetDamage(1, DAMAGE_TYPE.Falling);
                 // Change State
                 else if (h == 0)
                     pc.stateMachine.SetState(new PlayerIdle(pc));

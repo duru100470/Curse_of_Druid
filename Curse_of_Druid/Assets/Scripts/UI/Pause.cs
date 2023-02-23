@@ -81,6 +81,8 @@ public class Pause : MonoBehaviour
         life.SetActive(true);
         isGamePaused = false;
         isKeySettingOpen = false;
+
+        Timer.Inst.StartTimer();
     }
 
     public void Menu()
@@ -92,6 +94,8 @@ public class Pause : MonoBehaviour
         life.SetActive(false);
         isGamePaused = true;
         isKeySettingOpen = false;
+
+        Timer.Inst.PauseTimer();
     }
 
     public void Home()

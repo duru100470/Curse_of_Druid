@@ -10,6 +10,8 @@ public class UIManager : SingletonBehavior<UIManager>, IListener
     private Inventory inventory;
     [SerializeField]
     private TextMeshProUGUI playerHealth;
+    [SerializeField]
+    private TextMeshProUGUI score;
 
     public Inventory Inventory => inventory;
 
@@ -26,5 +28,10 @@ public class UIManager : SingletonBehavior<UIManager>, IListener
                 playerHealth.text = param.ToString();
                 break;
         }
+    }
+
+    private void Update()
+    {
+        score.text = Timer.Inst.CurTime.ToString();
     }
 }
