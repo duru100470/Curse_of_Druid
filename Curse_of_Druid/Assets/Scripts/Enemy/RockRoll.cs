@@ -5,14 +5,13 @@ using UnityEngine;
 public class RockRoll : IState
 {
     private Rock rock;
-
     public RockRoll(Rock rock)
     {
         this.rock = rock;
     }
-
     public void OperateEnter()
     {
+        rock.anim.SetBool("isRolling", true);
         Debug.Log("Rock Rolling");
         if (rock.IsHeadingRight) {
             Debug.Log("Heading Right");
@@ -27,7 +26,7 @@ public class RockRoll : IState
 
     public void OperateExit()
     {
-
+        rock.anim.SetBool("isRolling", false);
     }
     public void OperateUpdate()
     {
