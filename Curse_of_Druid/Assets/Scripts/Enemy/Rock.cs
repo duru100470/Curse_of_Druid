@@ -6,18 +6,23 @@ public class Rock : Enemy, IDamageable
 {
     public StateMachine stateMachine;
     public Rigidbody2D rigid2d { get; set; }
+    public Animator anim;
     public bool IsHeadingRight { get; set; }
+
+    public bool isRolling = false;
 
     protected override void Awake()
     {
         IsHeadingRight = true;
         rigid2d = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         stateMachine = new StateMachine(new RockIdle(this));
     }
 
     private void Update()
     {
         stateMachine.DoOperateUpdate();
+        
     }
 
     public void GetDamage(int amount, DAMAGE_TYPE damageType)

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2401837732867063052}
   - component: {fileID: 2401837732867063055}
   - component: {fileID: 2401837732867063051}
+  - component: {fileID: 3313555447517541091}
   m_Layer: 8
   m_Name: rock
   m_TagString: Untagged
@@ -155,3 +156,23 @@ MonoBehaviour:
   damageType: 0
   enemyName: 
   speed: 4
+--- !u!95 &3313555447517541091
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2401837732867063041}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 61c74974d69dd084aa67af7f9b4d684f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
